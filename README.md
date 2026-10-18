@@ -6,6 +6,12 @@ NEXUS is an enterprise-grade AI-powered supply chain disruption prediction platf
 
 ---
 
+## 📎 Presentation & Demo Video
+
+> 🎥 **[View Presentation & Demo Video on Google Drive](https://drive.google.com/drive/folders/1A9mmZ8yhZUVTt_2TqQEwkptYXEL7Xein?usp=sharing)**
+
+---
+
 ## 1. Core Differentiators
 
 - **Autonomous Browser Automation (TinyFish)**: Crawls live port authority safety broadcasts (e.g. Shanghai MSA, Port of Rotterdam Portbase, Maersk schedule bulletins), parses dynamic DOM structures, and validates extracted notices against Pydantic schemas.
