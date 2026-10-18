@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-app-background text-primary-text" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEXUS — AI Analyst Investigation Comparison</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CDN & Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#747686",
+            "on-error-container": "#93000a",
+            "subtle-surface": "#F3F5F8",
+            "on-tertiary-fixed-variant": "#783100",
+            "surface-container-highest": "#e2e1ed",
+            "surface-tint": "#2c50d9",
+            "primary-text": "#172033",
+            "surface-bright": "#fbf8ff",
+            "on-primary": "#ffffff",
+            "on-secondary-container": "#596377",
+            "medium-risk-bg": "#FFF4D6",
+            "on-background": "#1a1b23",
+            "surface-container-low": "#f4f2fe",
+            "success": "#268568",
+            "on-error": "#ffffff",
+            "on-primary-fixed": "#001356",
+            "error": "#ba1a1a",
+            "surface-variant": "#e2e1ed",
+            "on-surface-variant": "#444654",
+            "secondary-fixed-dim": "#bdc7de",
+            "primary-accent": "#4263EB",
+            "tertiary-fixed": "#ffdbcb",
+            "surface-container-lowest": "#ffffff",
+            "outline-variant": "#c4c5d7",
+            "inverse-primary": "#b9c3ff",
+            "on-secondary": "#ffffff",
+            "surface": "#fbf8ff",
+            "inverse-surface": "#2f3039",
+            "on-tertiary-fixed": "#341100",
+            "error-container": "#ffdad6",
+            "surface-dim": "#dad9e4",
+            "primary-fixed-dim": "#b9c3ff",
+            "primary": "#2248d1",
+            "medium-risk": "#B7791F",
+            "inverse-on-surface": "#f1effb",
+            "border": "#E6EAF0",
+            "app-background": "#F8F9FB",
+            "tertiary-container": "#b95000",
+            "on-tertiary-container": "#fff2ed",
+            "high-risk-bg": "#FCECEC",
+            "tertiary": "#923e00",
+            "on-primary-fixed-variant": "#0035be",
+            "surface-container-high": "#e8e7f3",
+            "secondary-fixed": "#d9e3fb",
+            "secondary-text": "#667085",
+            "on-primary-container": "#f5f3ff",
+            "secondary-container": "#d6e0f8",
+            "on-secondary-fixed-variant": "#3d475a",
+            "primary-container": "#4263eb",
+            "soft-accent": "#EEF2FF",
+            "secondary": "#555f73",
+            "on-tertiary": "#ffffff",
+            "muted-text": "#8A93A3",
+            "tertiary-fixed-dim": "#ffb690",
+            "on-surface": "#1a1b23",
+            "primary-surface": "#FFFFFF",
+            "background": "#fbf8ff",
+            "strong-border": "#D5DBE5",
+            "success-bg": "#E8F6F0",
+            "high-risk": "#D94F4F",
+            "on-secondary-fixed": "#111c2d",
+            "surface-container": "#eeedf8",
+            "primary-fixed": "#dde1ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-md": "16px",
+            "space-sm": "8px",
+            "space-xl": "32px",
+            "space-lg": "24px",
+            "margin": "32px",
+            "gutter": "20px",
+            "space-xs": "4px"
+          },
+          "fontFamily": {
+            "section-heading": ["Inter"],
+            "page-title": ["Inter"],
+            "table-text": ["Inter"],
+            "button-input": ["Inter"],
+            "kpi-value": ["Inter"],
+            "body": ["Inter"],
+            "metadata": ["Inter"],
+            "table-text-medium": ["Inter"]
+          },
+          "fontSize": {
+            "section-heading": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "page-title": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "table-text": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "button-input": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "kpi-value": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "metadata": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "table-text-medium": ["13px", { "lineHeight": "18px", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 19px;
+      line-height: 1;
+      display: inline-block;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #D5DBE5;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="h-full flex overflow-hidden font-body text-body selection:bg-soft-accent selection:text-primary-accent">
+<!-- ================= SIDEBAR (Shared Component: SideNavBar) ================= -->
+<aside class="fixed top-0 bottom-0 left-0 w-[224px] h-screen bg-primary-surface dark:bg-inverse-surface border-r border-border dark:border-outline-variant flex flex-col justify-between p-space-md z-30 select-none">
+<!-- Header: Logo & Branding -->
+<div class="flex flex-col gap-space-lg">
+<div class="flex items-center gap-space-sm px-space-xs">
+<div class="w-8 h-8 rounded-xl bg-primary-accent flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dataset</span>
+</div>
+<div>
+<div class="font-page-title text-section-heading font-semibold text-primary-text dark:text-inverse-on-surface tracking-tight">NEXUS</div>
+<div class="font-metadata text-metadata text-secondary-text">Supply Chain OS v2.8.4</div>
+</div>
+</div>
+<!-- Navigation Links (9 tabs from schema) -->
+<nav class="flex flex-col gap-1">
+<!-- 1. Overview -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Overview</span>
+</a>
+<!-- 2. Risk Intelligence -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">warning</span>
+<span>Risk Intelligence</span>
+</a>
+<!-- 3. Shipments -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span>Shipments</span>
+</a>
+<!-- 4. Ports & Routes -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">anchor</span>
+<span>Ports &amp; Routes</span>
+</a>
+<!-- 5. Alerts with Badge -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined">notifications_active</span>
+<span>Alerts</span>
+</div>
+<span class="px-1.5 py-0.5 rounded-full text-[11px] font-semibold bg-high-risk-bg text-high-risk border border-high-risk/20">8</span>
+</a>
+<!-- 6. AI Analyst (ACTIVE matching intent) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl bg-soft-accent dark:bg-surface-container-high text-primary-accent dark:text-inverse-primary font-button-input text-button-input transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span>AI Analyst</span>
+</a>
+<!-- 7. Agent Center -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span>Agent Center</span>
+</a>
+<!-- 8. Analytics -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Analytics</span>
+</a>
+<!-- 9. Settings -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Footer Links & Status Indicator -->
+<div class="flex flex-col gap-2 pt-space-md border-t border-border dark:border-outline-variant">
+<!-- Status Indicator -->
+<div class="flex items-center gap-2 px-space-md py-1">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span class="font-metadata text-metadata text-secondary-text">Enterprise Online</span>
+</div>
+<!-- Schema footers -->
+<a class="flex items-center gap-space-sm px-space-md py-1.5 rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-metadata text-metadata transition-colors" href="#">
+<span class="material-symbols-outlined text-[17px]">help</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-1.5 rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-metadata text-metadata transition-colors" href="#">
+<span class="material-symbols-outlined text-[17px]">contact_support</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- ================= MAIN CONTENT WRAPPER ================= -->
+<div class="ml-[224px] flex-1 flex flex-col h-screen overflow-hidden">
+<!-- Top Navigation Bar (Shared Component: TopNavBar) -->
+<header class="h-16 bg-primary-surface border-b border-border flex items-center justify-between px-space-xl flex-shrink-0 z-20">
+<!-- Left: Breadcrumb / Search -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2 font-table-text text-table-text text-secondary-text">
+<span class="hover:text-primary-text cursor-pointer">AI Analyst</span>
+<span class="text-outline">/</span>
+<span class="hover:text-primary-text cursor-pointer">Investigations</span>
+<span class="text-outline">/</span>
+<span class="font-table-text-medium text-primary-text font-medium">Compare</span>
+</div>
+<div class="h-4 w-[1px] bg-border mx-1"></div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-soft-accent text-primary-accent border border-primary-accent/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-accent"></span>
+            Demo Environment
+          </span>
+<span class="font-metadata text-metadata text-muted-text">Updated 4m ago</span>
+</div>
+</div>
+<!-- Right Actions & Profile -->
+<div class="flex items-center gap-3">
+<!-- Live Feed Indicator -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-metadata font-medium bg-subtle-surface border border-border text-secondary-text">
+<span class="material-symbols-outlined text-[15px] text-success">stream</span>
+          Live Feed / Demo Data
+        </span>
+<!-- Quick actions -->
+<button class="p-2 text-secondary-text hover:text-primary-text hover:bg-subtle-surface rounded-xl transition-colors" title="Refresh">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+<button class="p-2 text-secondary-text hover:text-primary-text hover:bg-subtle-surface rounded-xl relative transition-colors" title="Notifications">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-high-risk"></span>
+</button>
+<button class="p-2 text-secondary-text hover:text-primary-text hover:bg-subtle-surface rounded-xl transition-colors" title="View Options">
+<span class="material-symbols-outlined">tune</span>
+</button>
+<div class="h-6 w-[1px] bg-border mx-1"></div>
+<!-- User Profile -->
+<div class="flex items-center gap-2.5 pl-1 cursor-pointer">
+<img class="w-8 h-8 rounded-full object-cover border border-border" data-alt="Corporate headshot portrait of Sarah Chen, Director of Global Logistics, dressed in professional enterprise executive attire against a clean neutral architectural studio background in natural high-key balanced lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArHzGiIyk3YLjRaBvOKE_vy3RrgGzPgoYBRHurGuktj5uzs_UJTIbDkA7MK26lNGRIoRaB7WupPC150BhpKQkIsnfkXut8Vf06XY-ost6kDY_T-U-wliHXCrC4PDJ3y4rl_zTHnyCz1PEUknigAvro2pUMjTk6phiWoPZJzcuAMFPs7AY_ioXT-4zihguVt17ESdTVErHAzursWOLN99kZwELmW1cams1E486yu68W-8w4lWyjTatR"/>
+<div class="text-left hidden lg:block">
+<div class="font-button-input text-button-input text-primary-text font-medium leading-tight">Sarah Chen</div>
+<div class="font-metadata text-metadata text-muted-text leading-tight">Director of Logistics</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto custom-scroll p-space-xl bg-app-background space-y-space-lg">
+<!-- ================= HEADER SECTION ================= -->
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+<div>
+<h1 class="font-page-title text-page-title text-primary-text tracking-tight">Compare Investigations</h1>
+<p class="font-body text-body text-secondary-text mt-0.5">Identify what changed between analyses and understand how supply chain risks differ.</p>
+</div>
+<div class="flex items-center gap-2.5 self-start md:self-auto">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-strong-border bg-primary-surface text-primary-text font-button-input text-button-input hover:bg-subtle-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Comparison</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary-accent text-on-primary font-button-input text-button-input hover:bg-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ New Comparison</span>
+</button>
+<button class="p-2 rounded-xl border border-border bg-primary-surface text-secondary-text hover:text-primary-text hover:bg-subtle-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- ================= SECTION 1: SELECT INVESTIGATIONS PANEL ================= -->
+<section class="bg-primary-surface border border-border rounded-xl p-space-lg">
+<div class="flex items-center justify-between pb-3 mb-4 border-b border-border">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-accent">compare_arrows</span>
+<span class="font-section-heading text-section-heading text-primary-text">Active Comparison Pair</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text">Snapshot comparison engine</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-[1fr,auto,1fr] gap-4 items-center">
+<!-- Left: Baseline (Investigation A) -->
+<div class="bg-subtle-surface/70 border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-metadata text-metadata font-semibold text-secondary-text uppercase tracking-wider">Baseline Investigation (A)</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-metadata font-medium bg-high-risk-bg text-high-risk border border-high-risk/20">
+<span class="w-1.5 h-1.5 rounded-full bg-high-risk"></span>
+                High Risk
+              </span>
+</div>
+<div class="mb-3">
+<div class="font-section-heading text-section-heading text-primary-text font-semibold">INV-0018 — Shanghai Port Congestion Impact</div>
+<div class="flex items-center gap-3 text-secondary-text font-table-text text-table-text mt-1">
+<span>Type: <strong class="text-primary-text font-medium">Disruption Impact</strong></span>
+<span>•</span>
+<span>Date: <strong class="text-primary-text font-medium">18 Oct 2026</strong></span>
+<span>•</span>
+<span>Status: <strong class="text-success font-medium">Completed</strong></span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-border/60">
+<span class="font-metadata text-metadata text-muted-text">Trigger: Berth delay exceedance &gt; 72h</span>
+<button class="font-button-input text-button-input text-primary-accent hover:underline flex items-center gap-0.5">
+                Change Baseline
+                <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Middle: Swap Button -->
+<div class="flex justify-center -my-2 md:my-0">
+<button class="w-10 h-10 rounded-full border border-strong-border bg-primary-surface text-secondary-text hover:text-primary-accent hover:border-primary-accent flex items-center justify-center transition-colors shadow-sm" title="Swap baseline and comparison">
+<span class="material-symbols-outlined">swap_horiz</span>
+</button>
+</div>
+<!-- Right: Comparison (Investigation B) -->
+<div class="bg-subtle-surface/70 border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-metadata text-metadata font-semibold text-secondary-text uppercase tracking-wider">Comparison Investigation (B)</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-metadata font-medium bg-medium-risk-bg text-medium-risk border border-medium-risk/20">
+<span class="w-1.5 h-1.5 rounded-full bg-medium-risk"></span>
+                Medium Risk
+              </span>
+</div>
+<div class="mb-3">
+<div class="font-section-heading text-section-heading text-primary-text font-semibold">INV-0016 — Asia–Europe Route Comparison</div>
+<div class="flex items-center gap-3 text-secondary-text font-table-text text-table-text mt-1">
+<span>Type: <strong class="text-primary-text font-medium">Route Analysis</strong></span>
+<span>•</span>
+<span>Date: <strong class="text-primary-text font-medium">17 Oct 2026</strong></span>
+<span>•</span>
+<span>Status: <strong class="text-success font-medium">Completed</strong></span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-border/60">
+<span class="font-metadata text-metadata text-muted-text">Trigger: Scheduled strategic route review</span>
+<button class="font-button-input text-button-input text-primary-accent hover:underline flex items-center gap-0.5">
+                Change Comparison
+                <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-3 pt-3 border-t border-border flex items-center gap-2 text-muted-text font-metadata text-metadata">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Comparison uses the selected investigation snapshots. Differences may reflect changes in scope, inputs, or analysis time. Illustrative demo data.</span>
+</div>
+</section>
+<!-- ================= SECTION 2: COMPARISON SUMMARY (4 KPI CARDS) ================= -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- KPI 1 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text font-metadata text-metadata">
+<span>Risk Level</span>
+<span class="material-symbols-outlined text-[18px]">emergency</span>
+</div>
+<div class="my-2">
+<div class="flex items-baseline gap-2">
+<span class="font-kpi-value text-kpi-value text-high-risk">High</span>
+<span class="text-muted-text text-body">vs</span>
+<span class="font-kpi-value text-kpi-value text-medium-risk">Medium</span>
+</div>
+<div class="text-secondary-text font-metadata text-metadata">Inv A: High | Inv B: Medium</div>
+</div>
+<div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-high-risk-bg text-high-risk border border-high-risk/20">
+<span class="material-symbols-outlined text-[13px]">arrow_upward</span>
+              One level higher in A
+            </span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text font-metadata text-metadata">
+<span>Related Shipments</span>
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+</div>
+<div class="my-2">
+<div class="flex items-baseline gap-2">
+<span class="font-kpi-value text-kpi-value text-primary-text">32</span>
+<span class="text-muted-text text-body">vs</span>
+<span class="font-kpi-value text-kpi-value text-secondary-text">24</span>
+</div>
+<div class="text-secondary-text font-metadata text-metadata">Inv A: 32 | Inv B: 24 tracked</div>
+</div>
+<div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-soft-accent text-primary-accent border border-primary-accent/20">
+<span class="material-symbols-outlined text-[13px]">add</span>
+              +8 more in A
+            </span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text font-metadata text-metadata">
+<span>Risk Factors Identified</span>
+<span class="material-symbols-outlined text-[18px]">crisis_alert</span>
+</div>
+<div class="my-2">
+<div class="flex items-baseline gap-2">
+<span class="font-kpi-value text-kpi-value text-primary-text">3</span>
+<span class="text-muted-text text-body">vs</span>
+<span class="font-kpi-value text-kpi-value text-secondary-text">4</span>
+</div>
+<div class="text-secondary-text font-metadata text-metadata">Inv A: 3 factors | Inv B: 4 factors</div>
+</div>
+<div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-subtle-surface text-secondary-text border border-border">
+<span class="material-symbols-outlined text-[13px]">remove</span>
+              1 fewer in A
+            </span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text font-metadata text-metadata">
+<span>Primary Entity Scope</span>
+<span class="material-symbols-outlined text-[18px]">hub</span>
+</div>
+<div class="my-2">
+<div class="font-section-heading text-section-heading text-primary-text truncate" title="Shanghai Port vs Asia–Europe">
+              Shanghai vs Asia–Europe
+            </div>
+<div class="text-secondary-text font-metadata text-metadata truncate">Inv A: Shanghai Port | Inv B: Corridor</div>
+</div>
+<div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-subtle-surface text-secondary-text border border-border">
+<span class="material-symbols-outlined text-[13px]">alt_route</span>
+              Different scope
+            </span>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 3: RISK ASSESSMENT COMPARISON ================= -->
+<section class="space-y-3">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-section-heading text-section-heading text-primary-text">Risk Assessment Breakdown</h2>
+<p class="font-metadata text-metadata text-secondary-text">Side-by-side evaluation of risk factors and evaluated operational drivers</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Panel A -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md space-y-3 relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-high-risk"></div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2">
+<span class="font-section-heading text-section-heading text-primary-text">Investigation A</span>
+<span class="font-metadata text-metadata text-secondary-text">INV-0018</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full text-metadata font-medium bg-high-risk-bg text-high-risk border border-high-risk/20">High Risk Profile</span>
+</div>
+<div class="space-y-2.5 pt-2">
+<div class="p-3 rounded-lg bg-high-risk-bg/30 border border-high-risk/20 flex items-start gap-3">
+<span class="material-symbols-outlined text-high-risk mt-0.5 text-[20px]">error</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-table-text-medium text-table-text-medium text-primary-text font-medium">Primary Concern: Port Congestion</span>
+<span class="text-[11px] font-semibold text-high-risk bg-high-risk-bg px-2 py-0.5 rounded">High Severity</span>
+</div>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">Average berth waiting time at Shanghai Port exceeds 4.8 days with 18 vessel backlogs.</p>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-subtle-surface border border-border flex items-start gap-3">
+<span class="material-symbols-outlined text-medium-risk mt-0.5 text-[20px]">warning</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-table-text-medium text-table-text-medium text-primary-text font-medium">Secondary Concern: Corridor Exposure</span>
+<span class="text-[11px] font-semibold text-medium-risk bg-medium-risk-bg px-2 py-0.5 rounded">Medium Severity</span>
+</div>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">Spillover delays propagating into connecting feeders along East China Sea routes.</p>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-subtle-surface border border-border flex items-start gap-3">
+<span class="material-symbols-outlined text-medium-risk mt-0.5 text-[20px]">warning</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-table-text-medium text-table-text-medium text-primary-text font-medium">Additional Concern: Arrival Uncertainty</span>
+<span class="text-[11px] font-semibold text-medium-risk bg-medium-risk-bg px-2 py-0.5 rounded">Medium Severity</span>
+</div>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">Dynamic ETAs fluctuating between +3 and +6 days for high-value priority containers.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Panel B -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md space-y-3 relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-medium-risk"></div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2">
+<span class="font-section-heading text-section-heading text-primary-text">Investigation B</span>
+<span class="font-metadata text-metadata text-secondary-text">INV-0016</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full text-metadata font-medium bg-medium-risk-bg text-medium-risk border border-medium-risk/20">Medium Risk Profile</span>
+</div>
+<div class="space-y-2.5 pt-2">
+<div class="p-3 rounded-lg bg-medium-risk-bg/30 border border-medium-risk/20 flex items-start gap-3">
+<span class="material-symbols-outlined text-medium-risk mt-0.5 text-[20px]">warning</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-table-text-medium text-table-text-medium text-primary-text font-medium">Primary Concern: Route Transit Variability</span>
+<span class="text-[11px] font-semibold text-medium-risk bg-medium-risk-bg px-2 py-0.5 rounded">Medium Severity</span>
+</div>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">Suez canal corridor throughput fluctuation yielding ±2.4 days standard deviation.</p>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-subtle-surface border border-border flex items-start gap-3">
+<span class="material-symbols-outlined text-medium-risk mt-0.5 text-[20px]">warning</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-table-text-medium text-table-text-medium text-primary-text font-medium">Secondary Concern: Alternative-Route Trade-offs</span>
+<span class="text-[11px] font-semibold text-medium-risk bg-medium-risk-bg px-2 py-0.5 rounded">Medium Severity</span>
+</div>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">Cape routing adds 9-11 sailing days with estimated $140,000 additional bunker fuel cost.</p>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-subtle-surface border border-border flex items-start gap-3">
+<span class="material-symbols-outlined text-medium-risk mt-0.5 text-[20px]">warning</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-table-text-medium text-table-text-medium text-primary-text font-medium">Additional Concern: Schedule Uncertainty</span>
+<span class="text-[11px] font-semibold text-medium-risk bg-medium-risk-bg px-2 py-0.5 rounded">Medium Severity</span>
+</div>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">Carrier blank sailings and port sequence revisions across European transshipment hubs.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 4: FINDINGS COMPARISON TABLE ================= -->
+<section class="bg-primary-surface border border-border rounded-xl overflow-hidden">
+<div class="p-space-md border-b border-border flex items-center justify-between">
+<div>
+<h2 class="font-section-heading text-section-heading text-primary-text">Findings Comparison Table</h2>
+<p class="font-metadata text-metadata text-secondary-text">Structured category alignment across both analytical investigations</p>
+</div>
+<span class="text-xs px-2.5 py-1 rounded bg-subtle-surface text-secondary-text border border-border">4 categories aligned</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-subtle-surface text-secondary-text font-metadata text-metadata border-b border-border">
+<th class="py-3 px-space-md w-[22%]">Finding Category</th>
+<th class="py-3 px-space-md w-[32%]">Investigation A (INV-0018)</th>
+<th class="py-3 px-space-md w-[32%]">Investigation B (INV-0016)</th>
+<th class="py-3 px-space-md w-[14%] text-right">Comparison Tag</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border font-table-text text-table-text">
+<!-- Row 1 -->
+<tr class="hover:bg-subtle-surface/50 transition-colors">
+<td class="py-3.5 px-space-md font-table-text-medium text-table-text-medium text-primary-text">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-high-risk"></span>
+                    Port Congestion
+                  </div>
+</td>
+<td class="py-3.5 px-space-md text-primary-text">
+<span class="font-medium text-high-risk">High concern</span> at Shanghai Port (berthing backlogs &gt; 4.8 days)
+                </td>
+<td class="py-3.5 px-space-md text-secondary-text">
+                  Not a primary finding in this analysis scope
+                </td>
+<td class="py-3.5 px-space-md text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-high-risk-bg text-high-risk border border-high-risk/20">
+                    Specific to Investigation A
+                  </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-subtle-surface/50 transition-colors">
+<td class="py-3.5 px-space-md font-table-text-medium text-table-text-medium text-primary-text">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-medium-risk"></span>
+                    Route Exposure
+                  </div>
+</td>
+<td class="py-3.5 px-space-md text-primary-text">
+<span class="font-medium text-medium-risk">Medium concern</span> on the Asia–Europe corridor
+                </td>
+<td class="py-3.5 px-space-md text-primary-text">
+<span class="font-medium text-medium-risk">Medium concern</span> across route alternatives (Cape vs Suez)
+                </td>
+<td class="py-3.5 px-space-md text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-soft-accent text-primary-accent border border-primary-accent/20">
+                    Shared theme; diff focus
+                  </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-subtle-surface/50 transition-colors">
+<td class="py-3.5 px-space-md font-table-text-medium text-table-text-medium text-primary-text">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-medium-risk"></span>
+                    Arrival Uncertainty
+                  </div>
+</td>
+<td class="py-3.5 px-space-md text-primary-text">
+<span class="font-medium text-medium-risk">Medium concern</span> for selected shipments (+4d avg drift)
+                </td>
+<td class="py-3.5 px-space-md text-primary-text">
+<span class="font-medium text-medium-risk">Medium concern</span> due to transit-time variability (±2.4d)
+                </td>
+<td class="py-3.5 px-space-md text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-subtle-surface text-secondary-text border border-border">
+                    Similar theme; diff evidence
+                  </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-subtle-surface/50 transition-colors">
+<td class="py-3.5 px-space-md font-table-text-medium text-table-text-medium text-primary-text">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-text"></span>
+                    Alternative Routing
+                  </div>
+</td>
+<td class="py-3.5 px-space-md text-secondary-text">
+                  Not assessed in detail (out of focal scope)
+                </td>
+<td class="py-3.5 px-space-md text-primary-text">
+<span class="font-medium text-success">Alternatives identified</span> for review (Northern vs Southern options)
+                </td>
+<td class="py-3.5 px-space-md text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-medium-risk-bg text-medium-risk border border-medium-risk/20">
+                    More developed in B
+                  </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- ================= SECTION 5: EVIDENCE AND SOURCE COMPARISON ================= -->
+<section class="bg-primary-surface border border-border rounded-xl p-space-md space-y-3">
+<div class="flex items-center justify-between pb-2 border-b border-border">
+<div>
+<h2 class="font-section-heading text-section-heading text-primary-text">Evidence &amp; Source Comparison</h2>
+<p class="font-metadata text-metadata text-secondary-text">Underlying telemetry, route models, and shipment logs leveraged</p>
+</div>
+<span class="font-metadata text-metadata text-muted-text">4 sources evaluated per analysis</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Column A -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-button-input text-button-input text-primary-text font-medium">Investigation A Evidence Sources</span>
+<span class="text-[11px] text-muted-text">Snapshot: 18 Oct 2026</span>
+</div>
+<div class="space-y-2">
+<div class="p-2.5 rounded-lg border border-border bg-subtle-surface/40 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-text text-[18px]">dock</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Port Conditions Snapshot</div>
+<div class="font-metadata text-metadata text-secondary-text">Shanghai Port terminal telemetry (AIS berth data)</div>
+</div>
+</div>
+<span class="font-metadata text-[11px] px-2 py-0.5 rounded bg-subtle-surface text-muted-text border border-border">Demo data</span>
+</div>
+<div class="p-2.5 rounded-lg border border-border bg-subtle-surface/40 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-text text-[18px]">route</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Route Risk Assessment</div>
+<div class="font-metadata text-metadata text-secondary-text">Asia–Europe Corridor weather &amp; choke-point index</div>
+</div>
+</div>
+<span class="font-metadata text-[11px] px-2 py-0.5 rounded bg-subtle-surface text-muted-text border border-border">Demo data</span>
+</div>
+<div class="p-2.5 rounded-lg border border-border bg-subtle-surface/40 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-text text-[18px]">receipt_long</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Shipment Schedule Review</div>
+<div class="font-metadata text-metadata text-secondary-text">SHP-10482 manifest &amp; carrier EDI milestone updates</div>
+</div>
+</div>
+<span class="font-metadata text-[11px] px-2 py-0.5 rounded bg-subtle-surface text-muted-text border border-border">Demo data</span>
+</div>
+<div class="p-2.5 rounded-lg border border-border bg-subtle-surface/40 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-text text-[18px]">receipt_long</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Shipment Schedule Review</div>
+<div class="font-metadata text-metadata text-secondary-text">SHP-10563 container priority gate logs</div>
+</div>
+</div>
+<span class="font-metadata text-[11px] px-2 py-0.5 rounded bg-subtle-surface text-muted-text border border-border">Demo data</span>
+</div>
+</div>
+</div>
+<!-- Column B -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-button-input text-button-input text-primary-text font-medium">Investigation B Evidence Sources</span>
+<span class="text-[11px] text-muted-text">Snapshot: 17 Oct 2026</span>
+</div>
+<div class="space-y-2">
+<div class="p-2.5 rounded-lg border border-border bg-subtle-surface/40 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-text text-[18px]">timeline</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Route Transit Assessment</div>
+<div class="font-metadata text-metadata text-secondary-text">Asia–Europe Corridor historic transit duration models</div>
+</div>
+</div>
+<span class="font-metadata text-[11px] px-2 py-0.5 rounded bg-subtle-surface text-muted-text border border-border">Demo data</span>
+</div>
+<div class="p-2.5 rounded-lg border border-border bg-subtle-surface/40 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-text text-[18px]">alt_route</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Alternative Route Scenario</div>
+<div class="font-metadata text-metadata text-secondary-text">Northern Route (Trans-Suez standard maritime transit)</div>
+</div>
+</div>
+<span class="font-metadata text-[11px] px-2 py-0.5 rounded bg-subtle-surface text-muted-text border border-border">Demo data</span>
+</div>
+<div class="p-2.5 rounded-lg border border-border bg-subtle-surface/40 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-text text-[18px]">alt_route</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Alternative Route Scenario</div>
+<div class="font-metadata text-metadata text-secondary-text">Southern Route (Cape of Good Hope diversion cost model)</div>
+</div>
+</div>
+<span class="font-metadata text-[11px] px-2 py-0.5 rounded bg-subtle-surface text-muted-text border border-border">Demo data</span>
+</div>
+<div class="p-2.5 rounded-lg border border-border bg-subtle-surface/40 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-text text-[18px]">update</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Schedule Variability Review</div>
+<div class="font-metadata text-metadata text-secondary-text">Carrier schedule reliability index (Historical Q3)</div>
+</div>
+</div>
+<span class="font-metadata text-[11px] px-2 py-0.5 rounded bg-subtle-surface text-muted-text border border-border">Demo data</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-2.5 bg-subtle-surface rounded-lg flex items-center gap-2 text-muted-text font-metadata text-metadata">
+<span class="material-symbols-outlined text-[16px] text-secondary-text">warning_amber</span>
+<span>Cautionary note: Evidence lists are illustrative. A difference in findings may result from different evidence, time windows, or investigation scope.</span>
+</div>
+</section>
+<!-- ================= SECTION 6: RELATED ENTITIES COMPARISON ================= -->
+<section class="bg-primary-surface border border-border rounded-xl p-space-md space-y-4">
+<div class="flex items-center justify-between pb-2 border-b border-border">
+<div>
+<h2 class="font-section-heading text-section-heading text-primary-text">Related Entities Comparison</h2>
+<p class="font-metadata text-metadata text-secondary-text">Entity overlaps, specific inclusions, and coverage mapping</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 font-metadata text-metadata text-secondary-text">
+<span class="w-2 h-2 rounded-full bg-primary-accent"></span> Shared
+            </span>
+<span class="inline-flex items-center gap-1 font-metadata text-metadata text-secondary-text">
+<span class="w-2 h-2 rounded-full bg-high-risk"></span> A only
+            </span>
+<span class="inline-flex items-center gap-1 font-metadata text-metadata text-secondary-text">
+<span class="w-2 h-2 rounded-full bg-medium-risk"></span> B only
+            </span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Category 1: Shipments -->
+<div class="space-y-2">
+<div class="flex items-center gap-1.5 font-table-text-medium text-table-text-medium text-primary-text">
+<span class="material-symbols-outlined text-[18px] text-secondary-text">local_shipping</span>
+<span>Tracked Shipments</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="p-2 rounded-lg border border-border bg-subtle-surface/50 flex items-center justify-between">
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">SHP-10482</div>
+<div class="font-metadata text-metadata text-secondary-text">Shanghai → Rotterdam</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-high-risk-bg text-high-risk">High</span>
+<span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-soft-accent text-primary-accent border border-primary-accent/20">Shared</span>
+</div>
+</div>
+<div class="p-2 rounded-lg border border-border bg-subtle-surface/50 flex items-center justify-between">
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">SHP-10563</div>
+<div class="font-metadata text-metadata text-secondary-text">Ningbo → Hamburg</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-medium-risk-bg text-medium-risk">Med</span>
+<span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-high-risk-bg text-high-risk border border-high-risk/20">A only</span>
+</div>
+</div>
+<div class="p-2 rounded-lg border border-border bg-subtle-surface/50 flex items-center justify-between">
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">SHP-10517</div>
+<div class="font-metadata text-metadata text-secondary-text">Shenzhen → Antwerp</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-medium-risk-bg text-medium-risk">Med</span>
+<span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-medium-risk-bg text-medium-risk border border-medium-risk/20">B only</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Category 2: Ports -->
+<div class="space-y-2">
+<div class="flex items-center gap-1.5 font-table-text-medium text-table-text-medium text-primary-text">
+<span class="material-symbols-outlined text-[18px] text-secondary-text">anchor</span>
+<span>Evaluated Ports</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="p-2 rounded-lg border border-border bg-subtle-surface/50 flex items-center justify-between">
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Shanghai Port</div>
+<div class="font-metadata text-metadata text-secondary-text">CNSHA • Focal Node</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-high-risk-bg text-high-risk">High</span>
+<span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-soft-accent text-primary-accent border border-primary-accent/20">Shared</span>
+</div>
+</div>
+<div class="p-2 rounded-lg border border-border bg-subtle-surface/50 flex items-center justify-between">
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Rotterdam Port</div>
+<div class="font-metadata text-metadata text-secondary-text">NLRTM • Destination Hub</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-medium-risk-bg text-medium-risk">Med</span>
+<span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-high-risk-bg text-high-risk border border-high-risk/20">A only</span>
+</div>
+</div>
+<div class="p-2 rounded-lg border border-border bg-subtle-surface/50 flex items-center justify-between">
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Singapore Port</div>
+<div class="font-metadata text-metadata text-secondary-text">SGSIN • Transshipment Node</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-success-bg text-success">Low</span>
+<span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-medium-risk-bg text-medium-risk border border-medium-risk/20">B only</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Category 3: Routes -->
+<div class="space-y-2">
+<div class="flex items-center gap-1.5 font-table-text-medium text-table-text-medium text-primary-text">
+<span class="material-symbols-outlined text-[18px] text-secondary-text">alt_route</span>
+<span>Corridors &amp; Routes</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="p-2 rounded-lg border border-border bg-subtle-surface/50 flex items-center justify-between">
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Asia–Europe (Standard)</div>
+<div class="font-metadata text-metadata text-secondary-text">Main maritime arterial trunk</div>
+</div>
+<span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-soft-accent text-primary-accent border border-primary-accent/20">Shared</span>
+</div>
+<div class="p-2 rounded-lg border border-border bg-subtle-surface/50 flex items-center justify-between">
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">North Atlantic Route</div>
+<div class="font-metadata text-metadata text-secondary-text">Feeder connector leg</div>
+</div>
+<span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-high-risk-bg text-high-risk border border-high-risk/20">A only</span>
+</div>
+<div class="p-2 rounded-lg border border-border bg-subtle-surface/50 flex items-center justify-between">
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Northern / Southern Alt</div>
+<div class="font-metadata text-metadata text-secondary-text">Bypass &amp; Cape diversions</div>
+</div>
+<span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-medium-risk-bg text-medium-risk border border-medium-risk/20">B only</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 7: KEY DIFFERENCES (3 CRISP CARDS) ================= -->
+<section class="space-y-3">
+<h2 class="font-section-heading text-section-heading text-primary-text">Key Differences &amp; Takeaways</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Obs 1 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2 text-primary-accent">
+<span class="material-symbols-outlined text-[20px]">center_focus_strong</span>
+<span class="font-section-heading text-[15px] font-semibold text-primary-text">Different Primary Focus</span>
+</div>
+<p class="font-body text-body text-secondary-text">
+<strong class="text-primary-text">Investigation A</strong> focuses on concentrated bottleneck delays at Shanghai Port, while <strong class="text-primary-text">Investigation B</strong> analyzes broader corridor transit dynamics and strategic rerouting trade-offs.
+              </p>
+</div>
+<div class="mt-3 pt-2.5 border-t border-border flex items-center text-metadata text-muted-text">
+<span>Impact: Scope variance across local vs macro level</span>
+</div>
+</div>
+<!-- Obs 2 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2 text-high-risk">
+<span class="material-symbols-outlined text-[20px]">speed</span>
+<span class="font-section-heading text-[15px] font-semibold text-primary-text">Different Risk Classification</span>
+</div>
+<p class="font-body text-body text-secondary-text">
+<strong class="text-primary-text">Investigation A</strong> triggers a <span class="text-high-risk font-medium">High Risk</span> classification due to acute terminal congestion exceeding 72h thresholds, whereas <strong class="text-primary-text">Investigation B</strong> remains <span class="text-medium-risk font-medium">Medium Risk</span>.
+              </p>
+</div>
+<div class="mt-3 pt-2.5 border-t border-border flex items-center text-metadata text-muted-text">
+<span>Impact: Immediate escalation needed for Inv A</span>
+</div>
+</div>
+<!-- Obs 3 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2 text-success">
+<span class="material-symbols-outlined text-[20px]">playlist_play</span>
+<span class="font-section-heading text-[15px] font-semibold text-primary-text">Divergent Next Steps</span>
+</div>
+<p class="font-body text-body text-secondary-text">
+<strong class="text-primary-text">Investigation A</strong> prioritizes berth condition verification &amp; container status alerts; <strong class="text-primary-text">Investigation B</strong> prioritizes carrier negotiations around alternative transit duration and bunker fuel surcharge trade-offs.
+              </p>
+</div>
+<div class="mt-3 pt-2.5 border-t border-border flex items-center text-metadata text-muted-text">
+<span>Impact: Distinct operational action vectors</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 8: RECOMMENDED FOLLOW-UP & BOTTOM ACTIONS ================= -->
+<section class="bg-primary-surface border border-border rounded-xl p-space-md space-y-4">
+<div>
+<h2 class="font-section-heading text-section-heading text-primary-text">Recommended Operational Follow-Up</h2>
+<p class="font-metadata text-metadata text-secondary-text">Recommended procedures based on cross-investigation synthesis</p>
+</div>
+<!-- Checklist -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+<label class="flex items-start gap-3 p-2.5 rounded-lg border border-border hover:bg-subtle-surface/50 cursor-pointer transition-colors">
+<input checked="" class="mt-0.5 rounded text-primary-accent focus:ring-primary-accent border-strong-border" type="checkbox"/>
+<div class="text-body font-body">
+<span class="font-medium text-primary-text">Verify conditions at Shanghai Port</span>
+<p class="text-secondary-text font-metadata text-metadata">Confirm terminal gate closure reports and tugboat pilot scheduling.</p>
+</div>
+</label>
+<label class="flex items-start gap-3 p-2.5 rounded-lg border border-border hover:bg-subtle-surface/50 cursor-pointer transition-colors">
+<input checked="" class="mt-0.5 rounded text-primary-accent focus:ring-primary-accent border-strong-border" type="checkbox"/>
+<div class="text-body font-body">
+<span class="font-medium text-primary-text">Review current status and ETA of SHP-10482</span>
+<p class="text-secondary-text font-metadata text-metadata">Assess SLA penalties for top 3 tier-1 automotive manufacturing clients.</p>
+</div>
+</label>
+<label class="flex items-start gap-3 p-2.5 rounded-lg border border-border hover:bg-subtle-surface/50 cursor-pointer transition-colors">
+<input class="mt-0.5 rounded text-primary-accent focus:ring-primary-accent border-strong-border" type="checkbox"/>
+<div class="text-body font-body">
+<span class="font-medium text-primary-text">Compare standard route with alternatives</span>
+<p class="text-secondary-text font-metadata text-metadata">Model Cape of Good Hope rerouting costs against estimated demurrage fees.</p>
+</div>
+</label>
+<label class="flex items-start gap-3 p-2.5 rounded-lg border border-border hover:bg-subtle-surface/50 cursor-pointer transition-colors">
+<input class="mt-0.5 rounded text-primary-accent focus:ring-primary-accent border-strong-border" type="checkbox"/>
+<div class="text-body font-body">
+<span class="font-medium text-primary-text">Re-run comparison after validating source data</span>
+<p class="text-secondary-text font-metadata text-metadata">Execute automated synthetic refresh when 08:00 UTC telemetry publishes.</p>
+</div>
+</label>
+<label class="flex items-start gap-3 p-2.5 rounded-lg border border-border hover:bg-subtle-surface/50 cursor-pointer transition-colors md:col-span-2">
+<input class="mt-0.5 rounded text-primary-accent focus:ring-primary-accent border-strong-border" type="checkbox"/>
+<div class="text-body font-body">
+<span class="font-medium text-primary-text">Record operational rationale</span>
+<p class="text-secondary-text font-metadata text-metadata">Log justification in enterprise compliance registry prior to rerouting approval dispatch.</p>
+</div>
+</label>
+</div>
+<!-- Bottom Action Bar -->
+<div class="pt-4 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
+<div class="font-metadata text-metadata text-secondary-text flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Audit Trail ID: CMP-2026-8842-SH-EU</span>
+</div>
+<div class="flex items-center gap-2.5 w-full sm:w-auto">
+<button class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl border border-strong-border bg-primary-surface text-primary-text font-button-input text-button-input hover:bg-subtle-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">article</span>
+<span>Export Comparison Report</span>
+</button>
+<button class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl border border-border bg-subtle-surface text-secondary-text hover:text-primary-text font-button-input text-button-input hover:bg-subtle-surface/80 transition-colors">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+<span>Open Investigation B (INV-0016)</span>
+</button>
+<button class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-primary-accent text-on-primary font-button-input text-button-input hover:bg-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">launch</span>
+<span>Open Investigation A (INV-0018)</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

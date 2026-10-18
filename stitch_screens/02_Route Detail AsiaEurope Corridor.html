@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-app-background text-primary-text" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Asia–Europe Corridor (RTE-001) | NEXUS Supply Chain Intelligence</title>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#eeedf8",
+            "on-tertiary": "#ffffff",
+            "primary-fixed": "#dde1ff",
+            "outline-variant": "#c4c5d7",
+            "on-surface-variant": "#444654",
+            "high-risk-bg": "#FCECEC",
+            "primary-surface": "#FFFFFF",
+            "secondary-fixed-dim": "#bdc7de",
+            "on-tertiary-fixed-variant": "#783100",
+            "on-secondary-fixed": "#111c2d",
+            "on-tertiary-container": "#fff2ed",
+            "surface": "#fbf8ff",
+            "on-secondary-fixed-variant": "#3d475a",
+            "success": "#268568",
+            "background": "#fbf8ff",
+            "primary": "#2248d1",
+            "tertiary-fixed": "#ffdbcb",
+            "on-primary": "#ffffff",
+            "app-background": "#F8F9FB",
+            "secondary-text": "#667085",
+            "on-primary-fixed-variant": "#0035be",
+            "subtle-surface": "#F3F5F8",
+            "success-bg": "#E8F6F0",
+            "high-risk": "#D94F4F",
+            "surface-container-low": "#f4f2fe",
+            "inverse-primary": "#b9c3ff",
+            "tertiary-container": "#b95000",
+            "primary-fixed-dim": "#b9c3ff",
+            "on-background": "#1a1b23",
+            "border": "#E6EAF0",
+            "secondary": "#555f73",
+            "medium-risk-bg": "#FFF4D6",
+            "on-primary-fixed": "#001356",
+            "surface-variant": "#e2e1ed",
+            "secondary-container": "#d6e0f8",
+            "secondary-fixed": "#d9e3fb",
+            "strong-border": "#D5DBE5",
+            "soft-accent": "#EEF2FF",
+            "on-error": "#ffffff",
+            "surface-tint": "#2c50d9",
+            "outline": "#747686",
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-container": "#f5f3ff",
+            "primary-text": "#172033",
+            "on-surface": "#1a1b23",
+            "muted-text": "#8A93A3",
+            "error": "#ba1a1a",
+            "on-secondary": "#ffffff",
+            "surface-container-high": "#e8e7f3",
+            "tertiary-fixed-dim": "#ffb690",
+            "primary-container": "#4263eb",
+            "inverse-on-surface": "#f1effb",
+            "on-secondary-container": "#596377",
+            "medium-risk": "#B7791F",
+            "surface-container-highest": "#e2e1ed",
+            "inverse-surface": "#2f3039",
+            "surface-dim": "#dad9e4",
+            "on-tertiary-fixed": "#341100",
+            "primary-accent": "#4263EB",
+            "tertiary": "#923e00",
+            "error-container": "#ffdad6",
+            "surface-bright": "#fbf8ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-lg": "24px",
+            "margin": "32px",
+            "space-xl": "32px",
+            "space-md": "16px",
+            "space-sm": "8px",
+            "space-xs": "4px",
+            "gutter": "20px"
+          },
+          "fontFamily": {
+            "body": ["Inter", "sans-serif"],
+            "kpi-value": ["Inter", "sans-serif"],
+            "table-text-medium": ["Inter", "sans-serif"],
+            "page-title": ["Inter", "sans-serif"],
+            "button-input": ["Inter", "sans-serif"],
+            "table-text": ["Inter", "sans-serif"],
+            "metadata": ["Inter", "sans-serif"],
+            "section-heading": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "kpi-value": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "table-text-medium": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "page-title": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "button-input": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "table-text": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "metadata": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "section-heading": ["16px", { "lineHeight": "24px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full bg-app-background font-body text-body text-primary-text antialiased selection:bg-soft-accent selection:text-primary-accent">
+<!-- 1. PERSISTENT APPLICATION SIDEBAR (224px fixed) -->
+<aside class="fixed top-0 bottom-0 left-0 w-[224px] h-screen bg-primary-surface border-r border-border flex flex-col justify-between p-space-md z-30 select-none">
+<div class="flex flex-col gap-y-6">
+<!-- Brand Logo / Identity -->
+<div class="flex items-center gap-space-sm px-space-sm pt-space-xs">
+<div class="w-8 h-8 rounded-xl bg-primary-accent flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="polyline">polyline</span>
+</div>
+<div class="flex flex-col">
+<span class="font-page-title text-section-heading font-semibold text-primary-text tracking-tight">NEXUS</span>
+<span class="font-metadata text-metadata text-secondary-text">Supply Chain OS</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-1">
+<!-- Overview -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<!-- Risk Intelligence -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="warning">warning</span>
+<span>Risk Intelligence</span>
+</a>
+<!-- Shipments -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="local_shipping">local_shipping</span>
+<span>Shipments</span>
+</a>
+<!-- Ports & Routes (ACTIVE) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl bg-soft-accent text-primary-accent font-button-input text-button-input transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="anchor">anchor</span>
+<span>Ports &amp; Routes</span>
+</a>
+<!-- Alerts with badge -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications_active">notifications_active</span>
+<span>Alerts</span>
+</div>
+<span class="px-1.5 py-0.5 text-[11px] font-medium bg-high-risk-bg text-high-risk rounded-full">8</span>
+</a>
+<!-- AI Analyst -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="smart_toy">smart_toy</span>
+<span>AI Analyst</span>
+</a>
+<!-- Agent Center -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="support_agent">support_agent</span>
+<span>Agent Center</span>
+</a>
+<!-- Analytics -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="flex flex-col gap-1 border-t border-border pt-space-md">
+<a class="flex items-center gap-space-sm px-space-md py-space-xs rounded-xl text-secondary-text hover:bg-subtle-surface font-metadata text-metadata transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="help">help</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-xs rounded-xl text-secondary-text hover:bg-subtle-surface font-metadata text-metadata transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+<div class="px-space-md py-space-xs text-[11px] text-muted-text font-metadata flex items-center justify-between">
+<span>v2.8.4 Enterprise</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-success"></span>
+</div>
+</div>
+</aside>
+<!-- MAIN CANVAS (Offset by 224px sidebar) -->
+<div class="ml-[224px] min-h-screen flex flex-col bg-app-background pb-16">
+<!-- GLOBAL TOP APP BAR (h-16, docked, flat border-b) -->
+<header class="sticky top-0 z-20 h-16 bg-primary-surface border-b border-border px-space-xl flex items-center justify-between">
+<!-- Breadcrumb + status indicator -->
+<div class="flex items-center gap-space-md">
+<nav class="flex items-center gap-2 font-body text-body text-secondary-text">
+<span>Ports &amp; Routes</span>
+<span class="text-muted-text">/</span>
+<span>Routes</span>
+<span class="text-muted-text">/</span>
+<span class="font-button-input text-primary-text">Asia–Europe Corridor</span>
+</nav>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-medium-risk-bg text-medium-risk border border-medium-risk/20">
+          Demo data
+        </span>
+</div>
+<!-- Trailing Controls & User Profile -->
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 text-muted-text font-metadata text-metadata">
+<span class="material-symbols-outlined text-[16px] animate-pulse text-primary-accent" data-icon="sync">sync</span>
+<span>Updated 4m ago</span>
+</div>
+<div class="h-4 w-px bg-border"></div>
+<button aria-label="Notifications" class="p-2 text-secondary-text hover:text-primary-text hover:bg-subtle-surface rounded-xl transition-colors duration-150 relative">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary-accent ring-2 ring-primary-surface"></span>
+</button>
+<!-- User Avatar / Sarah Chen -->
+<div class="flex items-center gap-3 pl-2">
+<img class="w-8 h-8 rounded-full border border-border object-cover" data-alt="Professional enterprise logistics director Sarah Chen in business attire against a clean neutral corporate background, crisp high-key commercial portrait lighting with subtle cool blue tones matching the modern executive supply chain design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATq7xEDE3pR264esvvgDu9k9Lhaoag_K714jcjW_QRb7QI5MFTT4nvBPE28d-6ADNQ1cf3UcWmipUnjNrfbEUir4ooNYIroRw1omJxGFa6kCID4SSx4hKlaQ5r-MoP9ITW3FOliJPqFlrlhCJOYDXqXarZqRRQ3bp37Ph1YuAGqZUAP2WeQM2UOa2AqKlZlOELc5GfIM_ZvTcyYguKlQc4GN8-j0Goxq3OETAY74_mkuxI0gIFY0vQ"/>
+<div class="flex flex-col text-left">
+<span class="font-button-input text-table-text-medium text-primary-text">Sarah Chen</span>
+<span class="font-metadata text-metadata text-secondary-text">Global Logistics Dir.</span>
+</div>
+</div>
+</div>
+</header>
+<!-- CONTENT WRAPPER -->
+<main class="flex-1 px-space-xl pt-6 max-w-[1440px] w-full mx-auto flex flex-col gap-6">
+<!-- 2. BREADCRUMB, HEADER & ACTION BAR -->
+<section class="bg-primary-surface rounded-xl border border-border p-space-lg flex flex-col gap-5">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+<div>
+<div class="flex items-center gap-3">
+<h1 class="font-page-title text-page-title text-primary-text tracking-tight">Asia–Europe Corridor</h1>
+<span class="px-2.5 py-0.5 rounded-full text-[12px] font-medium bg-high-risk-bg text-high-risk border border-high-risk/20">
+                High Risk Exposure
+              </span>
+</div>
+<p class="font-body text-body text-secondary-text mt-1">
+              Understand route conditions, transit-time risk, and potential alternatives.
+            </p>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-3 self-start md:self-auto">
+<button class="flex items-center gap-2 px-3.5 py-2 rounded-xl border border-border bg-primary-surface hover:bg-subtle-surface text-primary-text font-button-input text-button-input transition-colors duration-150">
+<span class="material-symbols-outlined text-[18px]" data-icon="compare_arrows">compare_arrows</span>
+<span>Compare Alternatives</span>
+</button>
+<button class="flex items-center gap-2 px-3.5 py-2 rounded-xl border border-border bg-primary-surface hover:bg-subtle-surface text-primary-text font-button-input text-button-input transition-colors duration-150">
+<span class="material-symbols-outlined text-[18px]" data-icon="add_alert">add_alert</span>
+<span>Create Alert</span>
+</button>
+<button aria-label="More actions" class="p-2 rounded-xl border border-border bg-primary-surface hover:bg-subtle-surface text-secondary-text hover:text-primary-text transition-colors duration-150">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Compact Metadata Strip -->
+<div class="pt-4 border-t border-border grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+<div class="flex flex-col">
+<span class="font-metadata text-metadata text-secondary-text">Origin</span>
+<span class="font-table-text-medium text-table-text-medium text-primary-text mt-0.5 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary-accent" data-icon="flight_takeoff">flight_takeoff</span>
+              Shanghai, China
+            </span>
+</div>
+<div class="flex flex-col">
+<span class="font-metadata text-metadata text-secondary-text">Destination</span>
+<span class="font-table-text-medium text-table-text-medium text-primary-text mt-0.5 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-success" data-icon="flag">flag</span>
+              Rotterdam, Netherlands
+            </span>
+</div>
+<div class="flex flex-col">
+<span class="font-metadata text-metadata text-secondary-text">Transport Mode</span>
+<span class="font-table-text-medium text-table-text-medium text-primary-text mt-0.5 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary-text" data-icon="directions_boat">directions_boat</span>
+              Ocean Freight
+            </span>
+</div>
+<div class="flex flex-col">
+<span class="font-metadata text-metadata text-secondary-text">Route ID</span>
+<span class="font-table-text-medium text-table-text-medium text-primary-text mt-0.5 font-mono">
+              RTE-001
+            </span>
+</div>
+<div class="flex flex-col">
+<span class="font-metadata text-metadata text-secondary-text">Monitoring Status</span>
+<span class="font-table-text-medium text-table-text-medium text-medium-risk mt-0.5 flex items-center gap-1.5">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-medium-risk"></span>
+              Demo data
+            </span>
+</div>
+</div>
+</section>
+<!-- 3. ROUTE SUMMARY METRICS (4 KPI Cards in a Row) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- KPI 1: Route Risk -->
+<div class="bg-primary-surface rounded-xl border border-border p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text">
+<span class="font-metadata text-metadata font-medium">Route Risk</span>
+<div class="w-8 h-8 rounded-lg bg-high-risk-bg flex items-center justify-center text-high-risk">
+<span class="material-symbols-outlined text-[18px]" data-icon="warning">warning</span>
+</div>
+</div>
+<div class="my-2">
+<div class="font-kpi-value text-kpi-value text-high-risk tracking-tight">High</div>
+</div>
+<div class="flex items-center justify-between text-muted-text font-metadata text-metadata border-t border-border pt-2">
+<span>Elevated transit &amp; dwell exposure</span>
+<span class="font-mono text-[11px] text-high-risk font-medium">Score 76</span>
+</div>
+</div>
+<!-- KPI 2: Estimated Transit Time -->
+<div class="bg-primary-surface rounded-xl border border-border p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text">
+<span class="font-metadata text-metadata font-medium">Estimated Transit Time</span>
+<div class="w-8 h-8 rounded-lg bg-subtle-surface flex items-center justify-center text-primary-accent">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+</div>
+</div>
+<div class="my-2 flex items-baseline gap-2">
+<div class="font-kpi-value text-kpi-value text-primary-text tracking-tight">28 days</div>
+<span class="font-table-text-medium text-[12px] text-high-risk font-medium">+2 days vs typical</span>
+</div>
+<div class="flex items-center justify-between text-muted-text font-metadata text-metadata border-t border-border pt-2">
+<span>Illustrative estimate</span>
+<span class="text-secondary-text">Base: 26d</span>
+</div>
+</div>
+<!-- KPI 3: Shipments on Route -->
+<div class="bg-primary-surface rounded-xl border border-border p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text">
+<span class="font-metadata text-metadata font-medium">Shipments on Route</span>
+<div class="w-8 h-8 rounded-lg bg-subtle-surface flex items-center justify-center text-secondary-text">
+<span class="material-symbols-outlined text-[18px]" data-icon="inventory_2">inventory_2</span>
+</div>
+</div>
+<div class="my-2 flex items-baseline gap-2">
+<div class="font-kpi-value text-kpi-value text-primary-text tracking-tight">32</div>
+<span class="font-table-text-medium text-[12px] text-secondary-text">Active vessels</span>
+</div>
+<div class="flex items-center justify-between text-muted-text font-metadata text-metadata border-t border-border pt-2">
+<span>Illustrative shipment count</span>
+<span class="text-primary-accent font-medium">4 delayed</span>
+</div>
+</div>
+<!-- KPI 4: Active Risk Factors -->
+<div class="bg-primary-surface rounded-xl border border-border p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text">
+<span class="font-metadata text-metadata font-medium">Active Risk Factors</span>
+<div class="w-8 h-8 rounded-lg bg-medium-risk-bg flex items-center justify-center text-medium-risk">
+<span class="material-symbols-outlined text-[18px]" data-icon="report">report</span>
+</div>
+</div>
+<div class="my-2 flex items-baseline gap-2">
+<div class="font-kpi-value text-kpi-value text-primary-text tracking-tight">3</div>
+<span class="font-table-text-medium text-[12px] text-medium-risk font-medium">1 High, 2 Med</span>
+</div>
+<div class="flex items-center justify-between text-muted-text font-metadata text-metadata border-t border-border pt-2">
+<span>Illustrative assessment</span>
+<span class="text-secondary-text">Active monitoring</span>
+</div>
+</div>
+</section>
+<!-- 4. ROUTE MAP & ROUTE INFORMATION (Two-Column, 62% / 38% split) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+<!-- LEFT: Route Map Canvas (62% ~ col-span-7 or 8) -->
+<div class="lg:col-span-7 xl:col-span-8 bg-primary-surface rounded-xl border border-border p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary-accent" data-icon="map">map</span>
+<h2 class="font-section-heading text-section-heading text-primary-text">Route Overview</h2>
+</div>
+<span class="font-metadata text-metadata px-2 py-0.5 rounded bg-subtle-surface text-secondary-text border border-border">
+                Live AIS Tracked Corridor
+              </span>
+</div>
+<p class="font-metadata text-metadata text-secondary-text">
+              Maritime transit corridor from Shanghai Port to Rotterdam Port
+            </p>
+</div>
+<!-- Clean Schematic Vector Map Container -->
+<div class="relative my-4 w-full h-[320px] bg-[#F4F6F9] rounded-xl border border-border overflow-hidden flex items-center justify-center">
+<!-- Background Map Geometry SVG -->
+<svg class="absolute inset-0 w-full h-full text-slate-200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="32" id="grid-pattern" patternunits="userSpaceOnUse" width="32">
+<path d="M 32 0 L 0 0 0 32" fill="none" stroke="#E6EAF0" stroke-width="0.75"></path>
+</pattern>
+<lineargradient id="route-gradient" x1="0%" x2="100%" y1="100%" y2="0%">
+<stop offset="0%" stop-color="#4263EB"></stop>
+<stop offset="60%" stop-color="#D94F4F"></stop>
+<stop offset="100%" stop-color="#4263EB"></stop>
+</lineargradient>
+</defs>
+<rect fill="url(#grid-pattern)" height="100%" width="100%"></rect>
+<!-- Abstract Continental Outlines for Context -->
+<!-- Europe / Mediterranean -->
+<path d="M 120 70 Q 150 60 180 80 T 230 110 L 220 140 Q 170 150 140 120 Z" fill="#EAEFF5" stroke="#D5DBE5" stroke-width="1"></path>
+<!-- Africa / Red Sea -->
+<path d="M 200 150 Q 250 160 270 210 T 260 290 L 190 280 Q 170 200 200 150 Z" fill="#EAEFF5" stroke="#D5DBE5" stroke-width="1"></path>
+<!-- Asia / East Coast -->
+<path d="M 400 90 Q 520 80 620 120 T 700 200 L 640 260 Q 500 230 430 170 Z" fill="#EAEFF5" stroke="#D5DBE5" stroke-width="1"></path>
+<!-- Indian Subcontinent outline -->
+<path d="M 420 150 L 470 210 L 410 240 Z" fill="#EAEFF5" stroke="#D5DBE5" stroke-width="1"></path>
+<!-- Active Maritime Corridor Path (Shanghai -> Malacca -> Indian Ocean -> Red Sea / Suez -> Mediterranean -> English Channel -> Rotterdam) -->
+<!-- Shanghai ~ (640, 150) | Malacca ~ (520, 230) | Indian Ocean ~ (380, 240) | Gulf of Aden ~ (280, 195) | Suez ~ (235, 145) | Gibraltar ~ (130, 140) | Rotterdam ~ (165, 80) -->
+<path class="animate-[dash_20s_linear_infinite]" d="M 640 155 C 570 190, 530 225, 490 235 C 410 255, 340 230, 280 195 C 260 180, 245 160, 235 142 C 220 125, 175 130, 140 135 C 130 115, 145 95, 165 80" fill="none" stroke="url(#route-gradient)" stroke-dasharray="6 4" stroke-linecap="round" stroke-width="3"></path>
+<!-- High Congestion Area Aura (near Shanghai & Suez) -->
+<circle cx="640" cy="155" fill="#FCECEC" fill-opacity="0.8" r="28" stroke="#D94F4F" stroke-dasharray="3 3" stroke-width="1"></circle>
+<circle cx="240" cy="145" fill="#FFF4D6" fill-opacity="0.7" r="20" stroke="#B7791F" stroke-dasharray="3 3" stroke-width="1"></circle>
+<!-- Waypoints along route -->
+<circle cx="490" cy="235" fill="#4263EB" r="3.5" stroke="#FFFFFF" stroke-width="1.5"></circle>
+<circle cx="360" cy="235" fill="#4263EB" r="3.5" stroke="#FFFFFF" stroke-width="1.5"></circle>
+<circle cx="280" cy="195" fill="#4263EB" r="3.5" stroke="#FFFFFF" stroke-width="1.5"></circle>
+<circle cx="140" cy="135" fill="#4263EB" r="3.5" stroke="#FFFFFF" stroke-width="1.5"></circle>
+<!-- Origin Marker (Shanghai) -->
+<g transform="translate(640, 155)">
+<circle cx="0" cy="0" fill="#4263EB" r="6" stroke="#FFFFFF" stroke-width="2"></circle>
+<rect fill="#172033" fill-opacity="0.9" height="20" rx="4" width="70" x="-35" y="-28"></rect>
+<text fill="#FFFFFF" font-family="Inter" font-size="10" font-weight="500" text-anchor="middle" x="0" y="-14">Shanghai Hub</text>
+</g>
+<!-- Destination Marker (Rotterdam) -->
+<g transform="translate(165, 80)">
+<circle cx="0" cy="0" fill="#268568" r="6" stroke="#FFFFFF" stroke-width="2"></circle>
+<rect fill="#172033" fill-opacity="0.9" height="20" rx="4" width="84" x="-42" y="-28"></rect>
+<text fill="#FFFFFF" font-family="Inter" font-size="10" font-weight="500" text-anchor="middle" x="0" y="-14">Rotterdam Port</text>
+</g>
+</svg>
+<!-- Map Floating Legend Overlay -->
+<div class="absolute top-3 left-3 bg-primary-surface/95 backdrop-blur-sm border border-border rounded-lg p-2.5 shadow-sm text-[11px] font-metadata flex flex-col gap-1.5">
+<span class="font-semibold text-primary-text">Map Legend</span>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-accent"></span>
+<span class="text-secondary-text">Origin: Shanghai Hub</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-success"></span>
+<span class="text-secondary-text">Destination: Rotterdam</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-4 h-0.5 bg-primary-accent border-b border-dashed border-high-risk"></span>
+<span class="text-secondary-text">Active Corridor Path</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-high-risk-bg border border-high-risk"></span>
+<span class="text-secondary-text">High Congestion Zone</span>
+</div>
+</div>
+<!-- Compass / Orientation Badge -->
+<div class="absolute bottom-3 right-3 bg-primary-surface/90 border border-border rounded p-1 text-muted-text text-[10px] font-mono flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="explore">explore</span>
+<span>MERCATOR PROJECTION</span>
+</div>
+</div>
+<!-- Bottom Summary Bar -->
+<div class="bg-subtle-surface border border-border rounded-xl p-3 flex flex-wrap items-center justify-between text-secondary-text font-metadata text-metadata gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary-accent" data-icon="hub">hub</span>
+<span><strong>Primary Nodes:</strong> Shanghai • Singapore • Suez • Rotterdam</span>
+</div>
+<div class="flex items-center gap-4">
+<span><strong>Distance:</strong> ~10,500 nm</span>
+<span class="text-border">|</span>
+<span><strong>Typical Speed:</strong> 18.2 kts</span>
+</div>
+</div>
+</div>
+<!-- RIGHT: Route Information (38% ~ col-span-5 or 4) -->
+<div class="lg:col-span-5 xl:col-span-4 bg-primary-surface rounded-xl border border-border p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-border pb-3 mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary-accent" data-icon="info">info</span>
+<h2 class="font-section-heading text-section-heading text-primary-text">Route Information</h2>
+</div>
+<span class="font-metadata text-metadata text-muted-text">Details</span>
+</div>
+<!-- Key-Value Rows -->
+<div class="divide-y divide-border text-table-text">
+<div class="py-2.5 flex items-center justify-between">
+<span class="text-secondary-text">Route Name</span>
+<span class="font-table-text-medium text-primary-text">Asia–Europe Corridor</span>
+</div>
+<div class="py-2.5 flex items-center justify-between">
+<span class="text-secondary-text">Origin Port</span>
+<span class="font-table-text-medium text-primary-text flex items-center gap-1">
+                  Shanghai Port <span class="text-muted-text text-[11px]">(CNSHA)</span>
+</span>
+</div>
+<div class="py-2.5 flex items-center justify-between">
+<span class="text-secondary-text">Destination Port</span>
+<span class="font-table-text-medium text-primary-text flex items-center gap-1">
+                  Rotterdam Port <span class="text-muted-text text-[11px]">(NLRTM)</span>
+</span>
+</div>
+<div class="py-2.5 flex items-center justify-between">
+<span class="text-secondary-text">Transport Mode</span>
+<span class="font-table-text-medium text-primary-text">Ocean Freight (Container)</span>
+</div>
+<div class="py-2.5 flex items-center justify-between">
+<span class="text-secondary-text">Typical Transit Time</span>
+<span class="font-table-text-medium text-primary-text">26 days</span>
+</div>
+<div class="py-2.5 flex items-center justify-between">
+<span class="text-secondary-text">Current Transit Estimate</span>
+<span class="font-table-text-medium text-high-risk font-semibold">28 days (+2d)</span>
+</div>
+<div class="py-2.5 flex items-center justify-between">
+<span class="text-secondary-text">Monitoring Status</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-medium-risk-bg text-medium-risk">
+                  Under review
+                </span>
+</div>
+<div class="py-2.5 flex items-center justify-between">
+<span class="text-secondary-text">Assessment Type</span>
+<span class="font-metadata text-metadata text-muted-text">Illustrative demo assessment</span>
+</div>
+</div>
+</div>
+<!-- Contextual Note Box -->
+<div class="mt-4 p-3 bg-medium-risk-bg/40 border border-medium-risk/20 rounded-xl flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-medium-risk shrink-0 mt-0.5" data-icon="report_problem">report_problem</span>
+<p class="font-metadata text-metadata text-secondary-text leading-relaxed">
+<strong class="text-primary-text">Operational Notice:</strong> Potential port congestion and schedule uncertainty may affect the estimated transit window.
+            </p>
+</div>
+</div>
+</section>
+<!-- 5. ROUTE RISK ASSESSMENT & CONTRIBUTING FACTORS -->
+<section class="bg-primary-surface rounded-xl border border-border p-space-lg flex flex-col gap-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border pb-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-high-risk" data-icon="security">security</span>
+<h2 class="font-section-heading text-section-heading text-primary-text">Route Risk Assessment</h2>
+</div>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">
+              Comprehensive weighted index factoring terminal congestion, carrier variability, and waterway dwell times.
+            </p>
+</div>
+<!-- Horizontal Segmented Risk Meter -->
+<div class="flex flex-col items-end gap-1.5 min-w-[280px]">
+<div class="flex items-center justify-between w-full text-[12px] font-metadata">
+<span class="text-secondary-text">Overall Risk Score:</span>
+<span class="font-bold text-high-risk">High (76 / 100)</span>
+</div>
+<!-- Meter track -->
+<div class="w-full h-3 bg-subtle-surface rounded-full overflow-hidden flex relative border border-border">
+<!-- Low Zone 0-40 -->
+<div class="h-full bg-success/30 w-[40%]"></div>
+<!-- Medium Zone 40-70 -->
+<div class="h-full bg-medium-risk/30 w-[30%]"></div>
+<!-- High Zone 70-100 -->
+<div class="h-full bg-high-risk/30 w-[30%]"></div>
+<!-- Score Pin at 76% -->
+<div class="absolute top-0 bottom-0 w-1.5 bg-high-risk shadow" style="left: 76%;"></div>
+</div>
+<div class="flex justify-between w-full text-[10px] font-mono text-muted-text">
+<span>0 (Low)</span>
+<span>40</span>
+<span>70</span>
+<span>100 (High)</span>
+</div>
+</div>
+</div>
+<!-- Three Contributing Factor Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Factor 1: Port Congestion -->
+<div class="rounded-xl border border-border p-space-md bg-subtle-surface/50 hover:bg-subtle-surface transition-colors flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-high-risk" data-icon="anchor">anchor</span>
+<span class="font-table-text-medium text-table-text-medium text-primary-text font-semibold">Port Congestion</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-high-risk-bg text-high-risk">
+                  High
+                </span>
+</div>
+<div class="text-[12px] text-muted-text font-metadata mb-2 flex items-center gap-1">
+<span>Location:</span>
+<span class="text-primary-text font-medium">Shanghai Port</span>
+</div>
+<p class="font-body text-body text-secondary-text text-[13px] leading-relaxed">
+                Potential congestion may increase cargo handling or departure delays. Berth wait times currently up +36 hours.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-border">
+<a class="font-button-input text-[13px] text-primary-accent hover:underline inline-flex items-center gap-1" href="#">
+                View Shanghai Port Details →
+              </a>
+</div>
+</div>
+<!-- Factor 2: Schedule Uncertainty -->
+<div class="rounded-xl border border-border p-space-md bg-subtle-surface/50 hover:bg-subtle-surface transition-colors flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-medium-risk" data-icon="event_busy">event_busy</span>
+<span class="font-table-text-medium text-table-text-medium text-primary-text font-semibold">Schedule Uncertainty</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-medium-risk-bg text-medium-risk">
+                  Medium
+                </span>
+</div>
+<div class="text-[12px] text-muted-text font-metadata mb-2 flex items-center gap-1">
+<span>Location:</span>
+<span class="text-primary-text font-medium">Asia–Europe Corridor</span>
+</div>
+<p class="font-body text-body text-secondary-text text-[13px] leading-relaxed">
+                Changes to carrier schedules and blank sailings may affect planned arrival dates at intermediate bunkering hubs.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-border">
+<a class="font-button-input text-[13px] text-primary-accent hover:underline inline-flex items-center gap-1" href="#">
+                Review Schedule Feed →
+              </a>
+</div>
+</div>
+<!-- Factor 3: Destination Port Conditions -->
+<div class="rounded-xl border border-border p-space-md bg-subtle-surface/50 hover:bg-subtle-surface transition-colors flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-medium-risk" data-icon="warehouse">warehouse</span>
+<span class="font-table-text-medium text-table-text-medium text-primary-text font-semibold">Destination Port Conditions</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-medium-risk-bg text-medium-risk">
+                  Medium
+                </span>
+</div>
+<div class="text-[12px] text-muted-text font-metadata mb-2 flex items-center gap-1">
+<span>Location:</span>
+<span class="text-primary-text font-medium">Rotterdam Port</span>
+</div>
+<p class="font-body text-body text-secondary-text text-[13px] leading-relaxed">
+                Destination handling conditions and inland barge availability may contribute to arrival or unloading uncertainty.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-border">
+<a class="font-button-input text-[13px] text-primary-accent hover:underline inline-flex items-center gap-1" href="#">
+                View Rotterdam Port Details →
+              </a>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. TRANSIT-TIME TRENDS (Full-Width Chart) -->
+<section class="bg-primary-surface rounded-xl border border-border p-space-lg flex flex-col gap-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary-accent" data-icon="trending_up">trending_up</span>
+<h2 class="font-section-heading text-section-heading text-primary-text">Transit-Time Trends</h2>
+</div>
+<p class="font-metadata text-metadata text-secondary-text">
+              Compare illustrative estimated transit time with typical route duration over the last 14 days.
+            </p>
+</div>
+<!-- Legend -->
+<div class="flex items-center gap-4 text-[12px] font-metadata">
+<div class="flex items-center gap-2">
+<span class="w-4 h-0.5 bg-primary-accent inline-block"></span>
+<span class="text-primary-text font-medium">Estimated Transit Time</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-4 h-0.5 border-t-2 border-dashed border-secondary-text inline-block"></span>
+<span class="text-secondary-text">Typical Transit Time (26d)</span>
+</div>
+</div>
+</div>
+<!-- 14-Day Line Chart Canvas -->
+<div class="relative w-full h-[260px] bg-subtle-surface/30 rounded-xl border border-border p-4 flex flex-col justify-between">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 1000 200">
+<!-- Gridlines -->
+<!-- 30 days line (y = 20) -->
+<line stroke="#E6EAF0" stroke-width="1" x1="40" x2="980" y1="20" y2="20"></line>
+<text fill="#8A93A3" font-family="Inter" font-size="11" text-anchor="end" x="30" y="24">30d</text>
+<!-- 28 days line (y = 70) -->
+<line stroke="#E6EAF0" stroke-width="1" x1="40" x2="980" y1="70" y2="70"></line>
+<text fill="#8A93A3" font-family="Inter" font-size="11" text-anchor="end" x="30" y="74">28d</text>
+<!-- 26 days line (Typical Baseline) (y = 120) -->
+<line stroke="#E6EAF0" stroke-dasharray="4 4" stroke-width="1" x1="40" x2="980" y1="120" y2="120"></line>
+<text fill="#8A93A3" font-family="Inter" font-size="11" text-anchor="end" x="30" y="124">26d</text>
+<!-- 24 days line (y = 170) -->
+<line stroke="#E6EAF0" stroke-width="1" x1="40" x2="980" y1="170" y2="170"></line>
+<text fill="#8A93A3" font-family="Inter" font-size="11" text-anchor="end" x="30" y="174">24d</text>
+<!-- Typical Transit Reference Line (Flat at 26d / y=120) -->
+<line stroke="#8A93A3" stroke-dasharray="5 5" stroke-width="2" x1="50" x2="970" y1="120" y2="120"></line>
+<!-- Estimated Transit Time Curve -->
+<!-- 14 data points from Oct 05 to Oct 18 -->
+<!-- Points: 
+                 Oct 05 (26.0d, y=120), Oct 06 (26.2d, y=115), Oct 07 (26.5d, y=107.5),
+                 Oct 08 (26.8d, y=100), Oct 09 (27.2d, y=90), Oct 10 (27.5d, y=82.5),
+                 Oct 11 (28.1d, y=67.5), Oct 12 (28.8d, y=50), Oct 13 (29.0d, y=45),
+                 Oct 14 (28.7d, y=52.5), Oct 15 (28.4d, y=60), Oct 16 (28.2d, y=65),
+                 Oct 17 (28.1d, y=67.5), Oct 18 (28.0d, y=70)
+            -->
+<path d="M 50 120 
+                     C 100 118, 130 110, 180 102
+                     C 240 92, 300 85, 360 80
+                     C 420 75, 480 62, 540 50
+                     C 600 42, 650 48, 700 55
+                     C 760 62, 820 66, 880 68
+                     L 960 70" fill="none" stroke="#4263EB" stroke-linecap="round" stroke-width="3"></path>
+<!-- Area under estimated line (subtle fill) -->
+<path d="M 50 120 
+                     C 100 118, 130 110, 180 102
+                     C 240 92, 300 85, 360 80
+                     C 420 75, 480 62, 540 50
+                     C 600 42, 650 48, 700 55
+                     C 760 62, 820 66, 880 68
+                     L 960 70 L 960 170 L 50 170 Z" fill="#4263EB" fill-opacity="0.04"></path>
+<!-- Point Dots -->
+<circle cx="50" cy="120" fill="#4263EB" r="3.5" stroke="#FFFFFF" stroke-width="1.5"></circle>
+<circle cx="260" cy="95" fill="#4263EB" r="3.5" stroke="#FFFFFF" stroke-width="1.5"></circle>
+<circle cx="540" cy="50" fill="#4263EB" r="3.5" stroke="#FFFFFF" stroke-width="1.5"></circle>
+<circle cx="700" cy="55" fill="#4263EB" r="3.5" stroke="#FFFFFF" stroke-width="1.5"></circle>
+<!-- Active Oct 18 Point Dot & Tooltip -->
+<circle cx="960" cy="70" fill="#D94F4F" r="5" stroke="#FFFFFF" stroke-width="2"></circle>
+</svg>
+<!-- Interactive Tooltip Simulation on Current Day (Oct 18) -->
+<div class="absolute right-6 top-8 bg-primary-surface border border-border shadow-md rounded-lg p-2.5 flex flex-col gap-1 min-w-[140px] pointer-events-none">
+<span class="font-metadata text-[11px] text-muted-text font-mono">18 Oct 2026 (Today)</span>
+<div class="flex items-baseline justify-between gap-2">
+<span class="text-[12px] font-bold text-primary-text">28.0 days</span>
+<span class="text-[11px] text-high-risk font-semibold">+2.0d var</span>
+</div>
+<div class="text-[10px] text-secondary-text">Benchmark: 26.0 days</div>
+</div>
+<!-- X-Axis Labels -->
+<div class="flex justify-between pl-8 pr-2 pt-2 border-t border-border text-[11px] font-mono text-muted-text">
+<span>Oct 05</span>
+<span>Oct 07</span>
+<span>Oct 09</span>
+<span>Oct 11</span>
+<span>Oct 13</span>
+<span>Oct 15</span>
+<span>Oct 17</span>
+<span class="text-primary-text font-bold">Oct 18 (Current)</span>
+</div>
+</div>
+</section>
+<!-- 7. ALTERNATIVE ROUTE COMPARISON (Prominent Table) -->
+<section class="bg-primary-surface rounded-xl border border-border p-space-lg flex flex-col gap-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary-accent" data-icon="alt_route">alt_route</span>
+<h2 class="font-section-heading text-section-heading text-primary-text">Alternative Routes</h2>
+</div>
+<p class="font-metadata text-metadata text-secondary-text">
+              Compare illustrative route scenarios before making operational decisions.
+            </p>
+</div>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-border bg-primary-surface hover:bg-subtle-surface text-primary-text font-button-input text-button-input self-start sm:self-auto transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="tune">tune</span>
+<span>Compare Route Options</span>
+</button>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto border border-border rounded-xl">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-subtle-surface/70 border-b border-border text-secondary-text font-table-text-medium text-table-text-medium">
+<th class="py-3 px-4">Route Option</th>
+<th class="py-3 px-4">Transit Estimate</th>
+<th class="py-3 px-4">Risk Level</th>
+<th class="py-3 px-4">Potential Delay</th>
+<th class="py-3 px-4">Relative Cost</th>
+<th class="py-3 px-4">Recommendation</th>
+<th class="py-3 px-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border text-table-text">
+<!-- Option 1: Current -->
+<tr class="bg-soft-accent/30 hover:bg-soft-accent/50 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2 font-table-text-medium text-primary-text">
+<span class="font-semibold">Standard Asia–Europe</span>
+<span class="px-1.5 py-0.5 text-[10px] uppercase font-bold tracking-wider rounded bg-primary-accent text-on-primary">Current</span>
+</div>
+<span class="text-[11px] text-muted-text">Via Suez Canal / Red Sea Corridor</span>
+</td>
+<td class="py-3.5 px-4 font-mono font-medium text-primary-text">28 days</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-high-risk-bg text-high-risk">
+                    High
+                  </span>
+</td>
+<td class="py-3.5 px-4 font-mono text-high-risk font-medium">+18 hours</td>
+<td class="py-3.5 px-4 text-secondary-text">Baseline</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-medium bg-primary-accent/10 text-primary-accent border border-primary-accent/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-accent"></span>
+                    Current route
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="text-muted-text text-[13px] font-metadata font-medium">Selected</span>
+</td>
+</tr>
+<!-- Option 2: Northern Corridor -->
+<tr class="hover:bg-subtle-surface transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-table-text-medium text-primary-text font-medium">Alternative Northern Corridor</div>
+<span class="text-[11px] text-muted-text">Via Intermodal Transshipment</span>
+</td>
+<td class="py-3.5 px-4 font-mono text-primary-text">30 days</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-medium-risk-bg text-medium-risk">
+                    Medium
+                  </span>
+</td>
+<td class="py-3.5 px-4 font-mono text-medium-risk font-medium">+8 hours</td>
+<td class="py-3.5 px-4 text-secondary-text">Higher (+12%)</td>
+<td class="py-3.5 px-4 text-secondary-text">
+<span>Review alternative</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<a class="font-button-input text-[13px] text-primary-accent hover:underline inline-flex items-center gap-1" href="#">
+                    Evaluate Corridor →
+                  </a>
+</td>
+</tr>
+<!-- Option 3: Southern Corridor (via Cape) -->
+<tr class="hover:bg-subtle-surface transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-table-text-medium text-primary-text font-medium">Alternative Southern Corridor (via Cape)</div>
+<span class="text-[11px] text-muted-text">Circumnavigating Cape of Good Hope</span>
+</td>
+<td class="py-3.5 px-4 font-mono text-primary-text">29 days</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-medium-risk-bg text-medium-risk">
+                    Medium
+                  </span>
+</td>
+<td class="py-3.5 px-4 font-mono text-medium-risk font-medium">+10 hours</td>
+<td class="py-3.5 px-4 text-secondary-text">Higher (+18%)</td>
+<td class="py-3.5 px-4 text-secondary-text">
+<span>Review alternative</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<a class="font-button-input text-[13px] text-primary-accent hover:underline inline-flex items-center gap-1" href="#">
+                    Evaluate Corridor →
+                  </a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 8. SHIPMENTS ON THIS ROUTE (Data Table) -->
+<section class="bg-primary-surface rounded-xl border border-border p-space-lg flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary-accent" data-icon="inventory_2">inventory_2</span>
+<h2 class="font-section-heading text-section-heading text-primary-text">Shipments on This Route</h2>
+</div>
+<p class="font-metadata text-metadata text-secondary-text">
+              Illustrative consignments currently assigned to or scheduled along this corridor.
+            </p>
+</div>
+<a class="font-button-input text-[13px] text-primary-accent hover:underline inline-flex items-center gap-1" href="#">
+            View All Shipments (32) →
+          </a>
+</div>
+<div class="overflow-x-auto border border-border rounded-xl">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-subtle-surface/70 border-b border-border text-secondary-text font-table-text-medium text-table-text-medium">
+<th class="py-3 px-4">Shipment ID</th>
+<th class="py-3 px-4">Origin</th>
+<th class="py-3 px-4">Destination</th>
+<th class="py-3 px-4">Estimated Arrival</th>
+<th class="py-3 px-4">Risk</th>
+<th class="py-3 px-4">Status</th>
+<th class="py-3 px-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border text-table-text">
+<!-- Shipment 1 -->
+<tr class="hover:bg-subtle-surface transition-colors">
+<td class="py-3.5 px-4 font-mono font-medium text-primary-accent">SHP-10482</td>
+<td class="py-3.5 px-4">Shanghai</td>
+<td class="py-3.5 px-4">Rotterdam</td>
+<td class="py-3.5 px-4 font-mono">22 Oct 2026</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-high-risk-bg text-high-risk">
+                    High
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 text-primary-text text-[13px]">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-accent"></span>
+                    In Transit
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<a class="text-secondary-text hover:text-primary-accent text-[13px] font-button-input" href="#">Details</a>
+</td>
+</tr>
+<!-- Shipment 2 -->
+<tr class="hover:bg-subtle-surface transition-colors">
+<td class="py-3.5 px-4 font-mono font-medium text-primary-accent">SHP-10642</td>
+<td class="py-3.5 px-4">Shanghai</td>
+<td class="py-3.5 px-4">Rotterdam</td>
+<td class="py-3.5 px-4 font-mono">24 Oct 2026</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-medium-risk-bg text-medium-risk">
+                    Medium
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 text-primary-text text-[13px]">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-accent"></span>
+                    In Transit
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<a class="text-secondary-text hover:text-primary-accent text-[13px] font-button-input" href="#">Details</a>
+</td>
+</tr>
+<!-- Shipment 3 -->
+<tr class="hover:bg-subtle-surface transition-colors">
+<td class="py-3.5 px-4 font-mono font-medium text-primary-accent">SHP-10657</td>
+<td class="py-3.5 px-4">Shanghai</td>
+<td class="py-3.5 px-4">Rotterdam</td>
+<td class="py-3.5 px-4 font-mono">25 Oct 2026</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-high-risk-bg text-high-risk">
+                    High
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 text-medium-risk font-medium text-[13px]">
+<span class="w-1.5 h-1.5 rounded-full bg-medium-risk"></span>
+                    Delayed
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<a class="text-secondary-text hover:text-primary-accent text-[13px] font-button-input" href="#">Details</a>
+</td>
+</tr>
+<!-- Shipment 4 -->
+<tr class="hover:bg-subtle-surface transition-colors">
+<td class="py-3.5 px-4 font-mono font-medium text-primary-accent">SHP-10673</td>
+<td class="py-3.5 px-4">Shanghai</td>
+<td class="py-3.5 px-4">Rotterdam</td>
+<td class="py-3.5 px-4 font-mono">26 Oct 2026</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-success-bg text-success">
+                    Low
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 text-primary-text text-[13px]">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-accent"></span>
+                    In Transit
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<a class="text-secondary-text hover:text-primary-accent text-[13px] font-button-input" href="#">Details</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 9. BOTTOM SPLIT: RECENT ROUTE EVENTS & RECOMMENDED NEXT STEPS -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- LEFT: Recent Route Events -->
+<div class="bg-primary-surface rounded-xl border border-border p-space-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-border pb-3 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary-accent" data-icon="history">history</span>
+<h2 class="font-section-heading text-section-heading text-primary-text">Recent Route Events</h2>
+</div>
+<span class="font-metadata text-metadata text-muted-text">Audit Log</span>
+</div>
+<!-- Vertical Timeline -->
+<div class="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-border">
+<!-- Event 1 -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-high-risk border-2 border-primary-surface"></div>
+<div class="flex items-baseline justify-between text-[11px] font-mono text-muted-text mb-0.5">
+<span>18 Oct 2026, 10:30</span>
+<span class="text-high-risk font-semibold">Priority Event</span>
+</div>
+<h4 class="font-table-text-medium text-table-text-medium text-primary-text font-semibold">Route Risk Assessment Updated</h4>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">
+                  Illustrative risk level set to High based on terminal dwell alerts and canal bottleneck feed.
+                </p>
+</div>
+<!-- Event 2 -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-medium-risk border-2 border-primary-surface"></div>
+<div class="flex items-baseline justify-between text-[11px] font-mono text-muted-text mb-0.5">
+<span>18 Oct 2026, 09:45</span>
+<span class="text-secondary-text">Factor Flag</span>
+</div>
+<h4 class="font-table-text-medium text-table-text-medium text-primary-text font-semibold">Port Congestion Factor Added</h4>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">
+                  Shanghai Port listed as potential contributing factor due to increased anchorage queue density.
+                </p>
+</div>
+<!-- Event 3 -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-primary-accent border-2 border-primary-surface"></div>
+<div class="flex items-baseline justify-between text-[11px] font-mono text-muted-text mb-0.5">
+<span>17 Oct 2026, 15:20</span>
+<span class="text-secondary-text">Transit Calc</span>
+</div>
+<h4 class="font-table-text-medium text-table-text-medium text-primary-text font-semibold">Transit Estimate Reviewed</h4>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">
+                  Illustrative estimate recorded as 28 days (+2 days variance over typical schedule).
+                </p>
+</div>
+<!-- Event 4 -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-secondary border-2 border-primary-surface"></div>
+<div class="flex items-baseline justify-between text-[11px] font-mono text-muted-text mb-0.5">
+<span>17 Oct 2026, 11:10</span>
+<span class="text-secondary-text">Scenario Run</span>
+</div>
+<h4 class="font-table-text-medium text-table-text-medium text-primary-text font-semibold">Alternative Scenario Prepared</h4>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">
+                  Two alternative route scenarios added to demo assessment for operational resilience planning.
+                </p>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-[12px]">
+<span class="text-muted-text font-metadata">Filtered to current corridor lifecycle</span>
+<a class="font-button-input text-primary-accent hover:underline" href="#">Full Log →</a>
+</div>
+</div>
+<!-- RIGHT: Recommended Next Steps -->
+<div class="bg-primary-surface rounded-xl border border-border p-space-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-border pb-3 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary-accent" data-icon="task_alt">task_alt</span>
+<h2 class="font-section-heading text-section-heading text-primary-text">Recommended Next Steps</h2>
+</div>
+<span class="font-metadata text-metadata px-2 py-0.5 rounded bg-soft-accent text-primary-accent font-medium">Actionable</span>
+</div>
+<div class="space-y-3">
+<!-- Step 1 -->
+<div class="p-3 rounded-xl border border-border bg-subtle-surface/50 hover:border-primary-accent/40 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-soft-accent text-primary-accent font-bold text-[12px] flex items-center justify-center shrink-0 mt-0.5">1</div>
+<div>
+<h4 class="font-table-text-medium text-table-text-medium text-primary-text font-semibold">Inspect Origin Port</h4>
+<p class="font-metadata text-metadata text-secondary-text">
+                      Review the Shanghai Port assessment for potential congestion-related delays.
+                    </p>
+</div>
+</div>
+<a class="shrink-0 font-button-input text-[13px] text-primary-accent hover:underline self-end sm:self-center" href="#">
+                  View Port Details →
+                </a>
+</div>
+<!-- Step 2 -->
+<div class="p-3 rounded-xl border border-border bg-subtle-surface/50 hover:border-primary-accent/40 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-soft-accent text-primary-accent font-bold text-[12px] flex items-center justify-center shrink-0 mt-0.5">2</div>
+<div>
+<h4 class="font-table-text-medium text-table-text-medium text-primary-text font-semibold">Review Shipment Commitments</h4>
+<p class="font-metadata text-metadata text-secondary-text">
+                      Identify shipments whose expected arrival may no longer meet delivery requirements.
+                    </p>
+</div>
+</div>
+<a class="shrink-0 font-button-input text-[13px] text-primary-accent hover:underline self-end sm:self-center" href="#">
+                  View At-Risk Shipments →
+                </a>
+</div>
+<!-- Step 3 -->
+<div class="p-3 rounded-xl border border-border bg-subtle-surface/50 hover:border-primary-accent/40 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-soft-accent text-primary-accent font-bold text-[12px] flex items-center justify-center shrink-0 mt-0.5">3</div>
+<div>
+<h4 class="font-table-text-medium text-table-text-medium text-primary-text font-semibold">Compare Alternatives</h4>
+<p class="font-metadata text-metadata text-secondary-text">
+                      Evaluate transit time, relative cost, and risk together before selecting a different route.
+                    </p>
+</div>
+</div>
+<a class="shrink-0 font-button-input text-[13px] text-primary-accent hover:underline self-end sm:self-center" href="#">
+                  Compare Alternatives →
+                </a>
+</div>
+</div>
+</div>
+<!-- Prescriptive operational disclaimer -->
+<div class="mt-4 pt-3 border-t border-border flex items-center gap-2 text-muted-text font-metadata text-[11px]">
+<span class="material-symbols-outlined text-[15px]" data-icon="verified_user">verified_user</span>
+<span>Recommendations are illustrative and should be verified against trusted operational data before action.</span>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

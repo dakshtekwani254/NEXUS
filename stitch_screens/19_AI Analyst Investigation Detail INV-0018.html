@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-app-background" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEXUS — AI Analyst Investigation Detail (INV-0018)</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#ffdbcb",
+            "primary-container": "#4263eb",
+            "border": "#E6EAF0",
+            "on-error-container": "#93000a",
+            "surface-container-low": "#f4f2fe",
+            "muted-text": "#8A93A3",
+            "medium-risk-bg": "#FFF4D6",
+            "inverse-primary": "#b9c3ff",
+            "on-background": "#1a1b23",
+            "surface-container": "#eeedf8",
+            "primary-fixed": "#dde1ff",
+            "surface-container-high": "#e8e7f3",
+            "soft-accent": "#EEF2FF",
+            "on-primary": "#ffffff",
+            "high-risk": "#D94F4F",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#444654",
+            "outline": "#747686",
+            "on-surface": "#1a1b23",
+            "secondary-text": "#667085",
+            "background": "#fbf8ff",
+            "secondary": "#555f73",
+            "on-tertiary-fixed": "#341100",
+            "primary-fixed-dim": "#b9c3ff",
+            "on-secondary-container": "#596377",
+            "surface-variant": "#e2e1ed",
+            "on-primary-fixed": "#001356",
+            "on-secondary-fixed": "#111c2d",
+            "primary-text": "#172033",
+            "secondary-fixed-dim": "#bdc7de",
+            "success-bg": "#E8F6F0",
+            "surface-bright": "#fbf8ff",
+            "tertiary": "#923e00",
+            "error": "#ba1a1a",
+            "surface-dim": "#dad9e4",
+            "on-tertiary-container": "#fff2ed",
+            "surface-container-highest": "#e2e1ed",
+            "primary": "#2248d1",
+            "on-primary-fixed-variant": "#0035be",
+            "on-error": "#ffffff",
+            "surface": "#fbf8ff",
+            "surface-container-lowest": "#ffffff",
+            "strong-border": "#D5DBE5",
+            "outline-variant": "#c4c5d7",
+            "inverse-surface": "#2f3039",
+            "primary-accent": "#4263EB",
+            "on-secondary-fixed-variant": "#3d475a",
+            "secondary-container": "#d6e0f8",
+            "app-background": "#F8F9FB",
+            "inverse-on-surface": "#f1effb",
+            "success": "#268568",
+            "on-primary-container": "#f5f3ff",
+            "secondary-fixed": "#d9e3fb",
+            "medium-risk": "#B7791F",
+            "primary-surface": "#FFFFFF",
+            "high-risk-bg": "#FCECEC",
+            "on-tertiary-fixed-variant": "#783100",
+            "subtle-surface": "#F3F5F8",
+            "tertiary-fixed-dim": "#ffb690",
+            "error-container": "#ffdad6",
+            "tertiary-container": "#b95000",
+            "surface-tint": "#2c50d9",
+            "on-tertiary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-sm": "8px",
+            "space-xs": "4px",
+            "space-xl": "32px",
+            "space-md": "16px",
+            "gutter": "20px",
+            "margin": "32px",
+            "space-lg": "24px"
+          },
+          "fontFamily": {
+            "table-text-medium": ["Inter"],
+            "kpi-value": ["Inter"],
+            "section-heading": ["Inter"],
+            "button-input": ["Inter"],
+            "metadata": ["Inter"],
+            "table-text": ["Inter"],
+            "page-title": ["Inter"],
+            "body": ["Inter"]
+          },
+          "fontSize": {
+            "table-text-medium": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "kpi-value": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "section-heading": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "button-input": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "metadata": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "table-text": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "page-title": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full bg-app-background font-body text-body text-primary-text antialiased selection:bg-soft-accent selection:text-primary-accent">
+<!-- ========================================================================= -->
+<!-- SIDE NAVIGATION (Shared Component Anchor)                                 -->
+<!-- ========================================================================= -->
+<aside class="fixed top-0 bottom-0 left-0 w-[224px] h-screen bg-primary-surface dark:bg-inverse-surface border-r border-border dark:border-outline-variant flex flex-col justify-between p-space-md z-30">
+<!-- Top Brand & Product Group -->
+<div class="flex flex-col gap-space-lg">
+<div class="flex items-center gap-space-sm px-space-xs">
+<div class="w-8 h-8 rounded-xl bg-primary-accent flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="deployed_code" style="font-variation-settings: 'FILL' 1;">deployed_code</span>
+</div>
+<div>
+<span class="font-page-title text-section-heading font-semibold text-primary-text dark:text-inverse-on-surface tracking-tight block leading-tight">NEXUS</span>
+<span class="font-metadata text-metadata text-secondary-text block leading-none">Supply Chain OS v2.8.4</span>
+</div>
+</div>
+<!-- Navigation Menu -->
+<nav class="flex flex-col gap-1">
+<!-- Tab 1: Overview -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<!-- Tab 2: Risk Intelligence -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="warning">warning</span>
+<span>Risk Intelligence</span>
+</a>
+<!-- Tab 3: Shipments -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="local_shipping">local_shipping</span>
+<span>Shipments</span>
+</a>
+<!-- Tab 4: Ports & Routes -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="anchor">anchor</span>
+<span>Ports &amp; Routes</span>
+</a>
+<!-- Tab 5: Alerts (with badge 8) -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications_active">notifications_active</span>
+<span>Alerts</span>
+</div>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[11px] font-semibold bg-high-risk-bg text-high-risk">8</span>
+</a>
+<!-- Tab 6: AI Analyst (ACTIVE STATE) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl bg-soft-accent dark:bg-surface-container-high text-primary-accent dark:text-inverse-primary font-button-input text-button-input transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span>AI Analyst</span>
+</a>
+<!-- Tab 7: Agent Center -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="support_agent">support_agent</span>
+<span>Agent Center</span>
+</a>
+<!-- Tab 8: Analytics -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Anchored Group: Settings & Footer Tabs -->
+<div class="flex flex-col gap-1 pt-space-md border-t border-border dark:border-outline-variant">
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text dark:text-outline hover:bg-subtle-surface dark:hover:bg-surface-container-low font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+<div class="px-space-md py-space-sm flex items-center justify-between text-muted-text font-metadata text-metadata">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+          Enterprise Portal
+        </span>
+<span>v2.8.4</span>
+</div>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN LAYOUT WRAPPER                                                       -->
+<!-- ========================================================================= -->
+<div class="pl-[224px] flex flex-col min-h-screen">
+<!-- Top Navigation Bar (Shared Component Anchor) -->
+<header class="h-16 bg-primary-surface dark:bg-inverse-surface border-b border-border dark:border-outline-variant flex items-center justify-between px-space-xl sticky top-0 z-20">
+<!-- Breadcrumbs & Status Indicators -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 font-metadata text-metadata text-secondary-text">
+<span class="hover:text-primary-text cursor-pointer transition-colors">AI Analyst</span>
+<span class="text-muted-text">/</span>
+<span class="hover:text-primary-text cursor-pointer transition-colors">Investigations</span>
+<span class="text-muted-text">/</span>
+<span class="text-primary-text font-button-input text-button-input">INV-0018</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-metadata text-metadata bg-subtle-surface text-secondary-text border border-border">
+          Demo data
+        </span>
+<span class="flex items-center gap-1 font-metadata text-metadata text-muted-text ml-1">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+          Updated 4m ago
+        </span>
+</div>
+<!-- Action Items & Avatar -->
+<div class="flex items-center gap-space-md">
+<!-- Live Feed Pill -->
+<div class="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-success-bg text-success font-metadata text-metadata border border-success/20">
+<span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+<span>Live Feed</span>
+</div>
+<div class="flex items-center gap-1 border-r border-border pr-3">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-secondary-text hover:text-primary-text hover:bg-subtle-surface transition-colors" title="Refresh Data">
+<span class="material-symbols-outlined text-[18px]" data-icon="refresh">refresh</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-secondary-text hover:text-primary-text hover:bg-subtle-surface transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined text-[18px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-high-risk"></span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-secondary-text hover:text-primary-text hover:bg-subtle-surface transition-colors" title="View Settings">
+<span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+</button>
+</div>
+<!-- Profile Profile Image Alt matching shared components -->
+<div class="flex items-center gap-space-sm pl-1">
+<img alt="User avatar profile for enterprise logistics operations manager" class="w-8 h-8 rounded-full border border-border object-cover" data-alt="User avatar profile for enterprise logistics operations manager Sarah Chen, dressed in professional business attire with clean lighting and neutral studio background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMkuArhD56-pRpvGjg74fz4qNiSoCfmaQmhOpyLDMnxWXn4N76UzEGquuybmp8BRe1s2ZZuNSIF4boKMj_P0kYqvdGvuXqEtI0yyy4XvOQIx5UlAIPY1xnvWwYvONRNb9EmrAeps94G22n3COSxF2T6DzyDWhn12QBWaIha_5JwKChEkA9gI21eyuVcteYaQefdDOWJbw77pl_9piJfZ7hGJlPlaBN0wCvomgq2l9rkMr79wwOp-cW"/>
+<div class="flex flex-col">
+<span class="font-button-input text-button-input leading-tight text-primary-text">Sarah Chen</span>
+<span class="font-metadata text-metadata leading-none text-secondary-text">Director of Global Logistics</span>
+</div>
+</div>
+</div>
+</header>
+<!-- ======================================================================= -->
+<!-- CONTENT CANVAS                                                          -->
+<!-- ======================================================================= -->
+<main class="flex-1 p-space-xl max-w-[1600px] w-full mx-auto flex flex-col gap-space-lg">
+<!-- Page Header & Action Controls -->
+<section class="flex flex-col gap-space-sm pb-space-sm border-b border-border">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<!-- Title & Badges -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center flex-wrap gap-2.5">
+<h1 class="font-page-title text-page-title text-primary-text tracking-tight">Investigation: Shanghai Port Congestion Impact</h1>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-metadata text-metadata font-medium bg-subtle-surface text-secondary-text border border-border">
+                Demo Investigation
+              </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-metadata text-metadata font-medium bg-success-bg text-success border border-success/20">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                Analysis Complete
+              </span>
+</div>
+<p class="font-body text-body text-secondary-text">
+              Understand how port congestion may affect shipments along the Asia–Europe corridor.
+            </p>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-2.5 shrink-0">
+<a class="px-space-md py-2 bg-primary-surface border border-border rounded-xl font-button-input text-button-input text-primary-text hover:bg-subtle-surface transition-colors flex items-center gap-1.5" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_back">arrow_back</span>
+              Back to AI Analyst
+            </a>
+<button class="px-space-md py-2 bg-primary-accent rounded-xl font-button-input text-button-input text-on-primary hover:bg-primary transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+              Export Report
+            </button>
+<button class="w-9 h-9 bg-primary-surface border border-border rounded-xl flex items-center justify-center text-secondary-text hover:bg-subtle-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Investigation Metadata Row -->
+<div class="flex items-center flex-wrap gap-y-2 gap-x-6 pt-2 font-metadata text-metadata text-secondary-text">
+<span class="flex items-center gap-1.5">
+<span class="text-muted-text">Investigation ID:</span>
+<span class="font-medium text-primary-text">INV-0018</span>
+</span>
+<span class="text-border">|</span>
+<span class="flex items-center gap-1.5">
+<span class="text-muted-text">Created:</span>
+<span class="font-medium text-primary-text">18 Oct 2026, 10:45</span>
+</span>
+<span class="text-border">|</span>
+<span class="flex items-center gap-1.5">
+<span class="text-muted-text">Scope:</span>
+<span class="font-medium text-primary-text">Global Supply Network</span>
+</span>
+<span class="text-border">|</span>
+<span class="flex items-center gap-1.5">
+<span class="text-muted-text">Related corridor:</span>
+<span class="font-medium text-primary-text">Asia–Europe</span>
+</span>
+<span class="text-border">|</span>
+<span class="flex items-center gap-1.5">
+<span class="text-muted-text">Analyst:</span>
+<span class="font-medium text-primary-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary-accent" data-icon="smart_toy">smart_toy</span>
+              AI Analyst (Fine-tuned)
+            </span>
+</span>
+</div>
+</section>
+<!-- ===================================================================== -->
+<!-- 3. INVESTIGATION SUMMARY: 4 KPI CARDS ROW                             -->
+<!-- ===================================================================== -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- KPI 1 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text">
+<span class="font-metadata text-metadata font-medium">Potentially Affected Shipments</span>
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="local_shipping">local_shipping</span>
+</div>
+<div class="mt-2">
+<div class="font-kpi-value text-kpi-value text-primary-text">32</div>
+<div class="font-metadata text-metadata text-secondary-text mt-0.5">Illustrative shipment count</div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text">
+<span class="font-metadata text-metadata font-medium">Primary Risk Location</span>
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="anchor">anchor</span>
+</div>
+<div class="mt-2">
+<div class="font-section-heading text-[22px] leading-tight font-semibold text-primary-text">Shanghai Port</div>
+<div class="font-metadata text-metadata text-high-risk font-medium mt-0.5 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-high-risk"></span>
+              High congestion risk
+            </div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text">
+<span class="font-metadata text-metadata font-medium">Estimated Waiting Time</span>
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="schedule">schedule</span>
+</div>
+<div class="mt-2">
+<div class="font-kpi-value text-kpi-value text-primary-text">18 hrs</div>
+<div class="font-metadata text-metadata text-secondary-text mt-0.5">Illustrative estimate</div>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text">
+<span class="font-metadata text-metadata font-medium">Overall Risk Level</span>
+<span class="material-symbols-outlined text-[20px] text-high-risk" data-icon="report">report</span>
+</div>
+<div class="mt-2">
+<div class="font-kpi-value text-kpi-value text-high-risk flex items-center gap-2">
+              High
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-high-risk-bg text-high-risk">Critical</span>
+</div>
+<div class="font-metadata text-metadata text-secondary-text mt-0.5">Requires immediate operational review</div>
+</div>
+</div>
+</section>
+<!-- ===================================================================== -->
+<!-- 4. TWO-COLUMN WORKSPACE (65% Left / 35% Right)                        -->
+<!-- ===================================================================== -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- =================================================================== -->
+<!-- LEFT COLUMN (65% -> col-span-8)                                     -->
+<!-- =================================================================== -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- A. Executive Summary Panel -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary-accent text-[22px]" data-icon="description">description</span>
+<h2 class="font-section-heading text-section-heading text-primary-text">Executive Summary</h2>
+</div>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-metadata text-metadata bg-subtle-surface text-secondary-text border border-border">
+                Illustrative analysis
+              </span>
+</div>
+<p class="font-body text-body text-primary-text leading-relaxed">
+              Shanghai Port congestion may increase delays for shipments travelling through the Asia–Europe corridor. In this illustrative scenario, <strong class="font-semibold text-primary-text">32 shipments</strong> are associated with the affected network, and estimated port waiting time is <strong class="font-semibold text-primary-text">18 hours</strong>. Shipment-level arrival impacts should be verified before operational decisions are made.
+            </p>
+<div class="bg-subtle-surface border border-border rounded-xl p-space-md flex flex-col gap-2">
+<span class="font-button-input text-button-input text-primary-text font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary-accent" data-icon="lightbulb">lightbulb</span>
+                Key Takeaways:
+              </span>
+<ul class="flex flex-col gap-2 text-primary-text font-body text-body pl-2">
+<li class="flex items-start gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-accent mt-2 shrink-0"></span>
+<span><strong class="font-medium">Primary concern:</strong> Congestion at Shanghai Port with compounding berth queues.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-accent mt-2 shrink-0"></span>
+<span><strong class="font-medium">Network exposure:</strong> Shipments travelling toward Rotterdam and connected European secondary distribution hubs.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-accent mt-2 shrink-0"></span>
+<span><strong class="font-medium">Decision priority:</strong> Verify current shipment status and compare alternative routing options.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- B. Key Findings -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-accent text-[22px]" data-icon="insights">insights</span>
+<h2 class="font-section-heading text-section-heading text-primary-text">Key Findings</h2>
+</div>
+<span class="font-metadata text-metadata text-muted-text">3 items identified</span>
+</div>
+<div class="flex flex-col divide-y divide-border">
+<!-- Finding 1 -->
+<div class="py-space-md first:pt-0 last:pb-0 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-button-input text-button-input font-semibold text-primary-text">1. Port Congestion</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-high-risk-bg text-high-risk">High Severity</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="place">place</span>
+                    Shanghai Port
+                  </span>
+</div>
+<p class="font-body text-body text-secondary-text">
+                  Congestion may increase departure or onward-transit uncertainty. Yard storage utilization at Yangshan Terminal currently approaches 89% capacity.
+                </p>
+<div class="flex items-center justify-between pt-1 font-metadata text-metadata">
+<span class="text-muted-text">Evidence: Port conditions snapshot — illustrative</span>
+<a class="text-primary-accent hover:underline font-medium inline-flex items-center gap-0.5" href="#">
+                    View related data →
+                  </a>
+</div>
+</div>
+<!-- Finding 2 -->
+<div class="py-space-md first:pt-0 last:pb-0 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-button-input text-button-input font-semibold text-primary-text">2. Corridor Exposure</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-medium-risk-bg text-medium-risk">Medium Severity</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="route">route</span>
+                    Asia–Europe Corridor
+                  </span>
+</div>
+<p class="font-body text-body text-secondary-text">
+                  Shipments using the affected corridor may experience downstream schedule changes, particularly for intermediate bunker stops in Singapore.
+                </p>
+<div class="flex items-center justify-between pt-1 font-metadata text-metadata">
+<span class="text-muted-text">Evidence: Route assessment — illustrative</span>
+<a class="text-primary-accent hover:underline font-medium inline-flex items-center gap-0.5" href="#">
+                    View related data →
+                  </a>
+</div>
+</div>
+<!-- Finding 3 -->
+<div class="py-space-md first:pt-0 last:pb-0 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-button-input text-button-input font-semibold text-primary-text">3. Arrival Uncertainty</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-medium-risk-bg text-medium-risk">Medium Severity</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="pin_drop">pin_drop</span>
+                    Rotterdam-bound shipments
+                  </span>
+</div>
+<p class="font-body text-body text-secondary-text">
+                  Estimated arrival dates may need reassessment if port or carrier schedules change. 14 downstream manufacturing fulfillment targets are flagged.
+                </p>
+<div class="flex items-center justify-between pt-1 font-metadata text-metadata">
+<span class="text-muted-text">Evidence: Shipment schedule review — illustrative</span>
+<a class="text-primary-accent hover:underline font-medium inline-flex items-center gap-0.5" href="#">
+                    View related data →
+                  </a>
+</div>
+</div>
+</div>
+</div>
+<!-- C. Evidence Reviewed Table -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-lg flex flex-col gap-space-md">
+<div>
+<h2 class="font-section-heading text-section-heading text-primary-text">Evidence Reviewed</h2>
+<p class="font-metadata text-metadata text-secondary-text">Illustrative sources analyzed for this report</p>
+</div>
+<div class="overflow-x-auto border border-border rounded-lg">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-subtle-surface border-b border-border text-muted-text font-metadata text-metadata">
+<th class="py-3 px-4 font-medium">Evidence Source</th>
+<th class="py-3 px-4 font-medium">Relevant Entity</th>
+<th class="py-3 px-4 font-medium">Finding Supported</th>
+<th class="py-3 px-4 font-medium">Data Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border font-table-text text-table-text text-primary-text">
+<tr class="hover:bg-subtle-surface/50 transition-colors">
+<td class="py-3.5 px-4 font-table-text-medium text-table-text-medium text-primary-text flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-muted-text" data-icon="dataset">dataset</span>
+                      Port Conditions Snapshot
+                    </td>
+<td class="py-3.5 px-4 text-secondary-text">Shanghai Port</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-high-risk-bg text-high-risk">Congestion risk</span>
+</td>
+<td class="py-3.5 px-4 font-metadata text-metadata text-secondary-text">Demo data</td>
+</tr>
+<tr class="hover:bg-subtle-surface/50 transition-colors">
+<td class="py-3.5 px-4 font-table-text-medium text-table-text-medium text-primary-text flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-muted-text" data-icon="alt_route">alt_route</span>
+                      Route Risk Assessment
+                    </td>
+<td class="py-3.5 px-4 text-secondary-text">Asia–Europe Corridor</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-medium-risk-bg text-medium-risk">Corridor exposure</span>
+</td>
+<td class="py-3.5 px-4 font-metadata text-metadata text-secondary-text">Demo data</td>
+</tr>
+<tr class="hover:bg-subtle-surface/50 transition-colors">
+<td class="py-3.5 px-4 font-table-text-medium text-table-text-medium text-primary-text flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-muted-text" data-icon="inventory_2">inventory_2</span>
+                      Shipment Schedule Review
+                    </td>
+<td class="py-3.5 px-4 text-primary-accent font-medium">SHP-10482</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-medium-risk-bg text-medium-risk">Arrival uncertainty</span>
+</td>
+<td class="py-3.5 px-4 font-metadata text-metadata text-secondary-text">Demo data</td>
+</tr>
+<tr class="hover:bg-subtle-surface/50 transition-colors">
+<td class="py-3.5 px-4 font-table-text-medium text-table-text-medium text-primary-text flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-muted-text" data-icon="inventory_2">inventory_2</span>
+                      Shipment Schedule Review
+                    </td>
+<td class="py-3.5 px-4 text-primary-accent font-medium">SHP-10563</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-medium-risk-bg text-medium-risk">Arrival uncertainty</span>
+</td>
+<td class="py-3.5 px-4 font-metadata text-metadata text-secondary-text">Demo data</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="font-metadata text-metadata text-muted-text italic">
+              Evidence shown here is illustrative. Connect and validate source systems before relying on this analysis operationally.
+            </p>
+</div>
+<!-- ================================================================= -->
+<!-- 5. INVESTIGATION CONVERSATION (Traceability transcript)           -->
+<!-- ================================================================= -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-lg flex flex-col gap-space-md">
+<div class="border-b border-border pb-space-sm flex items-center justify-between">
+<div>
+<h2 class="font-section-heading text-section-heading text-primary-text flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-accent text-[20px]" data-icon="forum">forum</span>
+                  Investigation Conversation
+                </h2>
+<p class="font-metadata text-metadata text-secondary-text">Audit transcript between user query and AI Analyst synthesis</p>
+</div>
+<span class="inline-flex items-center gap-1 font-metadata text-metadata text-muted-text">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+                Audit Verified
+              </span>
+</div>
+<!-- Transcript Chat Items -->
+<div class="flex flex-col gap-4">
+<!-- User Bubble 1 -->
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-2 font-metadata text-metadata text-secondary-text pr-1">
+<span>Sarah Chen</span>
+<span class="text-muted-text">10:45</span>
+</div>
+<div class="max-w-[85%] bg-primary-accent text-on-primary rounded-xl rounded-tr-none px-4 py-3 font-body text-body leading-relaxed">
+                  Which shipments could be affected by Shanghai Port congestion, and what should we review first?
+                </div>
+</div>
+<!-- AI Analyst Bubble 1 -->
+<div class="flex flex-col items-start gap-1">
+<div class="flex items-center gap-2 font-metadata text-metadata text-secondary-text pl-1">
+<span class="flex items-center gap-1 font-medium text-primary-accent">
+<span class="material-symbols-outlined text-[14px]" data-icon="smart_toy">smart_toy</span>
+                    AI Analyst
+                  </span>
+<span class="text-muted-text">10:46</span>
+</div>
+<div class="max-w-[85%] bg-subtle-surface border border-border text-primary-text rounded-xl rounded-tl-none px-4 py-3 font-body text-body leading-relaxed">
+                  Based on the illustrative investigation data, <strong class="font-semibold">32 shipments</strong> are associated with the affected network. The first priority is to verify the status of <span class="text-primary-accent font-medium">SHP-10482</span>, review the Asia–Europe corridor assessment, and compare available routing options. The current sample data does not establish that every associated shipment will be delayed.
+                </div>
+</div>
+<!-- User Bubble 2 -->
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-2 font-metadata text-metadata text-secondary-text pr-1">
+<span>Sarah Chen</span>
+<span class="text-muted-text">10:47</span>
+</div>
+<div class="max-w-[85%] bg-primary-accent text-on-primary rounded-xl rounded-tr-none px-4 py-3 font-body text-body leading-relaxed">
+                  Should we reroute the shipment immediately?
+                </div>
+</div>
+<!-- AI Analyst Bubble 2 -->
+<div class="flex flex-col items-start gap-1">
+<div class="flex items-center gap-2 font-metadata text-metadata text-secondary-text pl-1">
+<span class="flex items-center gap-1 font-medium text-primary-accent">
+<span class="material-symbols-outlined text-[14px]" data-icon="smart_toy">smart_toy</span>
+                    AI Analyst
+                  </span>
+<span class="text-muted-text">10:48</span>
+</div>
+<div class="max-w-[85%] bg-subtle-surface border border-border text-primary-text rounded-xl rounded-tl-none px-4 py-3 font-body text-body leading-relaxed">
+                  Not from this assessment alone. First validate port conditions, carrier schedules, shipment constraints, and alternative-route transit times and costs. Any operational rerouting decision should be reviewed and authorized by the appropriate team.
+                </div>
+</div>
+</div>
+<!-- Follow-up input form -->
+<div class="mt-2 pt-space-md border-t border-border flex flex-col gap-2">
+<div class="relative flex items-center">
+<input class="w-full bg-primary-surface border border-border rounded-xl pl-4 pr-24 py-2.5 font-body text-body text-primary-text placeholder:text-muted-text focus:outline-none focus:border-primary-accent focus:ring-1 focus:ring-primary-accent transition-all" placeholder="Ask a follow-up question about this investigation..." type="text"/>
+<button class="absolute right-2 px-3 py-1.5 bg-primary-accent text-on-primary rounded-lg font-button-input text-button-input flex items-center gap-1 hover:bg-primary transition-colors">
+<span>Send</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="send">send</span>
+</button>
+</div>
+<span class="font-metadata text-metadata text-muted-text">
+                Press Enter to prompt AI Analyst. Responses are syntheses based on verified operational feeds.
+              </span>
+</div>
+</div>
+</div>
+<!-- =================================================================== -->
+<!-- RIGHT COLUMN (35% -> col-span-4)                                    -->
+<!-- =================================================================== -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- D. Investigation Context Panel -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h2 class="font-section-heading text-section-heading text-primary-text">Investigation Context</h2>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-medium-risk-bg text-medium-risk">
+                Source validation required
+              </span>
+</div>
+<div class="flex flex-col divide-y divide-border text-body">
+<div class="py-2.5 flex items-center justify-between first:pt-0">
+<span class="text-secondary-text font-metadata text-metadata">Scope</span>
+<span class="font-button-input text-button-input text-primary-text font-medium">Global Supply Network</span>
+</div>
+<div class="py-2.5 flex items-center justify-between">
+<span class="text-secondary-text font-metadata text-metadata">Primary location</span>
+<span class="font-button-input text-button-input text-primary-text font-medium">Shanghai Port</span>
+</div>
+<div class="py-2.5 flex items-center justify-between">
+<span class="text-secondary-text font-metadata text-metadata">Primary corridor</span>
+<span class="font-button-input text-button-input text-primary-text font-medium">Asia–Europe</span>
+</div>
+<div class="py-2.5 flex items-center justify-between">
+<span class="text-secondary-text font-metadata text-metadata">Analysis type</span>
+<span class="font-button-input text-button-input text-primary-text font-medium">Disruption impact assessment</span>
+</div>
+<div class="py-2.5 flex items-center justify-between last:pb-0">
+<span class="text-secondary-text font-metadata text-metadata">Data mode</span>
+<span class="inline-flex items-center gap-1 font-button-input text-button-input text-secondary-text font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-muted-text"></span>
+                  Demo data
+                </span>
+</div>
+</div>
+</div>
+<!-- E. Related Entities Panel -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h2 class="font-section-heading text-section-heading text-primary-text">Related Entities</h2>
+<span class="font-metadata text-metadata text-muted-text">Directly linked</span>
+</div>
+<!-- Group 1: Shipments -->
+<div class="flex flex-col gap-2">
+<span class="font-metadata text-metadata font-semibold text-muted-text uppercase tracking-wider">Shipments</span>
+<div class="flex flex-col gap-1.5">
+<a class="p-2.5 rounded-lg border border-border hover:bg-subtle-surface transition-colors flex items-center justify-between group" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary-accent" data-icon="local_shipping">local_shipping</span>
+<div>
+<div class="font-button-input text-button-input font-medium text-primary-text group-hover:text-primary-accent transition-colors">SHP-10482</div>
+<div class="font-metadata text-metadata text-secondary-text">Shanghai → Rotterdam</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-semibold bg-high-risk-bg text-high-risk">High risk</span>
+<span class="material-symbols-outlined text-[16px] text-muted-text group-hover:text-primary-accent transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</a>
+<a class="p-2.5 rounded-lg border border-border hover:bg-subtle-surface transition-colors flex items-center justify-between group" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary-accent" data-icon="local_shipping">local_shipping</span>
+<div>
+<div class="font-button-input text-button-input font-medium text-primary-text group-hover:text-primary-accent transition-colors">SHP-10563</div>
+<div class="font-metadata text-metadata text-secondary-text">Rotterdam → New York</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-semibold bg-medium-risk-bg text-medium-risk">Medium risk</span>
+<span class="material-symbols-outlined text-[16px] text-muted-text group-hover:text-primary-accent transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Group 2: Ports -->
+<div class="flex flex-col gap-2 pt-1">
+<span class="font-metadata text-metadata font-semibold text-muted-text uppercase tracking-wider">Ports</span>
+<div class="flex flex-col gap-1.5">
+<a class="p-2.5 rounded-lg border border-border hover:bg-subtle-surface transition-colors flex items-center justify-between group" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-muted-text" data-icon="anchor">anchor</span>
+<span class="font-button-input text-button-input font-medium text-primary-text group-hover:text-primary-accent transition-colors">Shanghai Port</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-semibold bg-high-risk-bg text-high-risk">High congestion</span>
+<span class="material-symbols-outlined text-[16px] text-muted-text group-hover:text-primary-accent transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</a>
+<a class="p-2.5 rounded-lg border border-border hover:bg-subtle-surface transition-colors flex items-center justify-between group" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-muted-text" data-icon="anchor">anchor</span>
+<span class="font-button-input text-button-input font-medium text-primary-text group-hover:text-primary-accent transition-colors">Rotterdam Port</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-semibold bg-medium-risk-bg text-medium-risk">Medium risk</span>
+<span class="material-symbols-outlined text-[16px] text-muted-text group-hover:text-primary-accent transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Group 3: Routes -->
+<div class="flex flex-col gap-2 pt-1">
+<span class="font-metadata text-metadata font-semibold text-muted-text uppercase tracking-wider">Routes</span>
+<div class="flex flex-col gap-1.5">
+<a class="p-2.5 rounded-lg border border-border hover:bg-subtle-surface transition-colors flex items-center justify-between group" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-muted-text" data-icon="route">route</span>
+<span class="font-button-input text-button-input font-medium text-primary-text group-hover:text-primary-accent transition-colors">Asia–Europe Corridor</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-semibold bg-high-risk-bg text-high-risk">High risk</span>
+<span class="material-symbols-outlined text-[16px] text-muted-text group-hover:text-primary-accent transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</a>
+<a class="p-2.5 rounded-lg border border-border hover:bg-subtle-surface transition-colors flex items-center justify-between group" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-muted-text" data-icon="route">route</span>
+<span class="font-button-input text-button-input font-medium text-primary-text group-hover:text-primary-accent transition-colors">North Atlantic Route</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-semibold bg-medium-risk-bg text-medium-risk">Medium risk</span>
+<span class="material-symbols-outlined text-[16px] text-muted-text group-hover:text-primary-accent transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+<!-- F. Recommended Next Steps Panel (AI Prescriptive) -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-accent text-[22px]" data-icon="checklist">checklist</span>
+<h2 class="font-section-heading text-section-heading text-primary-text">Recommended Next Steps</h2>
+</div>
+<ol class="flex flex-col gap-3 font-body text-body text-primary-text list-decimal pl-4">
+<li class="pl-1 leading-snug">Verify current conditions and berth waiting metrics at Shanghai Port.</li>
+<li class="pl-1 leading-snug">Review the latest status and estimated arrival for shipment <strong class="text-primary-accent font-medium">SHP-10482</strong>.</li>
+<li class="pl-1 leading-snug">Compare the standard Asia–Europe route with available alternative corridors (e.g. Cape Route).</li>
+<li class="pl-1 leading-snug">Review other potentially affected shipments before notifying commercial stakeholders.</li>
+</ol>
+<div class="flex flex-col gap-2 pt-2">
+<button class="w-full py-2.5 px-4 bg-primary-accent text-on-primary rounded-xl font-button-input text-button-input hover:bg-primary transition-colors flex items-center justify-center gap-2">
+<span>Review in Risk Intelligence</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="open_in_new">open_in_new</span>
+</button>
+<button class="w-full py-2.5 px-4 bg-primary-surface border border-border text-primary-text rounded-xl font-button-input text-button-input hover:bg-subtle-surface transition-colors flex items-center justify-center gap-2">
+<span>Open Shipment SHP-10482</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<p class="font-metadata text-metadata text-muted-text italic text-center">
+              Recommendations are generated based on illustrative scenario algorithms.
+            </p>
+</div>
+</div>
+</section>
+<!-- ===================================================================== -->
+<!-- 6. INVESTIGATION ACTIVITY TIMELINE                                    -->
+<!-- ===================================================================== -->
+<section class="bg-primary-surface border border-border rounded-xl p-space-lg flex flex-col gap-space-md mb-space-xl">
+<div class="flex items-center justify-between border-b border-border pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-accent text-[20px]" data-icon="history">history</span>
+<h2 class="font-section-heading text-section-heading text-primary-text">Investigation Activity Timeline</h2>
+</div>
+<span class="font-metadata text-metadata text-muted-text">Illustrative audit log • 18 Oct 2026</span>
+</div>
+<div class="relative pl-6 flex flex-col gap-6 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-border">
+<!-- Timeline Item 1 -->
+<div class="relative flex items-center justify-between">
+<span class="absolute -left-6 w-4 h-4 rounded-full bg-primary-surface border-2 border-primary-accent flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-accent"></span>
+</span>
+<div class="flex flex-col">
+<span class="font-button-input text-button-input font-medium text-primary-text">Investigation created</span>
+<span class="font-metadata text-metadata text-secondary-text">Query initiated by Director of Global Logistics via AI Assistant interface</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text font-mono">10:45</span>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative flex items-center justify-between">
+<span class="absolute -left-6 w-4 h-4 rounded-full bg-primary-surface border-2 border-border flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-border"></span>
+</span>
+<div class="flex flex-col">
+<span class="font-button-input text-button-input font-medium text-primary-text">Port conditions reviewed</span>
+<span class="font-metadata text-metadata text-secondary-text">AIS density feeds and Shanghai terminal congestion indices evaluated</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text font-mono">10:46</span>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative flex items-center justify-between">
+<span class="absolute -left-6 w-4 h-4 rounded-full bg-primary-surface border-2 border-border flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-border"></span>
+</span>
+<div class="flex flex-col">
+<span class="font-button-input text-button-input font-medium text-primary-text">Route exposure assessed</span>
+<span class="font-metadata text-metadata text-secondary-text">Corridor bottlenecks modeled along Asia–Europe standard maritime trajectory</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text font-mono">10:47</span>
+</div>
+<!-- Timeline Item 4 -->
+<div class="relative flex items-center justify-between">
+<span class="absolute -left-6 w-4 h-4 rounded-full bg-primary-surface border-2 border-border flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-border"></span>
+</span>
+<div class="flex flex-col">
+<span class="font-button-input text-button-input font-medium text-primary-text">Related shipment records reviewed</span>
+<span class="font-metadata text-metadata text-secondary-text">32 active manifests mapped against departure schedules and destination ETAs</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text font-mono">10:48</span>
+</div>
+<!-- Timeline Item 5 -->
+<div class="relative flex items-center justify-between">
+<span class="absolute -left-6 w-4 h-4 rounded-full bg-primary-surface border-2 border-success flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+</span>
+<div class="flex flex-col">
+<span class="font-button-input text-button-input font-medium text-primary-text">Findings prepared for review</span>
+<span class="font-metadata text-metadata text-secondary-text">Executive summary generated and next actions populated for operator verification</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text font-mono">10:49</span>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

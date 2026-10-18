@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEXUS — Notification Center</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-error": "#ffffff",
+            "success-bg": "#E8F6F0",
+            "tertiary": "#923e00",
+            "outline": "#747686",
+            "primary-fixed-dim": "#b9c3ff",
+            "error": "#ba1a1a",
+            "secondary-fixed": "#d9e3fb",
+            "on-primary-container": "#f5f3ff",
+            "secondary-container": "#d6e0f8",
+            "on-secondary-fixed-variant": "#3d475a",
+            "subtle-surface": "#F3F5F8",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-highest": "#e2e1ed",
+            "surface-tint": "#2c50d9",
+            "tertiary-container": "#b95000",
+            "surface-variant": "#e2e1ed",
+            "tertiary-fixed": "#ffdbcb",
+            "tertiary-fixed-dim": "#ffb690",
+            "strong-border": "#D5DBE5",
+            "on-secondary-fixed": "#111c2d",
+            "border": "#E6EAF0",
+            "soft-accent": "#EEF2FF",
+            "surface-container-low": "#f4f2fe",
+            "primary-accent": "#4263EB",
+            "on-surface-variant": "#444654",
+            "on-tertiary-fixed-variant": "#783100",
+            "on-tertiary-container": "#fff2ed",
+            "on-tertiary": "#ffffff",
+            "background": "#fbf8ff",
+            "high-risk": "#D94F4F",
+            "surface": "#fbf8ff",
+            "primary-surface": "#FFFFFF",
+            "on-secondary-container": "#596377",
+            "surface-dim": "#dad9e4",
+            "primary-container": "#4263eb",
+            "on-surface": "#1a1b23",
+            "medium-risk": "#B7791F",
+            "primary-text": "#172033",
+            "secondary": "#555f73",
+            "error-container": "#ffdad6",
+            "success": "#268568",
+            "inverse-surface": "#2f3039",
+            "on-primary-fixed": "#001356",
+            "medium-risk-bg": "#FFF4D6",
+            "inverse-on-surface": "#f1effb",
+            "primary-fixed": "#dde1ff",
+            "on-primary-fixed-variant": "#0035be",
+            "surface-bright": "#fbf8ff",
+            "surface-container": "#eeedf8",
+            "on-secondary": "#ffffff",
+            "app-background": "#F8F9FB",
+            "outline-variant": "#c4c5d7",
+            "secondary-text": "#667085",
+            "primary": "#2248d1",
+            "on-background": "#1a1b23",
+            "surface-container-high": "#e8e7f3",
+            "inverse-primary": "#b9c3ff",
+            "muted-text": "#8A93A3",
+            "on-tertiary-fixed": "#341100",
+            "high-risk-bg": "#FCECEC",
+            "secondary-fixed-dim": "#bdc7de"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xl": "32px",
+            "margin": "32px",
+            "space-xs": "4px",
+            "space-sm": "8px",
+            "gutter": "20px",
+            "space-md": "16px",
+            "space-lg": "24px"
+          },
+          "fontFamily": {
+            "button-input": ["Inter"],
+            "body": ["Inter"],
+            "metadata": ["Inter"],
+            "kpi-value": ["Inter"],
+            "table-text-medium": ["Inter"],
+            "section-heading": ["Inter"],
+            "table-text": ["Inter"],
+            "page-title": ["Inter"]
+          },
+          "fontSize": {
+            "button-input": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "metadata": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "kpi-value": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "table-text-medium": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "section-heading": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "table-text": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "page-title": ["28px", { "lineHeight": "36px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 18px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+    /* Custom thin scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F8F9FB;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D5DBE5;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8A93A3;
+    }
+  </style>
+</head>
+<body class="bg-app-background font-body text-body text-primary-text min-h-screen flex selection:bg-soft-accent selection:text-primary-accent antialiased">
+<!-- ========================================================================= -->
+<!-- 1. PERSISTENT SIDEBAR NAVIGATION (224px fixed)                          -->
+<!-- ========================================================================= -->
+<aside class="fixed top-0 bottom-0 left-0 w-[224px] h-screen bg-primary-surface border-r border-border flex flex-col justify-between p-space-md z-30 select-none">
+<div class="flex flex-col gap-space-md">
+<!-- App Header / Logo -->
+<div class="flex items-center gap-space-sm px-space-sm py-space-xs">
+<div class="w-8 h-8 rounded-xl bg-primary-accent flex items-center justify-center text-on-primary font-semibold shadow-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="polyline">polyline</span>
+</div>
+<div class="flex flex-col">
+<span class="font-page-title text-section-heading font-semibold text-primary-text tracking-tight leading-none">NEXUS</span>
+<span class="font-metadata text-metadata text-muted-text mt-0.5">Supply Chain OS v2.8.4</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-1 mt-2">
+<!-- Overview -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-secondary-text" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<!-- Risk Intelligence -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-secondary-text" data-icon="warning">warning</span>
+<span>Risk Intelligence</span>
+</a>
+<!-- Shipments -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-secondary-text" data-icon="local_shipping">local_shipping</span>
+<span>Shipments</span>
+</a>
+<!-- Ports & Routes -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-secondary-text" data-icon="anchor">anchor</span>
+<span>Ports &amp; Routes</span>
+</a>
+<!-- Alerts (Active semantic match for Notifications) -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-xl bg-soft-accent text-primary-accent font-button-input text-button-input transition-colors duration-150 ease-in-out" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary-accent fill-icon" data-icon="notifications_active" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<span>Alerts</span>
+</div>
+<span class="px-1.5 py-0.5 rounded-full bg-primary-accent text-on-primary text-[11px] font-semibold leading-none">8</span>
+</a>
+<!-- AI Analyst -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-secondary-text" data-icon="smart_toy">smart_toy</span>
+<span>AI Analyst</span>
+</a>
+<!-- Agent Center -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-secondary-text" data-icon="support_agent">support_agent</span>
+<span>Agent Center</span>
+</a>
+<!-- Analytics -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-secondary-text" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-secondary-text" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer Anchor -->
+<div class="flex flex-col gap-1 border-t border-border pt-space-sm">
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-secondary-text" data-icon="help">help</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-secondary-text" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+<!-- Enterprise Online Status Pill -->
+<div class="mt-2 px-space-md py-2 rounded-xl bg-subtle-surface border border-border flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span class="font-metadata text-metadata text-primary-text font-medium">Enterprise Online</span>
+</div>
+<span class="font-metadata text-[10px] text-muted-text uppercase tracking-wider font-semibold">99.98%</span>
+</div>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN APPLICATION CANVAS (Padded offset for fixed 224px sidebar)          -->
+<!-- ========================================================================= -->
+<div class="ml-[224px] flex-1 flex flex-col min-w-0">
+<!-- 1. TOP NAVBAR -->
+<header class="sticky top-0 z-20 h-16 bg-primary-surface border-b border-border px-space-xl flex items-center justify-between">
+<!-- Breadcrumb & Search -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5 font-metadata text-metadata">
+<span class="text-secondary-text font-medium">NEXUS</span>
+<span class="text-muted-text">/</span>
+<span class="text-primary-text font-semibold">Notification Center</span>
+</div>
+<div class="h-4 w-px bg-border"></div>
+<!-- Global Search Quick trigger -->
+<div class="relative w-64">
+<span class="absolute inset-y-0 left-0 pl-2.5 flex items-center pointer-events-none text-muted-text">
+<span class="material-symbols-outlined text-[16px]" data-icon="search">search</span>
+</span>
+<input class="w-full pl-8 pr-3 py-1.5 bg-app-background border border-border rounded-xl text-body font-body text-primary-text placeholder-muted-text focus:outline-none focus:border-primary-accent focus:bg-primary-surface transition-all" placeholder="Quick find (Cmd+K)..." type="text"/>
+</div>
+</div>
+<!-- Trailing Controls: Status, Actions, Profile -->
+<div class="flex items-center gap-3">
+<!-- Environment Badges -->
+<div class="hidden lg:flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-subtle-surface text-secondary-text font-metadata text-metadata border border-border">
+            Demo Environment
+          </span>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-success-bg text-success font-metadata text-metadata border border-border">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+            Live Feed / Demo Data
+          </span>
+<span class="text-muted-text font-metadata text-metadata flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+            Updated 4m ago
+          </span>
+</div>
+<div class="h-4 w-px bg-border"></div>
+<!-- Utility Icon Actions -->
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text transition-colors" title="Refresh">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+<button class="relative p-2 rounded-xl bg-soft-accent text-primary-accent hover:bg-soft-accent/80 transition-colors" title="Notifications">
+<span class="material-symbols-outlined fill-icon" data-icon="notifications" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-high-risk ring-2 ring-primary-surface"></span>
+</button>
+<button class="p-2 rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text transition-colors" title="Preferences">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</button>
+</div>
+<div class="h-4 w-px bg-border"></div>
+<!-- User Profile Pill -->
+<div class="flex items-center gap-2.5 pl-1">
+<img class="w-8 h-8 rounded-full border border-border object-cover" data-alt="Professional corporate headshot of Sarah Chen, Director of Global Logistics, dressed in a sleek charcoal tailored blazer against a bright, minimalist architectural office background with soft neutral tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8-Vh7cBEwePTY7S6aGSj-Lfv0pW-j54YHAOZC2jp0mLhJkGyEpBLk3837yD_M5UfjNrkhLSnGI73jp3N90zVcySbRf3NNCV1DcMQ4p_mKnMOeNTwGnHm2WzMehggU3jbjzEHnc0c-hp5kTjqXfJSbiPNIkLeE1dmX7i-D6kpIXY6_wlTJBdWQo1tnohuyuQ14oMdDSkVlyVLimWfdPy8DsQNHXDSiJ-mAIIbVQdyiigm0f0Qy1o8L"/>
+<div class="flex flex-col text-left">
+<span class="font-button-input text-[13px] text-primary-text leading-tight">Sarah Chen</span>
+<span class="font-metadata text-[11px] text-secondary-text leading-none">Director of Global Logistics</span>
+</div>
+</div>
+</div>
+</header>
+<!-- 2. WORKSPACE CANVAS CONTENT -->
+<main class="p-space-xl flex flex-col gap-space-lg flex-1">
+<!-- PAGE HEADER & PRIMARY ACTION TOOLBAR -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-3">
+<h1 class="font-page-title text-page-title text-primary-text font-semibold tracking-tight">Notification Center</h1>
+<span class="px-2.5 py-0.5 rounded-full bg-subtle-surface text-secondary-text border border-border font-metadata text-metadata font-medium">Demo Environment</span>
+</div>
+<p class="font-body text-body text-secondary-text mt-1">Review important updates across your shipments, routes, ports, alerts, and investigations.</p>
+</div>
+<div class="flex items-center gap-2.5 self-start md:self-auto">
+<button class="px-3.5 py-2 rounded-xl bg-primary-surface border border-border hover:border-strong-border text-primary-text font-button-input text-button-input flex items-center gap-1.5 transition-colors shadow-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary-text" data-icon="done_all">done_all</span>
+<span>Mark all as read</span>
+</button>
+<div class="relative">
+<button class="p-2 rounded-xl bg-primary-surface border border-border hover:border-strong-border text-secondary-text hover:text-primary-text transition-colors shadow-xs" title="More Options">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 3. NOTIFICATION SUMMARY METRIC CARDS -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Card 1 -->
+<div class="p-space-lg bg-primary-surface border border-border rounded-xl flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-metadata text-metadata text-secondary-text font-medium">All Notifications</span>
+<span class="material-symbols-outlined text-muted-text text-[20px]" data-icon="inbox">inbox</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="font-kpi-value text-kpi-value text-primary-text tracking-tight font-semibold">24</span>
+<span class="font-metadata text-metadata text-muted-text">total events</span>
+</div>
+<div class="mt-2 pt-2 border-t border-border/60">
+<span class="font-metadata text-metadata text-muted-text">Illustrative notification count</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-space-lg bg-primary-surface border border-border rounded-xl flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-metadata text-metadata text-secondary-text font-medium">Unread</span>
+<span class="px-2 py-0.5 rounded-full bg-soft-accent text-primary-accent font-metadata text-[11px] font-semibold">Active</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="font-kpi-value text-kpi-value text-primary-accent tracking-tight font-semibold">8</span>
+<span class="font-metadata text-metadata text-primary-accent/80 font-medium">items</span>
+</div>
+<div class="mt-2 pt-2 border-t border-border/60 flex items-center justify-between">
+<span class="font-metadata text-metadata text-secondary-text">Awaiting review</span>
+<span class="w-2 h-2 rounded-full bg-primary-accent"></span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-space-lg bg-primary-surface border border-border rounded-xl flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-metadata text-metadata text-secondary-text font-medium">High Priority</span>
+<span class="px-2 py-0.5 rounded-full bg-high-risk-bg text-high-risk font-metadata text-[11px] font-semibold border border-high-risk/20">Critical</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="font-kpi-value text-kpi-value text-high-risk tracking-tight font-semibold">4</span>
+<span class="font-metadata text-metadata text-high-risk/80 font-medium">disruptions</span>
+</div>
+<div class="mt-2 pt-2 border-t border-border/60">
+<span class="font-metadata text-metadata text-secondary-text">Requires attention</span>
+</div>
+</div>
+</section>
+<!-- 4. FILTER TOOLBAR -->
+<section class="p-3 bg-primary-surface border border-border rounded-xl flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+<!-- Search & Quick Tabs -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-1">
+<!-- Search Input -->
+<div class="relative min-w-[280px]">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-secondary-text">
+<span class="material-symbols-outlined text-[18px]" data-icon="search">search</span>
+</span>
+<input class="w-full pl-9 pr-3 py-2 bg-app-background border border-border rounded-xl text-body font-body text-primary-text placeholder-muted-text focus:outline-none focus:border-primary-accent focus:bg-primary-surface transition-all" placeholder="Search notifications or related entities..." type="text"/>
+</div>
+<!-- Tabs Segment -->
+<div class="flex items-center p-1 bg-subtle-surface rounded-xl border border-border text-metadata">
+<button class="px-3 py-1.5 rounded-lg bg-primary-surface text-primary-text font-button-input shadow-xs">
+              All (24)
+            </button>
+<button class="px-3 py-1.5 rounded-lg text-secondary-text hover:text-primary-text font-button-input transition-colors flex items-center gap-1.5">
+<span>Unread</span>
+<span class="px-1.5 py-0.2 bg-soft-accent text-primary-accent rounded-full text-[11px] font-semibold">8</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-secondary-text hover:text-primary-text font-button-input transition-colors">
+              Read (16)
+            </button>
+</div>
+</div>
+<!-- Filter Dropdowns -->
+<div class="flex flex-wrap items-center gap-2">
+<!-- Category dropdown -->
+<div class="relative">
+<button class="px-3 py-2 bg-primary-surface border border-border hover:border-strong-border rounded-xl font-metadata text-metadata text-primary-text flex items-center gap-2 transition-colors">
+<span class="text-secondary-text">Category:</span>
+<span class="font-medium">All Categories</span>
+<span class="material-symbols-outlined text-secondary-text text-[16px]" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<!-- Priority dropdown -->
+<div class="relative">
+<button class="px-3 py-2 bg-primary-surface border border-border hover:border-strong-border rounded-xl font-metadata text-metadata text-primary-text flex items-center gap-2 transition-colors">
+<span class="text-secondary-text">Priority:</span>
+<span class="font-medium">All Priorities</span>
+<span class="material-symbols-outlined text-secondary-text text-[16px]" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<!-- Date filter -->
+<div class="relative">
+<button class="px-3 py-2 bg-primary-surface border border-border hover:border-strong-border rounded-xl font-metadata text-metadata text-primary-text flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-secondary-text text-[16px]" data-icon="calendar_today">calendar_today</span>
+<span class="font-medium">Last 7 days</span>
+<span class="material-symbols-outlined text-secondary-text text-[16px]" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<div class="h-5 w-px bg-border mx-1"></div>
+<!-- Reset Filter -->
+<button class="px-2 py-1.5 text-secondary-text hover:text-primary-accent font-metadata text-metadata font-medium transition-colors">
+            Reset filters
+          </button>
+</div>
+</section>
+<!-- 5. MAIN WORKSPACE (65% Inbox List, 35% Detail Drawer) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- ========================================================= -->
+<!-- A. LEFT COLUMN: Recent Notifications Inbox (~65% / 8 cols)-->
+<!-- ========================================================= -->
+<div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-space-md">
+<div class="bg-primary-surface border border-border rounded-xl overflow-hidden shadow-xs">
+<!-- List Header -->
+<div class="px-space-lg py-space-md border-b border-border flex items-center justify-between bg-subtle-surface/50">
+<div class="flex items-center gap-2">
+<span class="font-section-heading text-section-heading text-primary-text font-semibold">Recent Notifications</span>
+<span class="px-2 py-0.5 rounded-full bg-border text-secondary-text font-metadata text-[11px] font-medium">Showing 8 illustrative notifications</span>
+</div>
+<div class="flex items-center gap-2 text-metadata text-secondary-text">
+<span class="material-symbols-outlined text-[16px]" data-icon="sort">sort</span>
+<span>Sorted by Newest</span>
+</div>
+</div>
+<div class="divide-y divide-border">
+<!-- GROUP: TODAY -->
+<div>
+<div class="px-space-lg py-2 bg-app-background/70 text-secondary-text font-metadata text-[11px] font-semibold uppercase tracking-wider flex items-center gap-2 border-b border-border/60">
+<span class="material-symbols-outlined text-[14px]" data-icon="today">today</span>
+<span>Today — 18 Oct 2026</span>
+</div>
+<!-- Notification 1: (Unread, High Priority, SELECTED) -->
+<div class="p-space-md lg:p-space-lg bg-soft-accent/30 border-l-4 border-l-primary-accent flex gap-space-md transition-colors cursor-pointer">
+<!-- Unread indicator & Icon -->
+<div class="flex flex-col items-center gap-2 pt-1 flex-shrink-0">
+<span class="w-2 h-2 rounded-full bg-primary-accent" title="Unread"></span>
+<div class="w-9 h-9 rounded-xl bg-high-risk-bg text-high-risk flex items-center justify-center border border-high-risk/20">
+<span class="material-symbols-outlined" data-icon="anchor">anchor</span>
+</div>
+</div>
+<!-- Content Area -->
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2 flex-wrap">
+<h4 class="font-button-input text-primary-text font-semibold">Port congestion detected at Shanghai Port</h4>
+<span class="px-2 py-0.5 rounded-full bg-high-risk-bg text-high-risk font-metadata text-[11px] font-medium border border-high-risk/20">High</span>
+<span class="px-2 py-0.5 rounded bg-subtle-surface text-secondary-text font-metadata text-[11px]">Ports</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text whitespace-nowrap">18 Oct 2026, 10:42</span>
+</div>
+<p class="font-body text-body text-secondary-text mt-1 text-sm leading-relaxed">
+                      Congestion conditions may affect shipments using the Asia–Europe corridor. Review the latest source data.
+                    </p>
+<!-- Related Entity & Quick Action -->
+<div class="mt-3 flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-border/40">
+<div class="flex items-center gap-1.5 text-secondary-text font-metadata text-metadata">
+<span class="text-muted-text">Related entity:</span>
+<span class="font-medium text-primary-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary-text" data-icon="domain">domain</span>
+                          Shanghai Port
+                        </span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 rounded-lg bg-primary-surface border border-border text-primary-accent hover:border-primary-accent font-button-input text-xs flex items-center gap-1 transition-colors">
+<span>View Port Details</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Notification 2: (Unread, High Priority) -->
+<div class="p-space-md lg:p-space-lg bg-primary-surface hover:bg-subtle-surface/50 border-l-4 border-l-transparent flex gap-space-md transition-colors cursor-pointer">
+<div class="flex flex-col items-center gap-2 pt-1 flex-shrink-0">
+<span class="w-2 h-2 rounded-full bg-primary-accent" title="Unread"></span>
+<div class="w-9 h-9 rounded-xl bg-high-risk-bg text-high-risk flex items-center justify-center border border-high-risk/20">
+<span class="material-symbols-outlined" data-icon="package_2">package_2</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2 flex-wrap">
+<h4 class="font-button-input text-primary-text font-medium">Shipment risk increased</h4>
+<span class="px-2 py-0.5 rounded-full bg-high-risk-bg text-high-risk font-metadata text-[11px] font-medium border border-high-risk/20">High</span>
+<span class="px-2 py-0.5 rounded bg-subtle-surface text-secondary-text font-metadata text-[11px]">Shipments</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text whitespace-nowrap">18 Oct 2026, 09:35</span>
+</div>
+<p class="font-body text-body text-secondary-text mt-1 text-sm leading-relaxed">
+                      SHP-10482 has been flagged for additional review due to illustrative port and schedule risk factors.
+                    </p>
+<div class="mt-3 flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-border/40">
+<div class="flex items-center gap-1.5 text-secondary-text font-metadata text-metadata">
+<span class="text-muted-text">Related entity:</span>
+<span class="font-medium text-primary-text font-mono text-xs">SHP-10482</span>
+</div>
+<button class="px-2.5 py-1 rounded-lg bg-primary-surface border border-border text-secondary-text hover:text-primary-accent hover:border-primary-accent font-button-input text-xs flex items-center gap-1 transition-colors">
+<span>View Shipment</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Notification 3: (Unread, Medium Priority) -->
+<div class="p-space-md lg:p-space-lg bg-primary-surface hover:bg-subtle-surface/50 border-l-4 border-l-transparent flex gap-space-md transition-colors cursor-pointer">
+<div class="flex flex-col items-center gap-2 pt-1 flex-shrink-0">
+<span class="w-2 h-2 rounded-full bg-primary-accent" title="Unread"></span>
+<div class="w-9 h-9 rounded-xl bg-medium-risk-bg text-medium-risk flex items-center justify-center border border-medium-risk/20">
+<span class="material-symbols-outlined" data-icon="alt_route">alt_route</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2 flex-wrap">
+<h4 class="font-button-input text-primary-text font-medium">Route assessment updated</h4>
+<span class="px-2 py-0.5 rounded-full bg-medium-risk-bg text-medium-risk font-metadata text-[11px] font-medium border border-medium-risk/20">Medium</span>
+<span class="px-2 py-0.5 rounded bg-subtle-surface text-secondary-text font-metadata text-[11px]">Routes</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text whitespace-nowrap">18 Oct 2026, 09:10</span>
+</div>
+<p class="font-body text-body text-secondary-text mt-1 text-sm leading-relaxed">
+                      The Asia–Europe corridor assessment contains revised illustrative risk findings.
+                    </p>
+<div class="mt-3 flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-border/40">
+<div class="flex items-center gap-1.5 text-secondary-text font-metadata text-metadata">
+<span class="text-muted-text">Related entity:</span>
+<span class="font-medium text-primary-text">Asia–Europe Corridor</span>
+</div>
+<button class="px-2.5 py-1 rounded-lg bg-primary-surface border border-border text-secondary-text hover:text-primary-accent hover:border-primary-accent font-button-input text-xs flex items-center gap-1 transition-colors">
+<span>View Route</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Notification 4: (Read, Medium Priority) -->
+<div class="p-space-md lg:p-space-lg bg-primary-surface hover:bg-subtle-surface/50 border-l-4 border-l-transparent flex gap-space-md transition-colors cursor-pointer opacity-90">
+<div class="flex flex-col items-center gap-2 pt-1 flex-shrink-0">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+<div class="w-9 h-9 rounded-xl bg-subtle-surface text-primary-accent flex items-center justify-center border border-border">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2 flex-wrap">
+<h4 class="font-button-input text-secondary-text">Investigation completed</h4>
+<span class="px-2 py-0.5 rounded-full bg-medium-risk-bg text-medium-risk font-metadata text-[11px] font-medium border border-medium-risk/20">Medium</span>
+<span class="px-2 py-0.5 rounded bg-subtle-surface text-secondary-text font-metadata text-[11px]">AI Analyst</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text whitespace-nowrap">18 Oct 2026, 10:49</span>
+</div>
+<p class="font-body text-body text-muted-text mt-1 text-sm leading-relaxed">
+                      The Shanghai Port Congestion Impact investigation is ready for review.
+                    </p>
+<div class="mt-3 flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-border/40">
+<div class="flex items-center gap-1.5 text-secondary-text font-metadata text-metadata">
+<span class="text-muted-text">Related entity:</span>
+<span class="font-medium text-secondary-text font-mono text-xs">INV-0018</span>
+</div>
+<button class="px-2.5 py-1 rounded-lg bg-primary-surface border border-border text-secondary-text hover:text-primary-accent hover:border-primary-accent font-button-input text-xs flex items-center gap-1 transition-colors">
+<span>Open Investigation</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- GROUP: YESTERDAY -->
+<div>
+<div class="px-space-lg py-2 bg-app-background/70 text-secondary-text font-metadata text-[11px] font-semibold uppercase tracking-wider flex items-center gap-2 border-b border-border/60">
+<span class="material-symbols-outlined text-[14px]" data-icon="history">history</span>
+<span>Yesterday — 17 Oct 2026</span>
+</div>
+<!-- Notification 5: (Unread, Medium Priority) -->
+<div class="p-space-md lg:p-space-lg bg-primary-surface hover:bg-subtle-surface/50 border-l-4 border-l-transparent flex gap-space-md transition-colors cursor-pointer">
+<div class="flex flex-col items-center gap-2 pt-1 flex-shrink-0">
+<span class="w-2 h-2 rounded-full bg-primary-accent" title="Unread"></span>
+<div class="w-9 h-9 rounded-xl bg-medium-risk-bg text-medium-risk flex items-center justify-center border border-medium-risk/20">
+<span class="material-symbols-outlined" data-icon="package_2">package_2</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2 flex-wrap">
+<h4 class="font-button-input text-primary-text font-medium">Carrier schedule requires verification</h4>
+<span class="px-2 py-0.5 rounded-full bg-medium-risk-bg text-medium-risk font-metadata text-[11px] font-medium border border-medium-risk/20">Medium</span>
+<span class="px-2 py-0.5 rounded bg-subtle-surface text-secondary-text font-metadata text-[11px]">Shipments</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text whitespace-nowrap">17 Oct 2026, 16:20</span>
+</div>
+<p class="font-body text-body text-secondary-text mt-1 text-sm leading-relaxed">
+                      An illustrative schedule update may affect shipment planning. Verify the current carrier information.
+                    </p>
+<div class="mt-3 flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-border/40">
+<div class="flex items-center gap-1.5 text-secondary-text font-metadata text-metadata">
+<span class="text-muted-text">Related entity:</span>
+<span class="font-medium text-primary-text font-mono text-xs">SHP-10563</span>
+</div>
+<button class="px-2.5 py-1 rounded-lg bg-primary-surface border border-border text-secondary-text hover:text-primary-accent hover:border-primary-accent font-button-input text-xs flex items-center gap-1 transition-colors">
+<span>Review Shipment</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Notification 6: (Read, Low Priority) -->
+<div class="p-space-md lg:p-space-lg bg-primary-surface hover:bg-subtle-surface/50 border-l-4 border-l-transparent flex gap-space-md transition-colors cursor-pointer opacity-90">
+<div class="flex flex-col items-center gap-2 pt-1 flex-shrink-0">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+<div class="w-9 h-9 rounded-xl bg-subtle-surface text-secondary-text flex items-center justify-center border border-border">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2 flex-wrap">
+<h4 class="font-button-input text-secondary-text">Investigation template available</h4>
+<span class="px-2 py-0.5 rounded-full bg-subtle-surface text-secondary-text font-metadata text-[11px] font-medium border border-border">Low</span>
+<span class="px-2 py-0.5 rounded bg-subtle-surface text-secondary-text font-metadata text-[11px]">AI Analyst</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text whitespace-nowrap">17 Oct 2026, 14:15</span>
+</div>
+<p class="font-body text-body text-muted-text mt-1 text-sm leading-relaxed">
+                      Port Congestion Assessment is available in the AI Analyst template library.
+                    </p>
+<div class="mt-3 flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-border/40">
+<div class="flex items-center gap-1.5 text-secondary-text font-metadata text-metadata">
+<span class="text-muted-text">Related entity:</span>
+<span class="font-medium text-secondary-text">Port Congestion Assessment</span>
+</div>
+<button class="px-2.5 py-1 rounded-lg bg-primary-surface border border-border text-secondary-text hover:text-primary-accent hover:border-primary-accent font-button-input text-xs flex items-center gap-1 transition-colors">
+<span>View Template</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Notification 7: (Unread, Medium Priority) -->
+<div class="p-space-md lg:p-space-lg bg-primary-surface hover:bg-subtle-surface/50 border-l-4 border-l-transparent flex gap-space-md transition-colors cursor-pointer">
+<div class="flex flex-col items-center gap-2 pt-1 flex-shrink-0">
+<span class="w-2 h-2 rounded-full bg-primary-accent" title="Unread"></span>
+<div class="w-9 h-9 rounded-xl bg-medium-risk-bg text-medium-risk flex items-center justify-center border border-medium-risk/20">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2 flex-wrap">
+<h4 class="font-button-input text-primary-text font-medium">Agent review required</h4>
+<span class="px-2 py-0.5 rounded-full bg-medium-risk-bg text-medium-risk font-metadata text-[11px] font-medium border border-medium-risk/20">Medium</span>
+<span class="px-2 py-0.5 rounded bg-subtle-surface text-secondary-text font-metadata text-[11px]">Agents</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text whitespace-nowrap">17 Oct 2026, 11:30</span>
+</div>
+<p class="font-body text-body text-secondary-text mt-1 text-sm leading-relaxed">
+                      An illustrative route recommendation is awaiting human review.
+                    </p>
+<div class="mt-3 flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-border/40">
+<div class="flex items-center gap-1.5 text-secondary-text font-metadata text-metadata">
+<span class="text-muted-text">Related entity:</span>
+<span class="font-medium text-primary-text">Route Optimization Advisor</span>
+</div>
+<button class="px-2.5 py-1 rounded-lg bg-primary-surface border border-border text-secondary-text hover:text-primary-accent hover:border-primary-accent font-button-input text-xs flex items-center gap-1 transition-colors">
+<span>Open Agent Center</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- GROUP: EARLIER -->
+<div>
+<div class="px-space-lg py-2 bg-app-background/70 text-secondary-text font-metadata text-[11px] font-semibold uppercase tracking-wider flex items-center gap-2 border-b border-border/60">
+<span class="material-symbols-outlined text-[14px]" data-icon="date_range">date_range</span>
+<span>Earlier — 16 Oct 2026</span>
+</div>
+<!-- Notification 8: (Read, Low Priority) -->
+<div class="p-space-md lg:p-space-lg bg-primary-surface hover:bg-subtle-surface/50 border-l-4 border-l-transparent flex gap-space-md transition-colors cursor-pointer opacity-90">
+<div class="flex flex-col items-center gap-2 pt-1 flex-shrink-0">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+<div class="w-9 h-9 rounded-xl bg-subtle-surface text-secondary-text flex items-center justify-center border border-border">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2 flex-wrap">
+<h4 class="font-button-input text-secondary-text">Data source setup incomplete</h4>
+<span class="px-2 py-0.5 rounded-full bg-subtle-surface text-secondary-text font-metadata text-[11px] font-medium border border-border">Low</span>
+<span class="px-2 py-0.5 rounded bg-subtle-surface text-secondary-text font-metadata text-[11px]">System</span>
+</div>
+<span class="font-metadata text-metadata text-muted-text whitespace-nowrap">16 Oct 2026, 15:45</span>
+</div>
+<p class="font-body text-body text-muted-text mt-1 text-sm leading-relaxed">
+                      Shipment Management System is listed but is not connected in this demo workspace.
+                    </p>
+<div class="mt-3 flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-border/40">
+<div class="flex items-center gap-1.5 text-secondary-text font-metadata text-metadata">
+<span class="text-muted-text">Related entity:</span>
+<span class="font-medium text-secondary-text">Shipment Management System</span>
+</div>
+<button class="px-2.5 py-1 rounded-lg bg-primary-surface border border-border text-secondary-text hover:text-primary-accent hover:border-primary-accent font-button-input text-xs flex items-center gap-1 transition-colors">
+<span>View Data Sources</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Footer Shortcut Panel -->
+<div class="p-space-lg bg-primary-surface border border-border rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<div class="p-2.5 rounded-xl bg-soft-accent text-primary-accent">
+<span class="material-symbols-outlined text-[22px]" data-icon="notifications_paused">notifications_paused</span>
+</div>
+<div>
+<h4 class="font-section-heading text-section-heading text-primary-text font-semibold">Manage Notification Preferences</h4>
+<p class="font-body text-body text-secondary-text text-sm mt-0.5">Choose which categories of updates you want to receive and how they should be delivered.</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl bg-subtle-surface hover:bg-soft-accent text-primary-accent border border-border font-button-input text-button-input transition-colors whitespace-nowrap" href="#">
+<span>Open Settings</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- ========================================================= -->
+<!-- B. RIGHT COLUMN: Notification Detail Drawer (~35% / 4 cols)-->
+<!-- ========================================================= -->
+<div class="lg:col-span-5 xl:col-span-4 sticky top-20 flex flex-col gap-space-md">
+<div class="bg-primary-surface border border-border rounded-xl overflow-hidden shadow-xs flex flex-col">
+<!-- Drawer Header -->
+<div class="p-space-lg border-b border-border bg-subtle-surface/30">
+<div class="flex items-center justify-between mb-3">
+<span class="font-metadata text-metadata text-muted-text uppercase font-semibold tracking-wider">Drawer Context</span>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-secondary-text hover:bg-subtle-surface hover:text-primary-text transition-colors" title="Mark as Read">
+<span class="material-symbols-outlined text-[18px]" data-icon="mark_email_read">mark_email_read</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary-text hover:bg-subtle-surface hover:text-primary-text transition-colors" title="Close Drawer">
+<span class="material-symbols-outlined text-[18px]" data-icon="close">close</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-2 flex-wrap mb-2">
+<span class="px-2 py-0.5 rounded-full bg-high-risk-bg text-high-risk font-metadata text-[11px] font-semibold border border-high-risk/20">High Priority</span>
+<span class="px-2 py-0.5 rounded-full bg-subtle-surface text-secondary-text font-metadata text-[11px] font-medium border border-border">Ports</span>
+<span class="px-2 py-0.5 rounded-full bg-soft-accent text-primary-accent font-metadata text-[11px] font-medium">Unread</span>
+</div>
+<h3 class="font-section-heading text-section-heading text-primary-text font-semibold">Port congestion detected at Shanghai Port</h3>
+<div class="flex items-center gap-2 mt-2 font-metadata text-metadata text-secondary-text">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+<span>Created: 18 Oct 2026, 10:42</span>
+</div>
+</div>
+<!-- Drawer Body -->
+<div class="p-space-lg flex flex-col gap-space-md">
+<!-- Target Entity Summary -->
+<div class="p-3 bg-subtle-surface border border-border rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-primary-surface border border-border flex items-center justify-center text-primary-accent">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+</div>
+<div>
+<span class="font-metadata text-[11px] text-muted-text block leading-none">Target Entity</span>
+<span class="font-button-input text-primary-text font-semibold text-sm">Shanghai Port</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-high-risk-bg text-high-risk font-metadata text-[11px] font-medium">Risk Score: 84/100</span>
+</div>
+<!-- Summary Callout -->
+<div class="p-space-md bg-medium-risk-bg/30 border border-medium-risk/20 rounded-xl">
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-medium-risk text-[18px] flex-shrink-0 mt-0.5" data-icon="info">info</span>
+<p class="font-body text-body text-primary-text text-xs leading-relaxed">
+                    An illustrative congestion assessment identifies Shanghai Port as an area that may require closer review. Validate current port conditions before making operational decisions.
+                  </p>
+</div>
+</div>
+<!-- Related Context Breakdown Cards -->
+<div>
+<h4 class="font-metadata text-metadata text-muted-text uppercase font-semibold tracking-wider mb-2">Context Breakdown</h4>
+<div class="grid grid-cols-1 gap-2">
+<div class="p-3 bg-primary-surface border border-border rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-2 text-secondary-text font-metadata text-metadata">
+<span class="material-symbols-outlined text-[16px] text-muted-text" data-icon="inventory_2">inventory_2</span>
+<span>Potentially affected shipments</span>
+</div>
+<span class="font-button-input text-primary-text font-semibold text-sm">32 (illustrative)</span>
+</div>
+<div class="p-3 bg-primary-surface border border-border rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-2 text-secondary-text font-metadata text-metadata">
+<span class="material-symbols-outlined text-[16px] text-muted-text" data-icon="alt_route">alt_route</span>
+<span>Related corridor</span>
+</div>
+<span class="font-button-input text-primary-text font-semibold text-sm">Asia–Europe</span>
+</div>
+<div class="p-3 bg-primary-surface border border-border rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-2 text-secondary-text font-metadata text-metadata">
+<span class="material-symbols-outlined text-[16px] text-muted-text" data-icon="timer">timer</span>
+<span>Estimated waiting time</span>
+</div>
+<span class="font-button-input text-high-risk font-semibold text-sm">18 hours (illustrative)</span>
+</div>
+</div>
+</div>
+<!-- Recommended Next Steps -->
+<div>
+<h4 class="font-metadata text-metadata text-muted-text uppercase font-semibold tracking-wider mb-2">Recommended Next Steps</h4>
+<ol class="space-y-2 text-xs font-body text-secondary-text">
+<li class="flex items-start gap-2 p-2 rounded-lg bg-app-background border border-border/70">
+<span class="w-4 h-4 rounded-full bg-soft-accent text-primary-accent font-semibold flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5">1</span>
+<span>Verify current port conditions and berth availability.</span>
+</li>
+<li class="flex items-start gap-2 p-2 rounded-lg bg-app-background border border-border/70">
+<span class="w-4 h-4 rounded-full bg-soft-accent text-primary-accent font-semibold flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5">2</span>
+<span>Review potentially affected shipments scheduled within 72 hours.</span>
+</li>
+<li class="flex items-start gap-2 p-2 rounded-lg bg-app-background border border-border/70">
+<span class="w-4 h-4 rounded-full bg-soft-accent text-primary-accent font-semibold flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5">3</span>
+<span>Open the Asia–Europe corridor assessment for alternate routing.</span>
+</li>
+</ol>
+</div>
+<!-- Drawer Primary Actions -->
+<div class="pt-2 flex flex-col gap-2">
+<button class="w-full py-2.5 px-4 rounded-xl bg-primary-accent hover:bg-primary text-on-primary font-button-input text-button-input flex items-center justify-center gap-2 transition-colors shadow-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="open_in_new">open_in_new</span>
+<span>View Port Details</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="flex-1 py-2 px-3 rounded-xl bg-primary-surface border border-border hover:border-strong-border text-primary-text font-button-input text-xs flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-secondary-text" data-icon="check_circle">check_circle</span>
+<span>Mark as Read</span>
+</button>
+<button class="py-2 px-3 rounded-xl bg-primary-surface border border-border hover:border-strong-border text-secondary-text hover:text-primary-text font-button-input text-xs transition-colors">
+<span>Close Drawer</span>
+</button>
+</div>
+</div>
+<!-- Footer Note -->
+<div class="pt-2 border-t border-border">
+<p class="font-metadata text-[11px] text-muted-text leading-relaxed">
+                  All notifications and supporting metrics represent illustrative demo data. Connect verified data feeds before taking operational decisions.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

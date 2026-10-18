@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign in — NEXUS Supply Chain OS</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#2248d1",
+            "success-bg": "#E8F6F0",
+            "secondary-fixed": "#d9e3fb",
+            "medium-risk-bg": "#FFF4D6",
+            "error-container": "#ffdad6",
+            "surface": "#fbf8ff",
+            "inverse-primary": "#b9c3ff",
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff",
+            "subtle-surface": "#F3F5F8",
+            "secondary-fixed-dim": "#bdc7de",
+            "error": "#ba1a1a",
+            "on-surface": "#1a1b23",
+            "muted-text": "#8A93A3",
+            "strong-border": "#D5DBE5",
+            "primary-surface": "#FFFFFF",
+            "tertiary-fixed-dim": "#ffb690",
+            "border": "#E6EAF0",
+            "outline-variant": "#c4c5d7",
+            "high-risk-bg": "#FCECEC",
+            "inverse-on-surface": "#f1effb",
+            "on-tertiary-container": "#fff2ed",
+            "surface-container": "#eeedf8",
+            "on-error-container": "#93000a",
+            "on-error": "#ffffff",
+            "on-primary-fixed-variant": "#0035be",
+            "surface-container-low": "#f4f2fe",
+            "outline": "#747686",
+            "success": "#268568",
+            "surface-container-highest": "#e2e1ed",
+            "primary-fixed-dim": "#b9c3ff",
+            "on-background": "#1a1b23",
+            "tertiary-container": "#b95000",
+            "tertiary-fixed": "#ffdbcb",
+            "primary-container": "#4263eb",
+            "high-risk": "#D94F4F",
+            "medium-risk": "#B7791F",
+            "surface-bright": "#fbf8ff",
+            "primary-accent": "#4263EB",
+            "on-surface-variant": "#444654",
+            "secondary-text": "#667085",
+            "on-tertiary-fixed": "#341100",
+            "on-secondary-fixed-variant": "#3d475a",
+            "on-tertiary-fixed-variant": "#783100",
+            "primary-text": "#172033",
+            "on-secondary-fixed": "#111c2d",
+            "surface-tint": "#2c50d9",
+            "inverse-surface": "#2f3039",
+            "on-primary-fixed": "#001356",
+            "on-secondary": "#ffffff",
+            "background": "#fbf8ff",
+            "on-tertiary": "#ffffff",
+            "app-background": "#F8F9FB",
+            "surface-variant": "#e2e1ed",
+            "primary-fixed": "#dde1ff",
+            "surface-dim": "#dad9e4",
+            "secondary-container": "#d6e0f8",
+            "tertiary": "#923e00",
+            "secondary": "#555f73",
+            "on-primary-container": "#f5f3ff",
+            "soft-accent": "#EEF2FF",
+            "on-secondary-container": "#596377",
+            "surface-container-high": "#e8e7f3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xl": "32px",
+            "space-lg": "24px",
+            "space-md": "16px",
+            "space-sm": "8px",
+            "space-xs": "4px",
+            "margin": "32px",
+            "gutter": "20px"
+          },
+          "fontFamily": {
+            "section-heading": ["Inter"],
+            "kpi-value": ["Inter"],
+            "body": ["Inter"],
+            "button-input": ["Inter"],
+            "table-text": ["Inter"],
+            "page-title": ["Inter"],
+            "metadata": ["Inter"],
+            "table-text-medium": ["Inter"]
+          },
+          "fontSize": {
+            "section-heading": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "kpi-value": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "button-input": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "table-text": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "page-title": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "metadata": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "table-text-medium": ["13px", { "lineHeight": "18px", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-app-background text-primary-text min-h-full flex flex-col justify-between font-body antialiased selection:bg-soft-accent selection:text-primary-accent">
+<!-- Top bar minimal utility -->
+<header class="w-full px-space-xl py-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-lg bg-primary-accent flex items-center justify-center text-primary-surface">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+</div>
+<span class="font-section-heading text-section-heading text-primary-text tracking-tight">NEXUS</span>
+<span class="text-secondary-text font-metadata text-metadata border-l border-border pl-space-sm ml-space-xs">Supply Chain OS</span>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-soft-accent text-primary-accent font-metadata text-metadata">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span>Operational v2.8.4</span>
+</div>
+<a class="font-button-input text-button-input text-secondary-text hover:text-primary-text transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span>Back to home</span>
+</a>
+</div>
+</header>
+<!-- Central Canvas -->
+<main class="w-full flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8">
+<div class="w-full max-w-5xl bg-primary-surface border border-border rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.02)] overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[640px]">
+<!-- Left Zone (~45%): Context & Brand Authority -->
+<section class="lg:col-span-5 bg-subtle-surface border-b lg:border-b-0 lg:border-r border-border p-space-xl flex flex-col justify-between relative overflow-hidden">
+<div>
+<!-- Logo & Badges -->
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-xl bg-primary-accent flex items-center justify-center text-primary-surface shadow-sm">
+<span class="material-symbols-outlined text-[22px]">hub</span>
+</div>
+<div>
+<span class="font-section-heading text-section-heading font-semibold text-primary-text block leading-tight">NEXUS</span>
+<span class="font-metadata text-metadata text-muted-text">Supply Chain OS v2.8.4</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-primary-surface border border-border font-metadata text-metadata text-secondary-text">
+              Demo Environment
+            </span>
+</div>
+<!-- Headline & Value Pitch -->
+<div class="space-y-3">
+<h1 class="font-page-title text-page-title text-primary-text tracking-tight">
+              Welcome back to a clearer view.
+            </h1>
+<p class="font-body text-body text-secondary-text leading-relaxed">
+              Sign in to review shipment risk, investigate disruptions, and understand what is happening across your supply network.
+            </p>
+</div>
+</div>
+<!-- Middle Visual: Restrained SVG Network Route Preview -->
+<div class="my-8 bg-primary-surface border border-border rounded-xl p-4">
+<div class="flex items-center justify-between mb-3 pb-2 border-b border-border">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-accent text-[18px]">public</span>
+<span class="font-table-text-medium text-table-text-medium text-primary-text">Active Corridors</span>
+</div>
+<span class="font-metadata text-metadata text-success flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span> Live Feeds
+            </span>
+</div>
+<!-- SVG Corridor Topology -->
+<div class="relative w-full h-36 bg-subtle-surface rounded-lg overflow-hidden flex items-center justify-center border border-border">
+<svg class="w-full h-full" fill="none" viewbox="0 0 360 144" xmlns="http://www.w3.org/2000/svg">
+<!-- Grid background subtle pattern -->
+<defs>
+<pattern height="16" id="grid-map" patternunits="userSpaceOnUse" width="16">
+<path d="M 16 0 L 0 0 0 16" fill="none" stroke="#E6EAF0" stroke-width="0.75"></path>
+</pattern>
+<lineargradient id="route-grad-1" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#4263EB" stop-opacity="0.3"></stop>
+<stop offset="50%" stop-color="#4263EB" stop-opacity="1"></stop>
+<stop offset="100%" stop-color="#4263EB" stop-opacity="0.3"></stop>
+</lineargradient>
+<lineargradient id="route-grad-2" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#D94F4F" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#4263EB" stop-opacity="0.4"></stop>
+</lineargradient>
+</defs>
+<rect fill="url(#grid-map)" height="100%" width="100%"></rect>
+<!-- Schematic Landform contours (abstract minimal lines) -->
+<path d="M20 40 Q 60 20, 110 50 T 170 30" fill="none" stroke="#D5DBE5" stroke-dasharray="3 3" stroke-width="1.2"></path>
+<path d="M190 70 Q 240 60, 290 85 T 340 60" fill="none" stroke="#D5DBE5" stroke-dasharray="3 3" stroke-width="1.2"></path>
+<!-- Route 1: Shanghai (65, 80) -> Rotterdam (240, 45) -->
+<path d="M 65 80 C 130 30, 180 30, 240 45" fill="none" stroke="url(#route-grad-1)" stroke-dasharray="4 3" stroke-width="2"></path>
+<!-- Route 2: Singapore (110, 105) -> Los Angeles (310, 75) -->
+<path d="M 110 105 C 180 130, 260 115, 310 75" fill="none" stroke="url(#route-grad-2)" stroke-width="2"></path>
+<!-- Port Nodes -->
+<!-- Shanghai -->
+<circle cx="65" cy="80" fill="#4263EB" r="4"></circle>
+<circle cx="65" cy="80" r="7" stroke="#4263EB" stroke-opacity="0.4" stroke-width="1"></circle>
+<text fill="#172033" font-family="Inter" font-size="9" font-weight="500" x="50" y="98">Shanghai</text>
+<!-- Rotterdam -->
+<circle cx="240" cy="45" fill="#4263EB" r="4"></circle>
+<circle cx="240" cy="45" r="7" stroke="#4263EB" stroke-opacity="0.4" stroke-width="1"></circle>
+<text fill="#172033" font-family="Inter" font-size="9" font-weight="500" x="225" y="35">Rotterdam</text>
+<!-- Singapore -->
+<circle cx="110" cy="105" fill="#B7791F" r="3.5"></circle>
+<text fill="#667085" font-family="Inter" font-size="8.5" x="118" y="115">Singapore</text>
+<!-- LA Node with alert pin -->
+<circle cx="310" cy="75" fill="#D94F4F" r="4"></circle>
+<circle class="animate-ping" cx="310" cy="75" r="8" stroke="#D94F4F" stroke-opacity="0.3" stroke-width="1"></circle>
+<text fill="#D94F4F" font-family="Inter" font-size="9" font-weight="600" x="290" y="95">Port of LA</text>
+</svg>
+</div>
+<div class="mt-3 flex items-center justify-between text-secondary-text">
+<p class="font-metadata text-metadata text-secondary-text">
+              Supply-chain insights in one focused workspace.
+            </p>
+<span class="font-metadata text-metadata text-primary-accent font-medium flex items-center gap-0.5">
+              4 critical alerts
+              <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</span>
+</div>
+</div>
+<!-- Isolation Session Trust Card -->
+<div class="flex items-center justify-between bg-primary-surface border border-border rounded-xl px-4 py-3">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary-accent text-[20px]">verified_user</span>
+<div>
+<span class="font-table-text-medium text-table-text-medium text-primary-text block">Isolated Prototype Session</span>
+<span class="font-metadata text-metadata text-muted-text">Zero data persistence across browser resets</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-muted-text text-[18px]">lock</span>
+</div>
+</section>
+<!-- Right Zone (~55%): Authentication Card -->
+<section class="lg:col-span-7 bg-primary-surface p-space-xl lg:p-12 flex flex-col justify-between">
+<div class="max-w-md w-full mx-auto">
+<!-- Card Header -->
+<div class="mb-8">
+<h2 class="font-page-title text-[24px] leading-8 font-semibold text-primary-text tracking-tight mb-2">
+              Sign in to NEXUS
+            </h2>
+<p class="font-body text-body text-secondary-text">
+              Enter your account details to continue.
+            </p>
+</div>
+<!-- Interactive Error Alert Container (Controlled via JS) -->
+<div class="hidden mb-6 p-space-md rounded-xl bg-high-risk-bg border border-high-risk/30 flex items-start gap-3" id="authErrorAlert">
+<span class="material-symbols-outlined text-high-risk text-[20px] mt-0.5 shrink-0">error</span>
+<div class="flex-1">
+<h4 class="font-button-input text-button-input text-high-risk font-semibold">Authentication failed</h4>
+<p class="font-table-text text-table-text text-primary-text mt-0.5" id="authErrorMessage">
+                The corporate credentials entered do not match our active identity provider records.
+              </p>
+</div>
+<button class="text-secondary-text hover:text-primary-text p-0.5" onclick="dismissError()" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<!-- Sign-in Form -->
+<form class="space-y-space-md" id="loginForm" onsubmit="handleLogin(event)">
+<!-- Work Email Field -->
+<div class="space-y-1.5">
+<label class="block font-button-input text-button-input text-primary-text" for="workEmail">
+                Work email
+              </label>
+<div class="relative rounded-xl border border-border focus-within:border-primary-accent focus-within:ring-1 focus-within:ring-primary-accent bg-primary-surface transition-all">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-muted-text">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+</div>
+<input class="block w-full pl-10 pr-3.5 py-2.5 bg-transparent border-0 font-body text-body text-primary-text placeholder:text-muted-text focus:ring-0 sm:leading-5" id="workEmail" name="email" placeholder="name@company.com" required="" type="email" value="analyst@global-logistics.corp"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-1.5">
+<label class="block font-button-input text-button-input text-primary-text" for="passwordInput">
+                Password
+              </label>
+<div class="relative rounded-xl border border-border focus-within:border-primary-accent focus-within:ring-1 focus-within:ring-primary-accent bg-primary-surface transition-all">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-muted-text">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</div>
+<input class="block w-full pl-10 pr-10 py-2.5 bg-transparent border-0 font-body text-body text-primary-text placeholder:text-muted-text focus:ring-0 sm:leading-5" id="passwordInput" name="password" placeholder="Enter your password" required="" type="password" value="••••••••••••"/>
+<button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-secondary-text hover:text-primary-text focus:outline-none" id="togglePasswordBtn" onclick="togglePasswordVisibility()" type="button">
+<span class="material-symbols-outlined text-[18px]" id="passwordEyeIcon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Utility options row -->
+<div class="flex items-center justify-between pt-1">
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded text-primary-accent border-border focus:ring-primary-accent focus:ring-offset-0 transition-colors" id="rememberMe" name="rememberMe" type="checkbox"/>
+<span class="font-body text-body text-secondary-text">Remember me</span>
+</label>
+<button class="font-button-input text-button-input text-primary-accent hover:underline focus:outline-none" onclick="openModal('forgotModal')" type="button">
+                Forgot password?
+              </button>
+</div>
+<!-- Submit Button -->
+<button class="w-full mt-2 py-2.5 px-4 rounded-xl bg-primary-accent hover:bg-primary text-primary-surface font-button-input text-button-input flex items-center justify-center gap-2 transition-all duration-150 ease-in-out shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-accent focus:ring-offset-2" id="signInBtn" type="submit">
+<span>Sign in</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="relative my-8">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-border"></div>
+</div>
+<div class="relative flex justify-center font-metadata text-metadata">
+<span class="bg-primary-surface px-3 text-muted-text uppercase tracking-wider">Enterprise single sign-on</span>
+</div>
+</div>
+<!-- Secondary SSO Quick Switch -->
+<div class="grid grid-cols-2 gap-3 mb-6">
+<button class="flex items-center justify-center gap-2 py-2 px-3 border border-border hover:bg-subtle-surface rounded-xl font-button-input text-button-input text-primary-text transition-colors" onclick="triggerSSO('Okta')" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary-accent">shield</span>
+<span>Okta SSO</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-2 px-3 border border-border hover:bg-subtle-surface rounded-xl font-button-input text-button-input text-primary-text transition-colors" onclick="triggerSSO('Azure AD')" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary-accent">cloud_sync</span>
+<span>Azure AD</span>
+</button>
+</div>
+<!-- New to NEXUS -->
+<div class="text-center pt-2">
+<p class="font-body text-body text-secondary-text">
+              New to NEXUS? 
+              <button class="text-primary-accent font-button-input text-button-input hover:underline ml-1 focus:outline-none" onclick="openModal('accessModal')" type="button">
+                Request access
+              </button>
+</p>
+</div>
+</div>
+<!-- Security posture bottom note -->
+<div class="mt-8 pt-4 border-t border-border flex items-center justify-between text-muted-text font-metadata text-metadata">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+            SOC2 Type II Certified
+          </span>
+<span>256-bit TLS Encryption</span>
+</div>
+</section>
+</div>
+</main>
+<!-- Global Footer -->
+<footer class="w-full px-space-xl py-space-md border-t border-border bg-primary-surface flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-space-lg text-secondary-text font-metadata text-metadata">
+<span class="text-primary-text font-medium">© 2026 NEXUS. Supply Chain OS.</span>
+<a class="hover:text-primary-text transition-colors" href="#">Documentation</a>
+<a class="hover:text-primary-text transition-colors" href="#">System Status</a>
+<a class="hover:text-primary-text transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary-text transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="flex items-center gap-space-sm text-secondary-text font-metadata text-metadata">
+<span class="material-symbols-outlined text-[16px] text-muted-text">contact_support</span>
+<span>Need urgent clearance?</span>
+<a class="text-primary-accent hover:underline font-medium" href="mailto:ops@nexus-supply.io">Contact Operations Support</a>
+</div>
+</footer>
+<!-- Modal 1: Forgot Password Overlay -->
+<div class="fixed inset-0 z-50 hidden bg-primary-text/40 backdrop-blur-[2px] flex items-center justify-center p-4" id="forgotModal">
+<div class="bg-primary-surface border border-border rounded-xl w-full max-w-md p-6 shadow-xl relative animate-in fade-in zoom-in-95 duration-150">
+<div class="flex items-center justify-between pb-3 border-b border-border mb-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-soft-accent flex items-center justify-center text-primary-accent">
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+</div>
+<h3 class="font-section-heading text-section-heading text-primary-text">Reset Password</h3>
+</div>
+<button class="text-muted-text hover:text-primary-text p-1" onclick="closeModal('forgotModal')" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<p class="font-body text-body text-secondary-text mb-4">
+        Enter your verified work email address. We will transmit an encrypted recovery token authorized by your organization’s identity security manager.
+      </p>
+<form class="space-y-4" onsubmit="handleForgotSubmit(event)">
+<div class="space-y-1.5">
+<label class="block font-button-input text-button-input text-primary-text" for="resetEmail">Work email</label>
+<input class="block w-full px-3.5 py-2.5 rounded-xl border border-border font-body text-body text-primary-text focus:border-primary-accent focus:ring-1 focus:ring-primary-accent" id="resetEmail" placeholder="name@company.com" required="" type="email"/>
+</div>
+<div class="flex items-center justify-end gap-3 pt-2">
+<button class="px-4 py-2 border border-border rounded-xl font-button-input text-button-input text-secondary-text hover:bg-subtle-surface" onclick="closeModal('forgotModal')" type="button">
+            Cancel
+          </button>
+<button class="px-4 py-2 rounded-xl bg-primary-accent hover:bg-primary text-primary-surface font-button-input text-button-input transition-colors" type="submit">
+            Send recovery link
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Modal 2: Request Access Drawer / Overlay -->
+<div class="fixed inset-0 z-50 hidden bg-primary-text/40 backdrop-blur-[2px] flex items-center justify-center p-4" id="accessModal">
+<div class="bg-primary-surface border border-border rounded-xl w-full max-w-lg p-6 shadow-xl relative animate-in fade-in zoom-in-95 duration-150">
+<div class="flex items-center justify-between pb-3 border-b border-border mb-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-soft-accent flex items-center justify-center text-primary-accent">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</div>
+<h3 class="font-section-heading text-section-heading text-primary-text">Request Enterprise Access</h3>
+</div>
+<button class="text-muted-text hover:text-primary-text p-1" onclick="closeModal('accessModal')" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<p class="font-body text-body text-secondary-text mb-4">
+        NEXUS is an enterprise-grade operating system restricted to certified freight forwarders, cargo owners, and port authorities.
+      </p>
+<form class="space-y-4" onsubmit="handleAccessSubmit(event)">
+<div class="grid grid-cols-2 gap-3">
+<div class="space-y-1">
+<label class="block font-metadata text-metadata text-primary-text">First name</label>
+<input class="block w-full px-3 py-2 rounded-xl border border-border font-body text-body text-primary-text focus:border-primary-accent focus:ring-1 focus:ring-primary-accent" placeholder="Elena" required="" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="block font-metadata text-metadata text-primary-text">Last name</label>
+<input class="block w-full px-3 py-2 rounded-xl border border-border font-body text-body text-primary-text focus:border-primary-accent focus:ring-1 focus:ring-primary-accent" placeholder="Vance" required="" type="text"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="block font-metadata text-metadata text-primary-text">Corporate email</label>
+<input class="block w-full px-3 py-2 rounded-xl border border-border font-body text-body text-primary-text focus:border-primary-accent focus:ring-1 focus:ring-primary-accent" placeholder="e.vance@maersk-alliance.com" required="" type="email"/>
+</div>
+<div class="space-y-1">
+<label class="block font-metadata text-metadata text-primary-text">Primary fleet / network focus</label>
+<select class="block w-full px-3 py-2 rounded-xl border border-border font-body text-body text-primary-text focus:border-primary-accent focus:ring-1 focus:ring-primary-accent bg-primary-surface">
+<option>Trans-Pacific Maritime Logistics</option>
+<option>Asia-Europe Multimodal Freight</option>
+<option>North American Rail &amp; Intermodal</option>
+<option>Air Cargo Express Carrier</option>
+<option>Global Cold-Chain Pharma Transport</option>
+</select>
+</div>
+<div class="p-3 bg-subtle-surface border border-border rounded-xl flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-accent text-[18px]">verified</span>
+<span class="font-metadata text-metadata text-secondary-text">Fast-track verification active for FMC-registered NVOCC licenses.</span>
+</div>
+<div class="flex items-center justify-end gap-3 pt-3">
+<button class="px-4 py-2 border border-border rounded-xl font-button-input text-button-input text-secondary-text hover:bg-subtle-surface" onclick="closeModal('accessModal')" type="button">
+            Cancel
+          </button>
+<button class="px-4 py-2 rounded-xl bg-primary-accent hover:bg-primary text-primary-surface font-button-input text-button-input transition-colors" type="submit">
+            Submit for Clearance
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Lightweight Script for UX Transitions & Logic -->
+<script>
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('passwordInput');
+      const eyeIcon = document.getElementById('passwordEyeIcon');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.textContent = 'visibility_off';
+      } else {
+        passwordInput.type = 'password';
+        eyeIcon.textContent = 'visibility';
+      }
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('workEmail').value;
+      const btn = document.getElementById('signInBtn');
+      const errorAlert = document.getElementById('authErrorAlert');
+
+      // Visual feedback loading state
+      btn.disabled = true;
+      btn.innerHTML = `<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Verifying credentials...</span>`;
+
+      setTimeout(() => {
+        // Illustrative authentication handling
+        if (email.includes('error') || email.includes('fail')) {
+          errorAlert.classList.remove('hidden');
+          btn.disabled = false;
+          btn.innerHTML = `<span>Sign in</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span>`;
+        } else {
+          // Success simulated entry into overview screen
+          btn.innerHTML = `<span class="material-symbols-outlined text-[18px]">check_circle</span><span>Authenticated</span>`;
+          btn.classList.remove('bg-primary-accent');
+          btn.classList.add('bg-success');
+          setTimeout(() => {
+            window.location.hash = '#/overview';
+            btn.innerHTML = `<span>Redirecting to Dashboard...</span>`;
+          }, 800);
+        }
+      }, 900);
+    }
+
+    function dismissError() {
+      document.getElementById('authErrorAlert').classList.add('hidden');
+    }
+
+    function triggerSSO(provider) {
+      alert(`Initiating SAML 2.0 Handshake with ${provider} IdP Gateway.`);
+    }
+
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    function handleForgotSubmit(e) {
+      e.preventDefault();
+      alert('Password recovery instructions sent to your corporate address.');
+      closeModal('forgotModal');
+    }
+
+    function handleAccessSubmit(e) {
+      e.preventDefault();
+      alert('Access request registered. An onboarding liaison will review your credentials within 2 operational hours.');
+      closeModal('accessModal');
+    }
+  </script>
+</body></html>

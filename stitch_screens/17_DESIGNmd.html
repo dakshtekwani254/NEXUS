@@ -1,0 +1,430 @@
+# NEXUS — Supply Chain Intelligence
+## Design System and UI Specification for Google Stitch
+## 1. Product Overview
+**Product name:** NEXUS  
+**Product category:** Supply Chain Intelligence Platform  
+**Primary purpose:** Help supply chain teams identify potential disruptions, understand shipment risks, monitor global routes and ports, and make informed decisions before problems escalate.
+NEXUS should feel like a premium enterprise SaaS product designed for logistics managers, supply chain analysts, and operations teams.
+The interface must prioritize clarity, trust, simplicity, and actionable information. It should look like a real, production-ready product rather than a generic admin dashboard.
+### Initial Design Scope
+Design the **Overview dashboard first**.
+This page will become the visual reference for all subsequent pages:
+- Overview
+- Risk Intelligence
+- Shipments
+- Ports & Routes
+- Alerts
+- AI Analyst
+- Agent Center
+- Analytics
+- Settings
+Do not attempt to display all these pages simultaneously. Build a cohesive application shell and a polished Overview page with reusable design patterns.
+---
+## 2. Visual Direction
+### Overall Style
+- Minimal, modern, and professional.
+- Light theme with an off-white application background.
+- White content surfaces with subtle borders.
+- Dark navy typography.
+- Blue as the primary interactive accent.
+- Restrained use of red, amber, and green for meaningful statuses.
+- Generous whitespace and clear visual hierarchy.
+- Precise alignment and consistent spacing.
+- Subtle corner rounding.
+- Thin, understated dividers.
+- Simple, consistent line icons.
+The interface should feel calm and intelligent, even when displaying high-risk situations.
+### Avoid
+- Neon colors and glowing effects.
+- Excessive gradients or blurred backgrounds.
+- Glassmorphism.
+- Dark command-center interfaces.
+- Oversized typography.
+- Excessive rounded pills.
+- Too many cards and nested containers.
+- Decorative illustrations that do not communicate useful information.
+- Dense, cluttered tables.
+- Excessive charts and widgets.
+- Emoji used as interface icons.
+- Fake real-time activity or unsupported live-data indicators.
+- Floating chat widgets that obstruct the dashboard.
+**Design principle:** Every element should help users understand their supply chain, identify risk, or take action.
+---
+## 3. Color System
+Use these colors consistently throughout the application.
+| Token | Hex | Usage |
+|---|---|---|
+| App background | #F8F9FB | Main application canvas |
+| Primary surface | #FFFFFF | Cards, tables, panels |
+| Subtle surface | #F3F5F8 | Hover states and secondary areas |
+| Primary text | #172033 | Titles, headings, key values |
+| Secondary text | #667085 | Descriptions and supporting text |
+| Muted text | #8A93A3 | Timestamps and metadata |
+| Border | #E6EAF0 | Default card and table borders |
+| Strong border | #D5DBE5 | Emphasized separators |
+| Primary accent | #4263EB | Primary buttons, links, active navigation |
+| Soft accent | #EEF2FF | Selected navigation and subtle blue backgrounds |
+| High risk | #D94F4F | Critical or high-risk states |
+| High-risk background | #FCECEC | High-risk badges |
+| Medium risk | #B7791F | Warning and moderate-risk states |
+| Medium-risk background | #FFF4D6 | Warning badges |
+| Success | #268568 | Resolved or healthy states |
+| Success background | #E8F6F0 | Success badges |
+### Color Rules
+- Use neutral colors for most of the interface.
+- Blue should be the primary accent, not a background color for large sections.
+- Reserve red for meaningful risk or urgent situations.
+- Use amber for warnings and moderate risk.
+- Use green for healthy or resolved states.
+- Do not communicate risk through color alone. Include a readable label such as “High”, “Medium”, or “Low”.
+---
+## 4. Typography
+Use **Inter**, or a clean system sans-serif font if Inter is unavailable.
+| Element | Size | Weight |
+|---|---|---|
+| Page title | 26–30 px | Semibold |
+| Section heading | 15–17 px | Semibold |
+| KPI value | 25–30 px | Semibold |
+| Body text | 13–14 px | Regular |
+| Table text | 12–13 px | Regular or Medium |
+| Supporting metadata | 11–12 px | Regular |
+| Buttons and inputs | 13–14 px | Medium |
+### Typography Rules
+- Use sentence case rather than all-uppercase headings.
+- Keep text compact but readable.
+- Avoid unnecessarily large headings.
+- Maintain consistent line heights.
+- Use font weight and spacing before introducing additional colors.
+- Keep secondary information visually quieter than the main data.
+---
+## 5. Layout and Spacing
+### Desktop Reference
+Design primarily for a 1440 px desktop viewport, with good support for 1280 px screens.
+- Sidebar width: approximately 224 px.
+- Main content horizontal padding: 28–32 px.
+- Standard component gap: 16–20 px.
+- Section spacing: 24–32 px.
+- Base spacing rhythm: 8 px.
+- Card border radius: 10–12 px.
+- Buttons and inputs: approximately 8 px radius.
+- Borders: 1 px.
+- Shadows: none or extremely subtle.
+Use a consistent grid and align cards, headings, chart areas, and tables carefully.
+Prefer whitespace over adding more containers. Do not wrap every individual piece of information in its own card.
+---
+## 6. Application Shell
+Create a persistent left sidebar and a main content area.
+### Sidebar
+The sidebar should be white or nearly white, separated from the main canvas by a subtle vertical border.
+At the top, display the NEXUS wordmark.
+Use a clean typographic logo treatment:
+- Text: NEXUS
+- Small optional geometric network symbol.
+- No elaborate illustration or oversized emblem.
+### Navigation Items
+Display these items in this exact order:
+1. Overview
+2. Risk Intelligence
+3. Shipments
+4. Ports & Routes
+5. Alerts
+6. AI Analyst
+7. Agent Center
+8. Analytics
+Place Settings at the bottom of the sidebar, separated subtly from the primary navigation.
+Use simple, consistent line icons.
+### Active Navigation
+Overview is active on the initial screen.
+Active state:
+- Soft blue background.
+- Blue icon and text.
+- Medium font weight.
+- Small corner radius.
+- No thick accent bar or glowing effect.
+Inactive items should use muted dark text and neutral icons.
+Provide subtle hover states without changing the layout.
+### Main Header
+At the top of the main content area, display:
+**Page title:** Overview
+**Subtitle:** Your supply chain, one step ahead.
+On the right, include:
+- Data or monitoring status.
+- Last-updated timestamp.
+- Notification icon.
+- User profile or avatar.
+Keep the header compact and aligned.
+If the interface uses sample data, make this clear with a small “Demo data” or “Sample data” indicator. Do not present simulated data as a live feed.
+---
+## 7. Overview Dashboard
+The Overview page should answer five questions quickly:
+1. How many shipments are being monitored?
+2. How many shipments are at risk?
+3. What disruptions require attention?
+4. Which routes and ports may be affected?
+5. What should the user investigate next?
+The dashboard should be scannable within a few seconds.
+### Page Structure
+Use this hierarchy:
+1. Page header.
+2. Four KPI cards.
+3. Global Network and Emerging Disruptions panels.
+4. At-Risk Shipments table.
+Avoid adding unnecessary charts or extra sections.
+---
+## 8. KPI Cards
+Display four cards in one horizontal row on desktop.
+### Card 1: Monitored Shipments
+Example value: `1,284`
+Supporting text: `Across monitored routes`
+### Card 2: Shipments at Risk
+Example value: `86`
+Supporting text: `Require risk assessment`
+### Card 3: Active Disruptions
+Example value: `12`
+Supporting text: `Across routes and ports`
+### Card 4: Ports Monitored
+Example value: `48`
+Supporting text: `Across the global network`
+These are illustrative values for a prototype. Label the dashboard as demo or sample data unless the numbers come from a verified data source.
+### KPI Card Design
+Each card should contain:
+- A small, muted label.
+- One prominent numeric value.
+- Optional short supporting text.
+- At most one small, restrained icon.
+Use white backgrounds, subtle borders, and consistent heights.
+Do not use a different bright background for every KPI.
+Do not invent trend percentages, historical comparisons, or positive/negative movement indicators unless the prototype explicitly identifies them as illustrative.
+The Shipments at Risk card may use a subtle risk accent, but the overall card should remain neutral.
+---
+## 9. Global Network Panel
+Place the Global Network panel on the left side of the main dashboard row.
+Suggested width: 60–65% of the available content area.
+### Panel Header
+**Title:** Global Network
+**Subtitle:** Routes and ports across your monitored network
+Place a small “View all routes” text link in the upper-right corner.
+### Map Design
+Display a clean, muted world map on a light background.
+The map should include:
+- Simplified world geography.
+- A small number of thin, curved route lines.
+- Clear port markers.
+- A restrained visual distinction between normal and at-risk routes.
+- A small legend.
+- A few geographic labels where useful.
+Use illustrative route connections involving locations such as:
+- Shanghai.
+- Rotterdam.
+- Singapore.
+- Los Angeles.
+Do not overcrowd the map with dozens of labels, lines, or markers.
+### Route Styling
+- Normal routes: muted blue-gray lines.
+- At-risk routes: restrained amber or red lines.
+- Port markers: small circles with clear contrast.
+- Selected route: primary blue emphasis.
+The map should feel informative, not decorative.
+Do not use a dark map, glowing routes, neon markers, or dramatic gradients.
+If actual geospatial data is unavailable, use an illustrative map and label the displayed network as sample data.
+### Map Interaction Cues
+Show subtle hover or selection states for routes and ports.
+A selected route may reveal a small information panel containing:
+- Origin.
+- Destination.
+- Risk level.
+- Number of affected shipments.
+These interactions are design intentions only; do not imply they are functional unless implemented.
+---
+## 10. Emerging Disruptions Panel
+Place Emerging Disruptions to the right of the Global Network panel.
+Suggested width: 35–40% of the available content area.
+### Panel Header
+**Title:** Emerging Disruptions
+**Subtitle:** Events that may affect your network
+Include a small “View all” link.
+### Disruption List
+Display three compact disruption items.
+#### Item 1
+**Title:** Rising port congestion
+Location: Shanghai
+Severity: High
+Supporting detail: Increased waiting time may affect planned departures.
+#### Item 2
+**Title:** Severe weather exposure
+Location: North Atlantic
+Severity: Medium
+Supporting detail: Weather conditions may affect selected shipping routes.
+#### Item 3
+**Title:** Carrier schedule change
+Location: Rotterdam
+Severity: Medium
+Supporting detail: Revised arrival estimates may affect downstream deliveries.
+These are illustrative examples, not verified current events. Clearly label them as sample disruptions in the prototype.
+### Item Layout
+Each item should contain:
+- A small severity indicator or badge.
+- A clear title.
+- A location label.
+- A short supporting description.
+- A subtle timestamp or recency label when available.
+Use thin dividers between items.
+Keep the list compact and readable. Avoid large alert cards with bright backgrounds.
+Severity badges should be small and understated, with both color and text.
+Do not invent precise event times or imply that these disruptions are currently happening.
+---
+## 11. At-Risk Shipments Table
+Place the At-Risk Shipments section below the map and disruption panels.
+### Section Header
+**Title:** At-Risk Shipments
+**Subtitle:** Shipments that may need attention
+Include a “View all shipments” text link on the right.
+### Table Columns
+Use these columns:
+| Column | Content |
+|---|---|
+| Shipment | Shipment ID and optional secondary reference |
+| Route | Origin → Destination |
+| Estimated arrival | Date and time, when available |
+| Risk | Text label and restrained status badge |
+| Status | Current shipment status |
+### Example Rows
+Use illustrative shipment records such as:
+- `SHP-10482` — Shanghai → Rotterdam — Oct 22, 2026 — High — In transit
+- `SHP-10517` — Singapore → Los Angeles — Oct 24, 2026 — Medium — In transit
+- `SHP-10563` — Rotterdam → New York — Oct 25, 2026 — Medium — Delayed
+These values are examples only. Mark them as sample data and do not represent them as verified shipment records.
+### Table Styling
+- White surface.
+- Subtle horizontal row separators.
+- No heavy vertical gridlines.
+- Compact column headings.
+- Row height around 48–56 px.
+- Consistent left alignment.
+- Small, readable typography.
+- Risk displayed using compact badges.
+- Secondary identifiers shown in muted text.
+Rows should have a subtle hover state and look clickable if shipment detail navigation is planned.
+Avoid oversized colored badges, excessive icons, dense metadata, and unnecessary action buttons in every row.
+On smaller screens, allow horizontal scrolling or use a condensed table layout.
+---
+## 12. Shared Component Styling
+### Buttons
+**Primary button**
+- Blue background: `#4263EB`
+- White text.
+- Medium font weight.
+- Subtle hover state.
+- Approximately 8 px corner radius.
+**Secondary button**
+- White background.
+- Neutral border.
+- Dark text.
+**Text action**
+- Blue text without a filled background.
+- Used for “View all” links and secondary navigation actions.
+Do not turn every link into a button.
+### Status Badges
+Use compact badges with subtle backgrounds.
+Examples:
+- High: light red background and dark red text.
+- Medium: light amber background and dark amber text.
+- Low: neutral or subtle green treatment, depending on meaning.
+- Resolved: light green background and dark green text.
+Always display the text label. Never rely on color alone.
+### Inputs and Filters
+When needed, use:
+- White background.
+- Thin neutral border.
+- Clear labels.
+- Small, consistent icons.
+- Visible keyboard focus states.
+Do not add search bars, dropdowns, or filters merely for decoration.
+### Icons
+Use a single consistent line-icon family.
+Icons should be small and functional. Avoid mixing filled, outlined, and highly detailed icon styles.
+---
+## 13. Interaction and Motion
+The interface should feel responsive without excessive animation.
+Include visual states for:
+- Active sidebar navigation.
+- Hovered navigation items.
+- Hovered shipment rows.
+- Selected map routes.
+- Hovered disruption items.
+- Focused buttons and inputs.
+- Loading and empty states where relevant.
+Use short, subtle transitions.
+Do not animate KPI numbers continuously, pulse risk markers unnecessarily, or use large entrance animations.
+Never make a control look functional if it has no intended action.
+---
+## 14. Responsive Behavior
+### Desktop
+- Persistent sidebar.
+- Four KPI cards in one row.
+- Global Network and Emerging Disruptions side by side.
+- Full-width shipment table below.
+### Tablet
+- Keep navigation accessible.
+- Allow KPI cards to wrap into two columns.
+- Stack the map and disruption panels if necessary.
+- Preserve comfortable spacing.
+### Mobile
+- Replace the persistent sidebar with a navigation drawer or compact navigation pattern.
+- Use two KPI cards per row when space permits.
+- Stack the main panels vertically.
+- Keep important risk information visible.
+- Allow the shipment table to scroll horizontally or use a condensed layout.
+- Prevent horizontal overflow in the overall page.
+Responsive behavior should preserve hierarchy rather than simply shrinking desktop components.
+---
+## 15. Trust and Data Integrity
+NEXUS is a supply chain intelligence product. Users must be able to distinguish between verified information and predictions.
+The interface should support clear labels for:
+- Live data.
+- Delayed data.
+- Estimated values.
+- AI-generated predictions.
+- Illustrative demo data.
+Show data sources and timestamps near the information they qualify.
+Do not imply that external carrier APIs, port systems, shipment feeds, or live weather services are connected unless they have actually been integrated.
+Do not fabricate live alerts, verified disruption reports, or precise risk probabilities.
+If sample information is used for the Stitch prototype, label the relevant page or components as “Demo data” or “Illustrative data”.
+The visual design should communicate confidence without overstating certainty.
+---
+## 16. Design Tokens and Reusability
+Create reusable patterns for:
+- Sidebar navigation items.
+- Page headers.
+- KPI cards.
+- Panel headers.
+- Risk badges.
+- Disruption list items.
+- Data tables.
+- Text links.
+- Buttons.
+- Empty states.
+- Loading states.
+Reuse the same typography, spacing, borders, and colors across all components.
+The Overview page should establish the design language for the other NEXUS pages without designing them in detail yet.
+---
+## 17. Instructions for Google Stitch
+Generate a polished desktop-first application screen for **NEXUS — Supply Chain Intelligence**.
+Follow these instructions strictly:
+1. Design the Overview dashboard only.
+2. Use the application shell and navigation specified above.
+3. Use the exact color palette and typography system.
+4. Prioritize alignment, whitespace, readability, and visual hierarchy.
+5. Include four KPI cards, a Global Network map panel, an Emerging Disruptions panel, and an At-Risk Shipments table.
+6. Keep the interface minimal and professional.
+7. Use subtle borders instead of heavy shadows.
+8. Use restrained colors and compact status badges.
+9. Use illustrative sample data, clearly labeled as such.
+10. Do not add unrequested widgets, charts, decorative illustrations, or extra sections.
+11. Do not use neon effects, glassmorphism, a dark command-center aesthetic, or excessive gradients.
+12. Build reusable visual patterns so additional pages can follow the same system.
+13. Make the screen look like a finished enterprise SaaS product, not a wireframe.
+14. Optimize the composition for a 1440 px desktop viewport while maintaining responsive behavior.
+### Final Design Goal
+The finished NEXUS Overview should make a supply chain manager immediately understand the state of their network, identify the most important emerging risks, and locate shipments that may need attention.
+The interface should feel minimal, intelligent, credible, and operationally useful.

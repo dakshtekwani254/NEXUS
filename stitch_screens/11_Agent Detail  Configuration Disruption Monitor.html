@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-app-background text-primary-text" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEXUS — Agent Detail &amp; Configuration</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#f5f3ff",
+            "primary-fixed": "#dde1ff",
+            "background": "#fbf8ff",
+            "inverse-surface": "#2f3039",
+            "primary-fixed-dim": "#b9c3ff",
+            "secondary-fixed": "#d9e3fb",
+            "primary-accent": "#4263EB",
+            "outline-variant": "#c4c5d7",
+            "surface-container": "#eeedf8",
+            "tertiary": "#923e00",
+            "inverse-primary": "#b9c3ff",
+            "strong-border": "#D5DBE5",
+            "on-tertiary-container": "#fff2ed",
+            "surface-container-low": "#f4f2fe",
+            "on-secondary-container": "#596377",
+            "tertiary-fixed-dim": "#ffb690",
+            "error": "#ba1a1a",
+            "outline": "#747686",
+            "border": "#E6EAF0",
+            "success-bg": "#E8F6F0",
+            "on-primary-fixed-variant": "#0035be",
+            "surface-tint": "#2c50d9",
+            "surface-container-highest": "#e2e1ed",
+            "medium-risk": "#B7791F",
+            "primary-container": "#4263eb",
+            "muted-text": "#8A93A3",
+            "surface-dim": "#dad9e4",
+            "secondary": "#555f73",
+            "high-risk-bg": "#FCECEC",
+            "on-error": "#ffffff",
+            "tertiary-container": "#b95000",
+            "primary": "#2248d1",
+            "on-surface": "#1a1b23",
+            "on-tertiary-fixed": "#341100",
+            "surface-bright": "#fbf8ff",
+            "surface-variant": "#e2e1ed",
+            "on-surface-variant": "#444654",
+            "inverse-on-surface": "#f1effb",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed-dim": "#bdc7de",
+            "primary-text": "#172033",
+            "surface": "#fbf8ff",
+            "on-error-container": "#93000a",
+            "on-primary-fixed": "#001356",
+            "on-background": "#1a1b23",
+            "on-tertiary-fixed-variant": "#783100",
+            "on-primary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "subtle-surface": "#F3F5F8",
+            "soft-accent": "#EEF2FF",
+            "secondary-container": "#d6e0f8",
+            "app-background": "#F8F9FB",
+            "on-secondary-fixed": "#111c2d",
+            "medium-risk-bg": "#FFF4D6",
+            "secondary-text": "#667085",
+            "tertiary-fixed": "#ffdbcb",
+            "surface-container-high": "#e8e7f3",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#3d475a",
+            "high-risk": "#D94F4F",
+            "on-secondary": "#ffffff",
+            "primary-surface": "#FFFFFF",
+            "success": "#268568"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-sm": "8px",
+            "space-lg": "24px",
+            "space-xs": "4px",
+            "space-xl": "32px",
+            "margin": "32px",
+            "space-md": "16px",
+            "gutter": "20px"
+          },
+          "fontFamily": {
+            "button-input": ["Inter"],
+            "metadata": ["Inter"],
+            "table-text": ["Inter"],
+            "page-title": ["Inter"],
+            "table-text-medium": ["Inter"],
+            "section-heading": ["Inter"],
+            "kpi-value": ["Inter"],
+            "body": ["Inter"]
+          },
+          "fontSize": {
+            "button-input": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "metadata": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "table-text": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "page-title": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "table-text-medium": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "section-heading": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "kpi-value": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full font-body text-body bg-app-background text-primary-text antialiased flex">
+<!-- ================= SIDEBAR (PREDICTED COMPONENT: SideNavBar) ================= -->
+<aside class="fixed top-0 bottom-0 left-0 w-[224px] h-screen bg-primary-surface border-r border-border flex flex-col justify-between p-space-md z-30 select-none">
+<div class="flex flex-col gap-y-6">
+<!-- Brand Logo & Tenant -->
+<div class="px-space-sm pt-space-xs flex items-center justify-between">
+<div>
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-primary-accent flex items-center justify-center text-white font-button-input text-xs tracking-wider">N</span>
+<span class="font-page-title text-section-heading font-semibold text-primary-text tracking-tight">NEXUS</span>
+</div>
+<p class="font-metadata text-metadata text-muted-text mt-0.5">Supply Chain OS</p>
+</div>
+<span class="text-[10px] font-medium px-1.5 py-0.5 rounded bg-subtle-surface text-secondary-text border border-border">v2.8.4</span>
+</div>
+<!-- Main Navigation Items -->
+<nav class="flex flex-col gap-1">
+<!-- 1. Overview -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<!-- 2. Risk Intelligence -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="warning">warning</span>
+<span>Risk Intelligence</span>
+</a>
+<!-- 3. Shipments -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="local_shipping">local_shipping</span>
+<span>Shipments</span>
+</a>
+<!-- 4. Ports & Routes -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="anchor">anchor</span>
+<span>Ports &amp; Routes</span>
+</a>
+<!-- 5. Alerts (Badge 8) -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications_active">notifications_active</span>
+<span>Alerts</span>
+</div>
+<span class="px-1.5 py-0.2 bg-high-risk-bg text-high-risk rounded text-[11px] font-semibold">8</span>
+</a>
+<!-- 6. AI Analyst -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="smart_toy">smart_toy</span>
+<span>AI Analyst</span>
+</a>
+<!-- 7. Agent Center (ACTIVE ITEM) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl bg-soft-accent text-primary-accent font-button-input text-button-input transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px] text-primary-accent" data-icon="support_agent" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+<span>Agent Center</span>
+</a>
+<!-- 8. Analytics -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+<!-- 9. Settings -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="border-t border-border pt-4 flex flex-col gap-1">
+<a class="flex items-center gap-space-sm px-space-md py-1.5 rounded-lg text-secondary-text hover:bg-subtle-surface font-metadata text-metadata transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="help">help</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-1.5 rounded-lg text-secondary-text hover:bg-subtle-surface font-metadata text-metadata transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+<div class="px-space-md pt-2 flex items-center justify-between text-muted-text font-metadata text-[11px]">
+<span>Enterprise Portal</span>
+<span class="w-2 h-2 rounded-full bg-success"></span>
+</div>
+</div>
+</aside>
+<!-- ================= MAIN WRAPPER ================= -->
+<div class="pl-[224px] flex-1 flex flex-col min-w-0 h-screen overflow-y-auto">
+<!-- ================= TOP NAVIGATION BAR (PREDICTED COMPONENT: TopNavBar) ================= -->
+<header class="sticky top-0 z-20 bg-primary-surface border-b border-border h-16 flex items-center justify-between px-space-xl">
+<!-- Breadcrumb & Status Indicator -->
+<div class="flex items-center gap-3">
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 font-body text-body text-secondary-text">
+<a class="hover:text-primary-text transition-colors" href="#">Agent Center</a>
+<span class="material-symbols-outlined text-muted-text text-[16px]" data-icon="chevron_right">chevron_right</span>
+<span class="font-button-input text-primary-text font-medium">Disruption Monitor</span>
+</nav>
+<span class="h-4 w-[1px] bg-border mx-1"></span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-soft-accent text-primary-accent border border-primary-fixed">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-accent"></span>
+          Demo data
+        </span>
+<span class="font-metadata text-metadata text-muted-text">Updated 4m ago</span>
+</div>
+<!-- Trailing Controls & User Info -->
+<div class="flex items-center gap-3">
+<button class="p-2 text-secondary-text hover:text-primary-text hover:bg-subtle-surface rounded-lg transition-colors" title="Refresh Feed">
+<span class="material-symbols-outlined text-[20px]" data-icon="refresh">refresh</span>
+</button>
+<button class="relative p-2 text-secondary-text hover:text-primary-text hover:bg-subtle-surface rounded-lg transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-high-risk"></span>
+</button>
+<button class="p-2 text-secondary-text hover:text-primary-text hover:bg-subtle-surface rounded-lg transition-colors" title="Configure Interface">
+<span class="material-symbols-outlined text-[20px]" data-icon="tune">tune</span>
+</button>
+<span class="h-5 w-[1px] bg-border mx-1"></span>
+<!-- Profile Avatar & Details -->
+<div class="flex items-center gap-2.5 pl-1">
+<img alt="Sarah Chen" class="w-8 h-8 rounded-full border border-border object-cover" data-alt="Close-up professional headshot portrait of Sarah Chen, Director of Global Logistics, dressed in dark navy business attire against a neutral soft studio background. She conveys thoughtful confidence, authority, and meticulous leadership in enterprise supply chain management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClrX_62Jdt77JTMb1VMX3uk_5CHSTlijUe63BIYsyzpUtqM0yiMTbtYQnYv4719SXN7PpAx6-Q00E8V6M04JhOTjop64aXY8BRwmryyDrkjPcjy1guSGXxMsPvBkpxu5V88XN5OMB1EEu4f_oxx7No4sQ2A42HAgOJSSylpyDYPLPQhRkCuiFYspIepg3aIs6pJlhWFuNkH1SyVSyTAK56aY1Ohh9jsp_qNPg00sA9sWuOCk6otOId"/>
+<div class="flex flex-col text-left">
+<span class="font-button-input text-[13px] leading-tight font-medium text-primary-text">Sarah Chen</span>
+<span class="font-metadata text-[11px] text-muted-text">Director of Global Logistics</span>
+</div>
+</div>
+</div>
+</header>
+<!-- ================= CONTENT CANVAS ================= -->
+<main class="p-space-xl space-y-space-lg max-w-[1536px] w-full mx-auto">
+<!-- AGENT HEADER & ACTIONS -->
+<section class="bg-primary-surface border border-border rounded-xl p-space-lg flex flex-col gap-5">
+<div class="flex items-start justify-between flex-wrap gap-4">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-subtle-surface border border-border flex items-center justify-center text-primary-accent shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[28px]" data-icon="radar">radar</span>
+</div>
+<div>
+<div class="flex items-center gap-3">
+<h1 class="font-page-title text-page-title text-primary-text tracking-tight">Disruption Monitor</h1>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-bg text-success border border-success/20">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                  Active
+                </span>
+</div>
+<p class="font-body text-body text-secondary-text mt-1 max-w-2xl">
+                Monitor supply chain risk signals and surface potential disruptions for review.
+              </p>
+</div>
+</div>
+<!-- Header Action Buttons -->
+<div class="flex items-center gap-2.5">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 border border-border bg-primary-surface hover:bg-subtle-surface text-primary-text font-button-input text-button-input rounded-xl transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="pause_circle">pause_circle</span>
+              Pause Agent
+            </button>
+<button class="inline-flex items-center gap-2 px-4 py-2 bg-primary-accent hover:bg-primary text-white font-button-input text-button-input rounded-xl shadow-none transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+              Edit Configuration
+            </button>
+<button class="p-2 border border-border bg-primary-surface hover:bg-subtle-surface text-secondary-text rounded-xl transition-colors" title="More Options">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Agent Metadata Chip Bar -->
+<div class="pt-4 border-t border-border flex flex-wrap items-center gap-y-2 gap-x-8 text-secondary-text font-metadata text-metadata">
+<div class="flex items-center gap-2">
+<span class="text-muted-text">Agent Type:</span>
+<span class="font-medium text-primary-text">Monitoring</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-muted-text">Environment:</span>
+<span class="font-medium text-primary-text">Demo</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-muted-text">Created:</span>
+<span class="font-medium text-primary-text">12 Sep 2026</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-muted-text">Last Activity:</span>
+<span class="font-medium text-primary-text">18 Oct 2026, 10:42</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-muted-text">Model:</span>
+<span class="font-medium text-primary-text">LogisticsLLM-4.2 (Fine-tuned)</span>
+</div>
+</div>
+</section>
+<!-- AGENT PERFORMANCE SUMMARY (4 KPI CARDS) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- KPI 1 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text">
+<span class="font-metadata text-metadata">Tasks Completed</span>
+<span class="material-symbols-outlined text-[18px] text-muted-text" data-icon="task_alt">task_alt</span>
+</div>
+<div class="mt-2">
+<div class="font-kpi-value text-kpi-value text-primary-text">128</div>
+<p class="font-metadata text-metadata text-muted-text mt-0.5">Illustrative activity count</p>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text">
+<span class="font-metadata text-metadata">Tasks Running</span>
+<span class="material-symbols-outlined text-[18px] text-primary-accent animate-spin" data-icon="sync">sync</span>
+</div>
+<div class="mt-2">
+<div class="font-kpi-value text-kpi-value text-primary-text">3</div>
+<p class="font-metadata text-metadata text-muted-text mt-0.5">Illustrative current activity</p>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text">
+<span class="font-metadata text-metadata">Items Flagged</span>
+<span class="material-symbols-outlined text-[18px] text-medium-risk" data-icon="flag">flag</span>
+</div>
+<div class="mt-2">
+<div class="font-kpi-value text-kpi-value text-primary-text">24</div>
+<p class="font-metadata text-metadata text-muted-text mt-0.5">Illustrative review queue</p>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text">
+<span class="font-metadata text-metadata">Pending Approval</span>
+<span class="material-symbols-outlined text-[18px] text-high-risk" data-icon="pending_actions">pending_actions</span>
+</div>
+<div class="mt-2">
+<div class="font-kpi-value text-kpi-value text-primary-text">4</div>
+<p class="font-metadata text-metadata text-muted-text mt-0.5">Illustrative approval queue</p>
+</div>
+</div>
+</section>
+<!-- AGENT OVERVIEW (2-COLUMN 60/40) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- Left: About This Agent (60%) -->
+<div class="lg:col-span-7 bg-primary-surface border border-border rounded-xl p-space-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-border">
+<h2 class="font-section-heading text-section-heading text-primary-text">About This Agent</h2>
+<span class="font-metadata text-metadata text-muted-text">Version 1.4.0</span>
+</div>
+<p class="font-body text-body text-secondary-text mt-3">
+              Disruption Monitor reviews configured supply chain risk indicators and highlights potential issues for human investigation.
+            </p>
+<dl class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
+<div class="border-b border-subtle-surface pb-2">
+<dt class="font-metadata text-metadata text-muted-text">Primary responsibility</dt>
+<dd class="font-table-text-medium text-table-text-medium text-primary-text mt-0.5">Disruption monitoring</dd>
+</div>
+<div class="border-b border-subtle-surface pb-2">
+<dt class="font-metadata text-metadata text-muted-text">Monitoring scope</dt>
+<dd class="font-table-text-medium text-table-text-medium text-primary-text mt-0.5">Ports and routes</dd>
+</div>
+<div class="border-b border-subtle-surface pb-2">
+<dt class="font-metadata text-metadata text-muted-text">Output type</dt>
+<dd class="font-table-text-medium text-table-text-medium text-primary-text mt-0.5">Risk summaries &amp; notifications</dd>
+</div>
+<div class="border-b border-subtle-surface pb-2">
+<dt class="font-metadata text-metadata text-muted-text">Execution mode</dt>
+<dd class="font-table-text-medium text-table-text-medium text-primary-text mt-0.5">Monitor and recommend</dd>
+</div>
+<div class="border-b border-subtle-surface pb-2">
+<dt class="font-metadata text-metadata text-muted-text">Human review</dt>
+<dd class="font-table-text-medium text-table-text-medium text-primary-text mt-0.5">Required for operational actions</dd>
+</div>
+<div class="border-b border-subtle-surface pb-2">
+<dt class="font-metadata text-metadata text-muted-text">Data environment</dt>
+<dd class="font-table-text-medium text-table-text-medium text-primary-text mt-0.5">Demo dataset</dd>
+</div>
+</dl>
+</div>
+<!-- Contextual Disclaimer -->
+<div class="mt-5 p-3 rounded-lg bg-subtle-surface border border-border flex items-start gap-2.5">
+<span class="material-symbols-outlined text-muted-text text-[18px] shrink-0 mt-0.5" data-icon="info">info</span>
+<p class="font-metadata text-metadata text-secondary-text leading-relaxed">
+              This configuration describes the intended agent behavior. Actual monitoring depends on connected data sources and implemented workflows.
+            </p>
+</div>
+</div>
+<!-- Right: Current Status (40%) -->
+<div class="lg:col-span-5 bg-primary-surface border border-border rounded-xl p-space-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-border">
+<h2 class="font-section-heading text-section-heading text-primary-text">Current Status</h2>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-bg text-success border border-success/20">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                Active
+              </span>
+</div>
+<div class="mt-4 space-y-4">
+<div class="p-3 bg-subtle-surface rounded-xl border border-border">
+<span class="font-metadata text-metadata text-muted-text block">Current task</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="w-2 h-2 rounded-full bg-primary-accent animate-pulse"></span>
+<p class="font-table-text-medium text-table-text-medium text-primary-text">Reviewing illustrative port congestion records</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3 bg-subtle-surface rounded-xl border border-border">
+<span class="font-metadata text-metadata text-muted-text block">Pending reviews</span>
+<span class="font-button-input text-base text-primary-text font-semibold mt-1 block">4 items</span>
+</div>
+<div class="p-3 bg-subtle-surface rounded-xl border border-border">
+<span class="font-metadata text-metadata text-muted-text block">Next scheduled check</span>
+<span class="font-table-text text-secondary-text mt-1 block">Not configured</span>
+</div>
+</div>
+<div class="p-3 bg-subtle-surface rounded-xl border border-border">
+<span class="font-metadata text-metadata text-muted-text block">Last completed task</span>
+<p class="font-table-text-medium text-table-text-medium text-primary-text mt-1">Risk summary prepared (10:42)</p>
+<span class="font-metadata text-metadata text-muted-text">Processed 34 signals in 12s</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-secondary-text">
+<span class="font-metadata text-metadata">Auto-recovery: Enabled</span>
+<span class="font-metadata text-metadata">Heartbeat: 4s ago</span>
+</div>
+</div>
+</section>
+<!-- PENDING REVIEW QUEUE -->
+<section class="bg-primary-surface border border-border rounded-xl p-space-lg">
+<div class="flex items-center justify-between pb-4 border-b border-border">
+<div class="flex items-center gap-2.5">
+<div class="w-2 h-2 rounded-full bg-high-risk"></div>
+<h2 class="font-section-heading text-section-heading text-primary-text">Pending Review Queue</h2>
+<span class="px-2 py-0.5 rounded-full bg-subtle-surface text-secondary-text font-metadata text-xs border border-border">2 urgent</span>
+</div>
+<a class="font-button-input text-button-input text-primary-accent hover:underline flex items-center gap-1" href="#">
+<span>View all in Review Queue</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md mt-4">
+<!-- Item 1: Potential Route Disruption -->
+<div class="p-4 rounded-xl border border-border bg-subtle-surface flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-3">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-button-input text-button-input font-semibold text-primary-text">Potential Route Disruption</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-high-risk-bg text-high-risk border border-high-risk/20">High</span>
+</div>
+<div class="font-metadata text-metadata text-secondary-text mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="route">route</span>
+                    Related entity: <span class="font-medium text-primary-text">Asia–Europe Corridor</span>
+</div>
+</div>
+</div>
+<p class="font-body text-body text-secondary-text mt-3 bg-primary-surface p-3 rounded-lg border border-border">
+                "Review the route assessment before considering operational alternatives."
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center justify-end gap-2">
+<button class="px-3 py-1.5 font-button-input text-[13px] text-secondary-text hover:text-primary-text border border-border bg-primary-surface rounded-lg transition-colors">
+                Dismiss
+              </button>
+<button class="px-3.5 py-1.5 font-button-input text-[13px] text-white bg-primary-accent hover:bg-primary rounded-lg transition-colors">
+                Review Assessment
+              </button>
+</div>
+</div>
+<!-- Item 2: Port Congestion Alert -->
+<div class="p-4 rounded-xl border border-border bg-subtle-surface flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-3">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-button-input text-button-input font-semibold text-primary-text">Port Congestion Alert</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-medium-risk-bg text-medium-risk border border-medium-risk/20">Medium</span>
+</div>
+<div class="font-metadata text-metadata text-secondary-text mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="anchor">anchor</span>
+                    Related entity: <span class="font-medium text-primary-text">Shanghai Port</span>
+</div>
+</div>
+</div>
+<p class="font-body text-body text-secondary-text mt-3 bg-primary-surface p-3 rounded-lg border border-border">
+                "Verify the latest port information before issuing an alert."
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center justify-end gap-2">
+<button class="px-3 py-1.5 font-button-input text-[13px] text-secondary-text hover:text-primary-text border border-border bg-primary-surface rounded-lg transition-colors">
+                Dismiss
+              </button>
+<button class="px-3.5 py-1.5 font-button-input text-[13px] text-white bg-primary-accent hover:bg-primary rounded-lg transition-colors">
+                Review Alert
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- SCOPE & PERMISSIONS -->
+<section class="bg-primary-surface border border-border rounded-xl p-space-lg">
+<div class="flex items-center justify-between pb-4 border-b border-border">
+<div>
+<h2 class="font-section-heading text-section-heading text-primary-text">Scope &amp; Permissions</h2>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">Access boundaries, autonomous capabilities, and enforcement guardrails</p>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-subtle-surface text-secondary-text font-metadata text-xs border border-border">
+<span class="material-symbols-outlined text-[16px] text-primary-accent" data-icon="verified_user">verified_user</span>
+            Guardrails Enforced
+          </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mt-4">
+<!-- Group A: Read Access -->
+<div class="border border-border rounded-xl p-4 bg-subtle-surface/50 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-border">
+<span class="font-button-input text-button-input font-semibold text-primary-text">Group A — Read Access</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-soft-accent text-primary-accent">Read-only</span>
+</div>
+<ul class="mt-3 space-y-2.5">
+<li class="flex items-center justify-between text-body font-body text-primary-text">
+<span>Shipment information</span>
+<span class="material-symbols-outlined text-[18px] text-success" data-icon="check_circle">check_circle</span>
+</li>
+<li class="flex items-center justify-between text-body font-body text-primary-text">
+<span>Port conditions</span>
+<span class="material-symbols-outlined text-[18px] text-success" data-icon="check_circle">check_circle</span>
+</li>
+<li class="flex items-center justify-between text-body font-body text-primary-text">
+<span>Route assessments</span>
+<span class="material-symbols-outlined text-[18px] text-success" data-icon="check_circle">check_circle</span>
+</li>
+<li class="flex items-center justify-between text-body font-body text-primary-text">
+<span>Alert records</span>
+<span class="material-symbols-outlined text-[18px] text-success" data-icon="check_circle">check_circle</span>
+</li>
+</ul>
+</div>
+<div class="mt-4 pt-3 border-t border-border text-muted-text font-metadata text-xs">
+              Recommendation access enabled
+            </div>
+</div>
+<!-- Group B: Recommendations -->
+<div class="border border-border rounded-xl p-4 bg-subtle-surface/50 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-border">
+<span class="font-button-input text-button-input font-semibold text-primary-text">Group B — Recommendations</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-soft-accent text-primary-accent">Suggest</span>
+</div>
+<ul class="mt-3 space-y-2.5">
+<li class="flex items-center justify-between text-body font-body text-primary-text">
+<span>Summarize potential disruptions</span>
+<span class="material-symbols-outlined text-[18px] text-success" data-icon="check_circle">check_circle</span>
+</li>
+<li class="flex items-center justify-between text-body font-body text-primary-text">
+<span>Identify affected shipments</span>
+<span class="material-symbols-outlined text-[18px] text-success" data-icon="check_circle">check_circle</span>
+</li>
+<li class="flex items-center justify-between text-body font-body text-primary-text">
+<span>Recommend risk reviews</span>
+<span class="material-symbols-outlined text-[18px] text-success" data-icon="check_circle">check_circle</span>
+</li>
+<li class="flex items-center justify-between text-body font-body text-primary-text">
+<span>Prepare alert drafts</span>
+<span class="material-symbols-outlined text-[18px] text-success" data-icon="check_circle">check_circle</span>
+</li>
+</ul>
+</div>
+<div class="mt-4 pt-3 border-t border-border text-muted-text font-metadata text-xs">
+              Recommendation generation allowed
+            </div>
+</div>
+<!-- Group C: Actions Requiring Approval -->
+<div class="border border-border rounded-xl p-4 bg-subtle-surface/50 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-border">
+<span class="font-button-input text-button-input font-semibold text-primary-text">Group C — Actions</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-medium-risk-bg text-medium-risk flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+                  Approval Required
+                </span>
+</div>
+<ul class="mt-3 space-y-2.5">
+<li class="flex items-center justify-between text-body font-body text-primary-text">
+<span>Send external notifications</span>
+<span class="text-xs font-medium text-medium-risk flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="shield">shield</span>
+                    Lock
+                  </span>
+</li>
+<li class="flex items-center justify-between text-body font-body text-primary-text">
+<span>Modify shipment records</span>
+<span class="text-xs font-medium text-medium-risk flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="shield">shield</span>
+                    Lock
+                  </span>
+</li>
+<li class="flex items-center justify-between text-body font-body text-primary-text">
+<span>Change route assignments</span>
+<span class="text-xs font-medium text-medium-risk flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="shield">shield</span>
+                    Lock
+                  </span>
+</li>
+<li class="flex items-center justify-between text-body font-body text-primary-text">
+<span>Trigger operational workflows</span>
+<span class="text-xs font-medium text-medium-risk flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="shield">shield</span>
+                    Lock
+                  </span>
+</li>
+</ul>
+</div>
+<div class="mt-4 pt-3 border-t border-border text-muted-text font-metadata text-xs">
+              Requires authorization level 3+
+            </div>
+</div>
+</div>
+<!-- Guardrail Policy Notice -->
+<div class="mt-4 p-3 bg-subtle-surface rounded-xl border border-border flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary-accent text-[20px]" data-icon="policy">policy</span>
+<p class="font-metadata text-metadata text-secondary-text">
+<strong class="text-primary-text font-medium">Guardrail Policy:</strong> Agents should not execute consequential operational actions without the required authorization.
+          </p>
+</div>
+</section>
+<!-- MONITORING CONFIGURATION (SETTINGS FORM) -->
+<section class="bg-primary-surface border border-border rounded-xl p-space-lg">
+<div class="flex items-center justify-between pb-4 border-b border-border">
+<div>
+<h2 class="font-section-heading text-section-heading text-primary-text">Monitoring Configuration</h2>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">Adjust agent scanning parameters, thresholds, and reporting conduits</p>
+</div>
+<button class="px-4 py-2 bg-primary-accent hover:bg-primary text-white font-button-input text-button-input rounded-xl transition-colors">
+            Save Configuration
+          </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg mt-6">
+<!-- Monitoring Scope -->
+<div>
+<label class="block font-metadata text-metadata font-medium text-primary-text mb-1.5">Monitoring Scope</label>
+<select class="w-full bg-primary-surface border border-border rounded-xl px-3 py-2 text-body font-body text-primary-text focus:outline-none focus:border-primary-accent">
+<option selected="">Ports and routes</option>
+<option>Ports only</option>
+<option>Routes only</option>
+<option>Global End-to-End Intermodal</option>
+</select>
+<span class="block mt-1 font-metadata text-[11px] text-muted-text">Specifies entity pipelines ingested by this agent</span>
+</div>
+<!-- Region -->
+<div>
+<label class="block font-metadata text-metadata font-medium text-primary-text mb-1.5">Region</label>
+<select class="w-full bg-primary-surface border border-border rounded-xl px-3 py-2 text-body font-body text-primary-text focus:outline-none focus:border-primary-accent">
+<option selected="">Global</option>
+<option>Asia-Pacific (APAC)</option>
+<option>Europe &amp; Mediterranean</option>
+<option>North America (Transpacific / Transatlantic)</option>
+<option>Latin America</option>
+</select>
+<span class="block mt-1 font-metadata text-[11px] text-muted-text">Geographic boundary filter</span>
+</div>
+<!-- Risk Levels to Flag -->
+<div>
+<label class="block font-metadata text-metadata font-medium text-primary-text mb-1.5">Risk levels to flag</label>
+<div class="flex items-center gap-2 pt-1">
+<span class="px-3 py-1.5 rounded-lg border border-border text-xs font-medium bg-subtle-surface text-secondary-text cursor-pointer">Low</span>
+<span class="px-3 py-1.5 rounded-lg border border-medium-risk/40 text-xs font-semibold bg-medium-risk-bg text-medium-risk flex items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span> Medium
+              </span>
+<span class="px-3 py-1.5 rounded-lg border border-high-risk/40 text-xs font-semibold bg-high-risk-bg text-high-risk flex items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span> High
+              </span>
+<span class="px-3 py-1.5 rounded-lg border border-high-risk/40 text-xs font-semibold bg-high-risk text-white flex items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span> Critical
+              </span>
+</div>
+<span class="block mt-1 font-metadata text-[11px] text-muted-text">Signals below Medium will be filtered</span>
+</div>
+<!-- Monitoring Frequency -->
+<div>
+<label class="block font-metadata text-metadata font-medium text-primary-text mb-1.5">Monitoring frequency</label>
+<div class="relative">
+<input class="w-full bg-subtle-surface border border-border rounded-xl px-3 py-2 text-body font-body text-secondary-text cursor-not-allowed" readonly="" type="text" value="Not configured"/>
+<span class="absolute right-3 top-2.5 font-metadata text-[11px] text-primary-accent hover:underline cursor-pointer">Configure</span>
+</div>
+<span class="block mt-1 font-metadata text-[11px] text-muted-text">Continuous stream fallback applied</span>
+</div>
+<!-- Notification Preference -->
+<div>
+<label class="block font-metadata text-metadata font-medium text-primary-text mb-1.5">Notification preference</label>
+<div class="inline-flex p-1 bg-subtle-surface border border-border rounded-xl w-full">
+<button class="flex-1 py-1.5 text-xs font-medium rounded-lg bg-primary-surface text-primary-text border border-border shadow-none">
+                In-app
+              </button>
+<button class="flex-1 py-1.5 text-xs font-medium rounded-lg text-secondary-text hover:text-primary-text">
+                Email Digest
+              </button>
+<button class="flex-1 py-1.5 text-xs font-medium rounded-lg text-secondary-text hover:text-primary-text">
+                Webhook / API
+              </button>
+</div>
+<span class="block mt-1 font-metadata text-[11px] text-muted-text">Dispatches directly to operations center</span>
+</div>
+<!-- Quiet Hours -->
+<div>
+<label class="block font-metadata text-metadata font-medium text-primary-text mb-1.5">Quiet hours</label>
+<div class="relative">
+<input class="w-full bg-subtle-surface border border-border rounded-xl px-3 py-2 text-body font-body text-secondary-text cursor-not-allowed" readonly="" type="text" value="Not configured"/>
+<span class="absolute right-3 top-2.5 font-metadata text-[11px] text-primary-accent hover:underline cursor-pointer">Set Window</span>
+</div>
+<span class="block mt-1 font-metadata text-[11px] text-muted-text">Agent monitors 24/7 without blackout</span>
+</div>
+</div>
+</section>
+<!-- RECENT AGENT ACTIVITY (FULL-WIDTH DATA TABLE) -->
+<section class="bg-primary-surface border border-border rounded-xl overflow-hidden">
+<div class="p-space-lg border-b border-border flex items-center justify-between">
+<div>
+<h2 class="font-section-heading text-section-heading text-primary-text">Recent Agent Activity</h2>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">Audit log of automated queries, inference tasks, and recommendation generation</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-border bg-primary-surface hover:bg-subtle-surface text-secondary-text font-button-input text-xs rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="filter_list">filter_list</span>
+              Filter
+            </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-border bg-primary-surface hover:bg-subtle-surface text-secondary-text font-button-input text-xs rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="download">download</span>
+              Export Log
+            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-subtle-surface text-secondary-text font-metadata text-metadata border-b border-border">
+<th class="py-3 px-space-lg font-medium">Task</th>
+<th class="py-3 px-space-md font-medium">Related Entity</th>
+<th class="py-3 px-space-md font-medium">Started</th>
+<th class="py-3 px-space-md font-medium">Duration</th>
+<th class="py-3 px-space-md font-medium">Outcome</th>
+<th class="py-3 px-space-lg font-medium">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border font-table-text text-table-text">
+<!-- Row 1 -->
+<tr class="hover:bg-subtle-surface/60 transition-colors">
+<td class="py-3.5 px-space-lg font-table-text-medium text-table-text-medium text-primary-text flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-muted-text" data-icon="terminal">terminal</span>
+                  Review port congestion
+                </td>
+<td class="py-3.5 px-space-md text-primary-text">Shanghai Port</td>
+<td class="py-3.5 px-space-md text-secondary-text">18 Oct 2026, 10:42</td>
+<td class="py-3.5 px-space-md text-secondary-text">12 sec</td>
+<td class="py-3.5 px-space-md text-primary-text">Risk summary prepared</td>
+<td class="py-3.5 px-space-lg">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-success-bg text-success border border-success/20">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span> Completed
+                  </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-subtle-surface/60 transition-colors">
+<td class="py-3.5 px-space-lg font-table-text-medium text-table-text-medium text-primary-text flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-muted-text" data-icon="terminal">terminal</span>
+                  Assess shipment risk
+                </td>
+<td class="py-3.5 px-space-md text-primary-text">SHP-10482</td>
+<td class="py-3.5 px-space-md text-secondary-text">18 Oct 2026, 10:35</td>
+<td class="py-3.5 px-space-md text-secondary-text">8 sec</td>
+<td class="py-3.5 px-space-md text-primary-text">Review recommended</td>
+<td class="py-3.5 px-space-lg">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-success-bg text-success border border-success/20">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span> Completed
+                  </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-subtle-surface/60 transition-colors">
+<td class="py-3.5 px-space-lg font-table-text-medium text-table-text-medium text-primary-text flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-muted-text" data-icon="terminal">terminal</span>
+                  Evaluate route conditions
+                </td>
+<td class="py-3.5 px-space-md text-primary-text">Asia–Europe Corridor</td>
+<td class="py-3.5 px-space-md text-secondary-text">18 Oct 2026, 10:20</td>
+<td class="py-3.5 px-space-md text-secondary-text">15 sec</td>
+<td class="py-3.5 px-space-md text-primary-text">Potential risk factors identified</td>
+<td class="py-3.5 px-space-lg">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-success-bg text-success border border-success/20">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span> Completed
+                  </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-subtle-surface/60 transition-colors">
+<td class="py-3.5 px-space-lg font-table-text-medium text-table-text-medium text-primary-text flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-muted-text" data-icon="terminal">terminal</span>
+                  Prepare alert summary
+                </td>
+<td class="py-3.5 px-space-md text-primary-text">ALT-0024</td>
+<td class="py-3.5 px-space-md text-secondary-text">18 Oct 2026, 10:10</td>
+<td class="py-3.5 px-space-md text-secondary-text">—</td>
+<td class="py-3.5 px-space-md text-primary-text">Awaiting human review</td>
+<td class="py-3.5 px-space-lg">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-medium-risk-bg text-medium-risk border border-medium-risk/20">
+<span class="w-1.5 h-1.5 rounded-full bg-medium-risk"></span> Pending Review
+                  </span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-subtle-surface/60 transition-colors">
+<td class="py-3.5 px-space-lg font-table-text-medium text-table-text-medium text-primary-text flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-muted-text" data-icon="terminal">terminal</span>
+                  Review shipment updates
+                </td>
+<td class="py-3.5 px-space-md text-primary-text">SHP-10608</td>
+<td class="py-3.5 px-space-md text-secondary-text">18 Oct 2026, 09:55</td>
+<td class="py-3.5 px-space-md text-secondary-text">—</td>
+<td class="py-3.5 px-space-md text-secondary-text">Demo task awaiting processing</td>
+<td class="py-3.5 px-space-lg">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-subtle-surface text-secondary-text border border-border">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-text"></span> Queued
+                  </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-space-md border-t border-border bg-primary-surface flex items-center justify-between text-secondary-text font-metadata text-metadata">
+<span>Showing 5 of 128 recorded illustrative tasks • All activity is demo data</span>
+<div class="flex items-center gap-3">
+<a class="text-primary-accent hover:underline font-medium" href="#">View All Activity (128)</a>
+</div>
+</div>
+</section>
+<!-- TRANSPARENCY NOTE & AGENT MANAGEMENT ACTIONS -->
+<section class="border border-border rounded-xl p-space-lg bg-primary-surface flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-muted-text text-[20px] shrink-0 mt-0.5" data-icon="shield_with_heart">shield_with_heart</span>
+<p class="font-metadata text-metadata text-secondary-text max-w-xl">
+<strong class="text-primary-text font-medium">Transparency note:</strong> Task outcomes describe the agent's recorded workflow result, not confirmation that an external operational action was completed.
+          </p>
+</div>
+<!-- Agent Management Action Row -->
+<div class="flex items-center gap-2.5 shrink-0 w-full md:w-auto justify-end">
+<button class="px-3.5 py-2 border border-border bg-primary-surface hover:bg-subtle-surface text-primary-text font-button-input text-button-input rounded-xl transition-colors">
+            Edit Configuration
+          </button>
+<button class="px-3.5 py-2 border border-border bg-primary-surface hover:bg-subtle-surface text-primary-text font-button-input text-button-input rounded-xl transition-colors">
+            Pause Agent
+          </button>
+<button class="px-3.5 py-2 border border-border bg-primary-surface hover:bg-subtle-surface text-primary-text font-button-input text-button-input rounded-xl transition-colors">
+            Duplicate Agent
+          </button>
+<button class="px-3.5 py-2 border border-error/30 bg-primary-surface hover:bg-high-risk-bg text-high-risk font-button-input text-button-input rounded-xl transition-colors">
+            Delete Agent
+          </button>
+</div>
+</section>
+<!-- System Status Footer -->
+<footer class="pt-2 pb-8 flex items-center justify-between font-metadata text-metadata text-muted-text border-t border-border">
+<span>NEXUS Supply Chain OS • Automated Agent Runtime 4.1.2</span>
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+            Operational Cluster: ap-east-1
+          </span>
+<span>Latency: 28ms</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

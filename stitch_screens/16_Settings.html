@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEXUS — Settings</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#596377",
+            "on-tertiary-container": "#fff2ed",
+            "on-tertiary-fixed": "#341100",
+            "tertiary": "#923e00",
+            "border": "#E6EAF0",
+            "subtle-surface": "#F3F5F8",
+            "secondary-fixed-dim": "#bdc7de",
+            "on-error": "#ffffff",
+            "on-primary-container": "#f5f3ff",
+            "on-error-container": "#93000a",
+            "surface-bright": "#fbf8ff",
+            "on-surface": "#1a1b23",
+            "outline": "#747686",
+            "primary": "#2248d1",
+            "surface-container-low": "#f4f2fe",
+            "surface-container-highest": "#e2e1ed",
+            "on-tertiary-fixed-variant": "#783100",
+            "secondary-fixed": "#d9e3fb",
+            "on-tertiary": "#ffffff",
+            "on-surface-variant": "#444654",
+            "inverse-surface": "#2f3039",
+            "primary-fixed-dim": "#b9c3ff",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed": "#ffdbcb",
+            "on-background": "#1a1b23",
+            "on-secondary": "#ffffff",
+            "primary-surface": "#FFFFFF",
+            "surface-dim": "#dad9e4",
+            "inverse-on-surface": "#f1effb",
+            "high-risk": "#D94F4F",
+            "tertiary-fixed-dim": "#ffb690",
+            "surface-container": "#eeedf8",
+            "secondary-container": "#d6e0f8",
+            "inverse-primary": "#b9c3ff",
+            "high-risk-bg": "#FCECEC",
+            "soft-accent": "#EEF2FF",
+            "surface-variant": "#e2e1ed",
+            "surface-tint": "#2c50d9",
+            "on-secondary-fixed-variant": "#3d475a",
+            "success-bg": "#E8F6F0",
+            "secondary-text": "#667085",
+            "secondary": "#555f73",
+            "outline-variant": "#c4c5d7",
+            "surface-container-high": "#e8e7f3",
+            "error-container": "#ffdad6",
+            "on-primary": "#ffffff",
+            "background": "#fbf8ff",
+            "medium-risk": "#B7791F",
+            "surface": "#fbf8ff",
+            "medium-risk-bg": "#FFF4D6",
+            "on-primary-fixed-variant": "#0035be",
+            "success": "#268568",
+            "primary-container": "#4263eb",
+            "primary-fixed": "#dde1ff",
+            "primary-text": "#172033",
+            "primary-accent": "#4263EB",
+            "error": "#ba1a1a",
+            "muted-text": "#8A93A3",
+            "on-primary-fixed": "#001356",
+            "tertiary-container": "#b95000",
+            "on-secondary-fixed": "#111c2d",
+            "strong-border": "#D5DBE5",
+            "app-background": "#F8F9FB"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xs": "4px",
+            "space-md": "16px",
+            "space-xl": "32px",
+            "gutter": "20px",
+            "margin": "32px",
+            "space-sm": "8px",
+            "space-lg": "24px"
+          },
+          "fontFamily": {
+            "kpi-value": ["Inter"],
+            "table-text-medium": ["Inter"],
+            "body": ["Inter"],
+            "section-heading": ["Inter"],
+            "button-input": ["Inter"],
+            "metadata": ["Inter"],
+            "table-text": ["Inter"],
+            "page-title": ["Inter"]
+          },
+          "fontSize": {
+            "kpi-value": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "table-text-medium": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "section-heading": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "button-input": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "metadata": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "table-text": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "page-title": ["28px", { "lineHeight": "36px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 19px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    /* Custom clean scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D5DBE5;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8A93A3;
+    }
+  </style>
+</head>
+<body class="bg-app-background text-primary-text font-body text-body antialiased min-h-screen flex">
+<!-- ==================== PERSISTENT LEFT SIDEBAR ==================== -->
+<aside class="fixed top-0 bottom-0 left-0 w-[224px] h-screen bg-primary-surface border-r border-border flex flex-col justify-between p-space-md z-40 select-none">
+<div class="flex flex-col gap-y-6">
+<!-- Brand Anchor Header -->
+<div class="flex items-center gap-space-sm px-space-sm pt-space-xs">
+<div class="w-8 h-8 rounded-xl bg-primary-accent flex items-center justify-center text-on-primary font-section-heading text-section-heading shadow-none">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">hub</span>
+</div>
+<div class="flex flex-col">
+<span class="font-page-title text-section-heading font-semibold text-primary-text tracking-tight">NEXUS</span>
+<span class="font-metadata text-metadata text-secondary-text">Supply Chain OS</span>
+</div>
+</div>
+<!-- Main Navigation 9 Items -->
+<nav class="flex flex-col gap-1">
+<!-- 1. Overview -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-secondary-text">dashboard</span>
+<span>Overview</span>
+</a>
+<!-- 2. Risk Intelligence -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-secondary-text">warning</span>
+<span>Risk Intelligence</span>
+</a>
+<!-- 3. Shipments -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-secondary-text">local_shipping</span>
+<span>Shipments</span>
+</a>
+<!-- 4. Ports & Routes -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-secondary-text">anchor</span>
+<span>Ports &amp; Routes</span>
+</a>
+<!-- 5. Alerts with badge 8 -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary-text">notifications_active</span>
+<span>Alerts</span>
+</div>
+<span class="inline-flex items-center justify-center px-1.5 py-0.5 text-[11px] font-semibold rounded bg-high-risk text-on-primary">8</span>
+</a>
+<!-- 6. AI Analyst -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-secondary-text">smart_toy</span>
+<span>AI Analyst</span>
+</a>
+<!-- 7. Agent Center -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-secondary-text">support_agent</span>
+<span>Agent Center</span>
+</a>
+<!-- 8. Analytics -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-secondary-text">analytics</span>
+<span>Analytics</span>
+</a>
+<!-- 9. Settings (ACTIVE) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl bg-soft-accent text-primary-accent font-button-input text-button-input transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-primary-accent" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="flex flex-col gap-1 border-t border-border pt-space-md">
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-secondary-text">help</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-secondary-text">contact_support</span>
+<span>Support</span>
+</a>
+<div class="px-space-md pt-2 flex items-center justify-between text-[11px] text-muted-text">
+<span>v2.8.4 Enterprise</span>
+<span class="w-2 h-2 rounded-full bg-success"></span>
+</div>
+</div>
+</aside>
+<!-- ==================== MAIN CONTENT WRAPPER ==================== -->
+<div class="pl-[224px] flex-1 flex flex-col min-w-0">
+<!-- Top Navigation Header -->
+<header class="h-16 bg-primary-surface border-b border-border px-space-xl flex items-center justify-between sticky top-0 z-30">
+<div class="flex flex-col">
+<div class="flex items-center gap-3">
+<h1 class="font-section-heading text-section-heading font-semibold text-primary-text tracking-tight">Settings</h1>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[12px] font-medium bg-soft-accent text-primary-accent border border-[#D9E3FB]">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-accent animate-pulse"></span>
+            Demo data
+          </span>
+<span class="text-metadata text-muted-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+            Updated 4m ago
+          </span>
+</div>
+<p class="text-metadata text-secondary-text hidden lg:block">Manage your workspace, notifications, integrations, and security preferences.</p>
+</div>
+<!-- Trailing Profile & Actions -->
+<div class="flex items-center gap-3">
+<!-- Action Icon -->
+<button class="w-9 h-9 rounded-xl border border-border bg-primary-surface text-secondary-text hover:bg-subtle-surface hover:text-primary-text flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+<button class="w-9 h-9 rounded-xl border border-border bg-primary-surface text-secondary-text hover:bg-subtle-surface hover:text-primary-text flex items-center justify-center transition-colors relative" type="button">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-high-risk rounded-full ring-2 ring-primary-surface"></span>
+</button>
+<div class="h-6 w-px bg-border mx-1"></div>
+<!-- User Profile Pill -->
+<div class="flex items-center gap-3 pl-1">
+<div class="w-9 h-9 rounded-full bg-soft-accent border border-[#D9E3FB] overflow-hidden flex items-center justify-center flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up professional portrait of Sarah Chen, Director of Global Logistics, wearing formal enterprise attire against a clean neutral corporate studio backdrop with soft diffused balanced lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA85_pgvm7z10Rp6cCEKcfpb0uyRTM6gyaQZgg9KOO5HW9MOr3oqobcun7Dtr7cnYhOZcjMmmmd010VraW2wzOitZjsMIyyPD_wBofK_iVgNh1mObbZ97uW5qeae02FQKVXF9JbAis1NGHnhulLtVrmwxbQ4-mxb3XmzMyl_N3h19o0rHKZ9qgP6SI8_ThlJAP6bBfs3duX46_X6SZCNRaq4Jho8zC3TvaL0XA1BkAQO_TDLaWoSdlK"/>
+</div>
+<div class="flex flex-col text-left hidden sm:block">
+<span class="font-table-text-medium text-table-text-medium text-primary-text leading-tight">Sarah Chen</span>
+<span class="text-[11px] text-secondary-text leading-tight">Director of Global Logistics</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Workspace Identity Row Banner -->
+<div class="bg-primary-surface border-b border-border px-space-xl py-3 flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-accent">domain</span>
+<span class="font-table-text-medium text-table-text-medium text-primary-text font-semibold">NEXUS Demo Workspace</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium bg-subtle-surface text-secondary-text border border-border">
+          Demo environment
+        </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium bg-[#F1F3F7] text-on-secondary-container border border-border">
+          Configuration preview
+        </span>
+</div>
+<div class="flex items-center gap-2 text-metadata text-secondary-text">
+<span class="material-symbols-outlined text-[15px] text-muted-text">info</span>
+<span>Changes made here apply immediately to your current simulated session preview.</span>
+</div>
+</div>
+<!-- Main Canvas Layout: Two Columns -->
+<main class="flex-1 p-space-xl max-w-[1400px] w-full mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Left Column: Settings Navigation List (240px wide on lg) -->
+<div class="lg:col-span-3 bg-primary-surface border border-border rounded-xl p-2.5 flex flex-col gap-1">
+<div class="px-3 py-2 text-[11px] font-semibold uppercase tracking-wider text-muted-text">
+            Settings Menu
+          </div>
+<!-- General (Active) -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-soft-accent text-primary-accent font-button-input text-button-input transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary-accent" style="font-variation-settings: 'FILL' 1;">tune</span>
+<span class="font-semibold text-primary-accent">General</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-primary-accent">chevron_right</span>
+</a>
+<!-- Profile -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-text">person</span>
+<span>Profile</span>
+</div>
+<span class="text-[11px] px-1.5 py-0.5 rounded bg-subtle-surface text-muted-text border border-border">Admin</span>
+</a>
+<!-- Notifications -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-text">notifications</span>
+<span>Notifications</span>
+</div>
+<span class="text-[11px] font-semibold text-secondary-text">5 rules</span>
+</a>
+<!-- Data Sources -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-text">swap_horiz</span>
+<span>Data Sources</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-success"></span>
+</a>
+<!-- Risk Preferences -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-text">warning</span>
+<span>Risk Preferences</span>
+</div>
+</a>
+<!-- Agent Permissions -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-text">smart_toy</span>
+<span>Agent Permissions</span>
+</div>
+<span class="text-[11px] px-1.5 py-0.5 rounded bg-subtle-surface text-muted-text border border-border">Autonomous</span>
+</a>
+<!-- Security -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl text-secondary-text hover:bg-subtle-surface hover:text-primary-text font-body text-body transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-text">lock</span>
+<span>Security</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-success">verified_user</span>
+</a>
+<!-- Quick Support Help Card in Left Column -->
+<div class="mt-4 p-3 bg-subtle-surface border border-border rounded-xl">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary-accent text-[18px]">lightbulb</span>
+<div class="flex flex-col text-[12px]">
+<span class="font-medium text-primary-text">Need custom API roles?</span>
+<span class="text-secondary-text mt-0.5">Contact enterprise platform architecture for custom tenant governance.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Settings Form Content Area (Spacious Card) -->
+<div class="lg:col-span-9 bg-primary-surface border border-border rounded-xl flex flex-col divide-y divide-border">
+<!-- SECTION A: Workspace Information -->
+<section class="p-space-xl">
+<div class="flex items-start justify-between mb-6">
+<div>
+<h2 class="font-section-heading text-section-heading font-semibold text-primary-text">Workspace Information</h2>
+<p class="text-body text-secondary-text mt-1">Manage the basic details for this workspace.</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[12px] font-medium bg-subtle-surface text-secondary-text border border-border">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+                Tenant ID: WS-8849-GLB
+              </span>
+</div>
+<!-- Form Fields Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<!-- Workspace Name -->
+<div>
+<label class="block font-table-text-medium text-table-text-medium text-primary-text mb-1.5" for="workspace-name">
+                  Workspace Name
+                </label>
+<div class="relative">
+<input class="w-full px-3.5 py-2.5 rounded-xl border border-border bg-primary-surface text-primary-text font-body text-body focus:outline-none focus:ring-1 focus:ring-primary-accent focus:border-primary-accent transition-colors" id="workspace-name" type="text" value="NEXUS Demo Workspace"/>
+<span class="absolute right-3 top-3 material-symbols-outlined text-muted-text text-[18px]">domain</span>
+</div>
+</div>
+<!-- Organization -->
+<div>
+<label class="block font-table-text-medium text-table-text-medium text-primary-text mb-1.5" for="organization-name">
+                  Organization
+                </label>
+<div class="relative">
+<input class="w-full px-3.5 py-2.5 rounded-xl border border-border bg-primary-surface text-primary-text font-body text-body focus:outline-none focus:ring-1 focus:ring-primary-accent focus:border-primary-accent transition-colors" id="organization-name" type="text" value="Example Logistics Ltd."/>
+<span class="absolute right-3 top-3 material-symbols-outlined text-muted-text text-[18px]">corporate_fare</span>
+</div>
+</div>
+<!-- Default Region -->
+<div>
+<label class="block font-table-text-medium text-table-text-medium text-primary-text mb-1.5" for="default-region">
+                  Default Region
+                </label>
+<div class="relative">
+<select class="w-full px-3.5 py-2.5 rounded-xl border border-border bg-primary-surface text-primary-text font-body text-body focus:outline-none focus:ring-1 focus:ring-primary-accent focus:border-primary-accent appearance-none cursor-pointer pr-10" id="default-region">
+<option selected="">Global</option>
+<option>Asia-Pacific (APAC)</option>
+<option>Europe &amp; Mediterranean</option>
+<option>North America (Transpacific)</option>
+<option>Middle East &amp; Gulf</option>
+</select>
+<span class="absolute right-3 top-3 pointer-events-none material-symbols-outlined text-muted-text text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Time Zone -->
+<div>
+<label class="block font-table-text-medium text-table-text-medium text-primary-text mb-1.5" for="time-zone">
+                  Time Zone
+                </label>
+<div class="relative">
+<select class="w-full px-3.5 py-2.5 rounded-xl border border-border bg-primary-surface text-primary-text font-body text-body focus:outline-none focus:ring-1 focus:ring-primary-accent focus:border-primary-accent appearance-none cursor-pointer pr-10" id="time-zone">
+<option selected="">Asia/Kolkata (UTC+05:30)</option>
+<option>UTC (Coordinated Universal Time)</option>
+<option>Asia/Singapore (UTC+08:00)</option>
+<option>Europe/Rotterdam (UTC+01:00)</option>
+<option>America/Los_Angeles (UTC-08:00)</option>
+</select>
+<span class="absolute right-3 top-3 pointer-events-none material-symbols-outlined text-muted-text text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Disclaimer caption -->
+<p class="text-metadata text-muted-text mt-4 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]">info</span>
+              Changes are previewed in this demo environment and require workspace administrator privileges to apply globally.
+            </p>
+<!-- Action row -->
+<div class="flex items-center justify-end gap-3 mt-6 pt-4 border-t border-border">
+<button class="px-4 py-2 rounded-xl border border-border bg-primary-surface hover:bg-subtle-surface text-primary-text font-button-input text-button-input transition-colors" type="button">
+                Discard
+              </button>
+<button class="px-4 py-2 rounded-xl bg-primary-accent hover:bg-primary text-on-primary font-button-input text-button-input transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">check</span>
+                Save Changes
+              </button>
+</div>
+</section>
+<!-- SECTION B: Application Preferences -->
+<section class="p-space-xl">
+<div class="mb-6">
+<h2 class="font-section-heading text-section-heading font-semibold text-primary-text">Application Preferences</h2>
+<p class="text-body text-secondary-text mt-1">Choose how information is displayed throughout NEXUS.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+<!-- Default Landing Page -->
+<div>
+<label class="block font-table-text-medium text-table-text-medium text-primary-text mb-1.5" for="landing-page">
+                  Default Landing Page
+                </label>
+<div class="relative">
+<select class="w-full px-3.5 py-2.5 rounded-xl border border-border bg-primary-surface text-primary-text font-body text-body focus:outline-none focus:ring-1 focus:ring-primary-accent focus:border-primary-accent appearance-none cursor-pointer pr-10" id="landing-page">
+<option selected="">Overview</option>
+<option>Risk Intelligence</option>
+<option>Shipments</option>
+<option>Ports &amp; Routes</option>
+<option>Alerts Center</option>
+</select>
+<span class="absolute right-3 top-3 pointer-events-none material-symbols-outlined text-muted-text text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Date Format -->
+<div>
+<label class="block font-table-text-medium text-table-text-medium text-primary-text mb-1.5" for="date-format">
+                  Date Format
+                </label>
+<div class="relative">
+<select class="w-full px-3.5 py-2.5 rounded-xl border border-border bg-primary-surface text-primary-text font-body text-body focus:outline-none focus:ring-1 focus:ring-primary-accent focus:border-primary-accent appearance-none cursor-pointer pr-10" id="date-format">
+<option selected="">DD MMM YYYY (e.g. 18 Oct 2026)</option>
+<option>YYYY-MM-DD (ISO 8601)</option>
+<option>MM/DD/YYYY (US standard)</option>
+<option>DD/MM/YYYY (UK/EU standard)</option>
+</select>
+<span class="absolute right-3 top-3 pointer-events-none material-symbols-outlined text-muted-text text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Segmented Selectors Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
+<!-- Time Format Segmented -->
+<div>
+<label class="block font-table-text-medium text-table-text-medium text-primary-text mb-2">
+                  Time Format
+                </label>
+<div class="inline-flex p-1 bg-subtle-surface border border-border rounded-xl w-full">
+<button class="flex-1 py-1.5 px-3 rounded-lg text-primary-text font-button-input text-button-input bg-primary-surface border border-border shadow-none text-center" type="button">
+                    24-hour
+                  </button>
+<button class="flex-1 py-1.5 px-3 rounded-lg text-secondary-text font-body text-body hover:text-primary-text text-center transition-colors" type="button">
+                    12-hour
+                  </button>
+</div>
+</div>
+<!-- Distance Unit Segmented -->
+<div>
+<label class="block font-table-text-medium text-table-text-medium text-primary-text mb-2">
+                  Distance Unit
+                </label>
+<div class="inline-flex p-1 bg-subtle-surface border border-border rounded-xl w-full">
+<button class="flex-1 py-1.5 px-3 rounded-lg text-primary-text font-button-input text-button-input bg-primary-surface border border-border shadow-none text-center" type="button">
+                    Kilometers (km)
+                  </button>
+<button class="flex-1 py-1.5 px-3 rounded-lg text-secondary-text font-body text-body hover:text-primary-text text-center transition-colors" type="button">
+                    Nautical miles
+                  </button>
+<button class="flex-1 py-1.5 px-3 rounded-lg text-secondary-text font-body text-body hover:text-primary-text text-center transition-colors" type="button">
+                    Miles
+                  </button>
+</div>
+</div>
+</div>
+<!-- Theme Segmented Control -->
+<div class="mt-5 pt-2">
+<label class="block font-table-text-medium text-table-text-medium text-primary-text mb-2">
+                Theme Appearance
+              </label>
+<div class="grid grid-cols-3 gap-3 max-w-xl">
+<!-- Light (Selected) -->
+<button class="flex items-center justify-center gap-2 py-2 px-3 rounded-xl border-2 border-primary-accent bg-soft-accent text-primary-accent font-button-input text-button-input" type="button">
+<span class="material-symbols-outlined text-[18px]">light_mode</span>
+<span>Light</span>
+</button>
+<!-- Dark (Coming Soon) -->
+<button class="flex items-center justify-center gap-2 py-2 px-3 rounded-xl border border-border bg-subtle-surface text-muted-text font-body text-body opacity-70 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">dark_mode</span>
+<span>Dark (Coming Soon)</span>
+</button>
+<!-- System -->
+<button class="flex items-center justify-center gap-2 py-2 px-3 rounded-xl border border-border bg-primary-surface hover:bg-subtle-surface text-secondary-text font-body text-body transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">desktop_windows</span>
+<span>System</span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION C: Display Preferences & Interface Density -->
+<section class="p-space-xl">
+<div class="mb-5">
+<h2 class="font-section-heading text-section-heading font-semibold text-primary-text">Display Preferences</h2>
+<p class="text-body text-secondary-text mt-1">Customize interface density and contextual guides.</p>
+</div>
+<div class="flex flex-col divide-y divide-border">
+<!-- Row 1: Compact tables -->
+<div class="py-4 flex items-center justify-between gap-4">
+<div class="flex flex-col pr-4">
+<span class="font-table-text-medium text-table-text-medium text-primary-text">Compact tables</span>
+<span class="text-body text-secondary-text text-[13px] mt-0.5">Show more rows with reduced vertical spacing across Shipments and Ports monitoring.</span>
+</div>
+<!-- Custom Switch (Active) -->
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-primary-surface after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-accent"></div>
+</label>
+</div>
+<!-- Row 2: Show contextual help -->
+<div class="py-4 flex items-center justify-between gap-4">
+<div class="flex flex-col pr-4">
+<span class="font-table-text-medium text-table-text-medium text-primary-text">Show contextual help</span>
+<span class="text-body text-secondary-text text-[13px] mt-0.5">Display helpful descriptions and AI insight hints across the application.</span>
+</div>
+<!-- Custom Switch (Active) -->
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-primary-surface after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-accent"></div>
+</label>
+</div>
+<!-- Row 3: Highlight severe disruptions -->
+<div class="py-4 flex items-center justify-between gap-4">
+<div class="flex flex-col pr-4">
+<span class="font-table-text-medium text-table-text-medium text-primary-text">Highlight severe disruptions</span>
+<span class="text-body text-secondary-text text-[13px] mt-0.5">Apply subtle high-risk badges on monitored route overviews.</span>
+</div>
+<!-- Custom Switch (Active) -->
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-primary-surface after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-accent"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- SECTION D: Save Feedback Preview & Actions -->
+<section class="p-space-xl bg-subtle-surface rounded-b-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+<!-- Inline notification feedback strip -->
+<div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-success-bg border border-[#CDEBDC] text-success font-body text-body text-[13px] w-full sm:w-auto">
+<span class="material-symbols-outlined text-success text-[18px]">verified</span>
+<span class="font-medium">All workspace preferences are currently synchronized with demo defaults.</span>
+</div>
+<!-- Footer Buttons -->
+<div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+<button class="px-4 py-2 rounded-xl border border-border bg-primary-surface hover:bg-subtle-surface text-secondary-text hover:text-primary-text font-button-input text-button-input transition-colors" type="button">
+                Reset to Defaults
+              </button>
+<button class="px-4 py-2 rounded-xl bg-primary-accent hover:bg-primary text-on-primary font-button-input text-button-input transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">save</span>
+                Save Preferences
+              </button>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+<!-- Micro-interaction JS for Segmented Selectors and Feedback -->
+<script>
+    // Segmented button selection handler
+    document.querySelectorAll('.inline-flex.p-1.bg-subtle-surface button').forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const parent = this.parentElement;
+        parent.querySelectorAll('button').forEach(btn => {
+          btn.className = "flex-1 py-1.5 px-3 rounded-lg text-secondary-text font-body text-body hover:text-primary-text text-center transition-colors";
+        });
+        this.className = "flex-1 py-1.5 px-3 rounded-lg text-primary-text font-button-input text-button-input bg-primary-surface border border-border shadow-none text-center";
+      });
+    });
+  </script>
+</body></html>

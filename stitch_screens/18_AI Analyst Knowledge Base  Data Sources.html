@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-app-background" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEXUS Intelligence - Knowledge Base &amp; Data Sources</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface-variant": "#444654",
+            "high-risk-bg": "#FCECEC",
+            "surface-container-low": "#f4f2fe",
+            "primary-accent": "#4263EB",
+            "primary-text": "#172033",
+            "secondary-text": "#667085",
+            "success": "#268568",
+            "primary-surface": "#FFFFFF",
+            "primary-container": "#4263eb",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#d9e3fb",
+            "soft-accent": "#EEF2FF",
+            "surface": "#fbf8ff",
+            "error": "#ba1a1a",
+            "primary-fixed-dim": "#b9c3ff",
+            "tertiary-container": "#b95000",
+            "background": "#fbf8ff",
+            "tertiary-fixed-dim": "#ffb690",
+            "inverse-primary": "#b9c3ff",
+            "secondary-container": "#d6e0f8",
+            "medium-risk": "#B7791F",
+            "on-secondary-fixed": "#111c2d",
+            "high-risk": "#D94F4F",
+            "strong-border": "#D5DBE5",
+            "on-tertiary-container": "#fff2ed",
+            "on-primary-fixed": "#001356",
+            "surface-variant": "#e2e1ed",
+            "surface-container-highest": "#e2e1ed",
+            "on-primary-container": "#f5f3ff",
+            "border": "#E6EAF0",
+            "inverse-on-surface": "#f1effb",
+            "secondary": "#555f73",
+            "on-tertiary": "#ffffff",
+            "surface-dim": "#dad9e4",
+            "medium-risk-bg": "#FFF4D6",
+            "muted-text": "#8A93A3",
+            "outline-variant": "#c4c5d7",
+            "surface-container-lowest": "#ffffff",
+            "success-bg": "#E8F6F0",
+            "on-tertiary-fixed": "#341100",
+            "inverse-surface": "#2f3039",
+            "subtle-surface": "#F3F5F8",
+            "secondary-fixed-dim": "#bdc7de",
+            "surface-tint": "#2c50d9",
+            "surface-container-high": "#e8e7f3",
+            "on-background": "#1a1b23",
+            "tertiary-fixed": "#ffdbcb",
+            "on-secondary-container": "#596377",
+            "surface-bright": "#fbf8ff",
+            "surface-container": "#eeedf8",
+            "primary-fixed": "#dde1ff",
+            "on-primary-fixed-variant": "#0035be",
+            "tertiary": "#923e00",
+            "error-container": "#ffdad6",
+            "on-secondary": "#ffffff",
+            "on-tertiary-fixed-variant": "#783100",
+            "primary": "#2248d1",
+            "on-secondary-fixed-variant": "#3d475a",
+            "on-primary": "#ffffff",
+            "outline": "#747686",
+            "app-background": "#F8F9FB",
+            "on-error-container": "#93000a",
+            "on-surface": "#1a1b23"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-sm": "8px",
+            "margin": "32px",
+            "space-lg": "24px",
+            "space-xl": "32px",
+            "space-xs": "4px",
+            "gutter": "20px",
+            "space-md": "16px"
+          },
+          "fontFamily": {
+            "body": ["Inter", "sans-serif"],
+            "section-heading": ["Inter", "sans-serif"],
+            "metadata": ["Inter", "sans-serif"],
+            "table-text-medium": ["Inter", "sans-serif"],
+            "table-text": ["Inter", "sans-serif"],
+            "page-title": ["Inter", "sans-serif"],
+            "kpi-value": ["Inter", "sans-serif"],
+            "button-input": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "section-heading": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "metadata": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "table-text-medium": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "table-text": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "page-title": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "kpi-value": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "button-input": ["14px", { "lineHeight": "20px", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="h-full bg-app-background font-body text-body text-primary-text antialiased selection:bg-soft-accent selection:text-primary-accent">
+<!-- SideNav (Fixed Left Anchor - JSON Authority) -->
+<aside class="fixed top-0 bottom-0 left-0 w-[224px] h-screen bg-primary-surface border-r border-border z-30 flex flex-col justify-between p-space-md">
+<!-- Brand Header -->
+<div>
+<div class="flex items-center gap-space-sm px-space-md py-space-sm mb-space-md">
+<div class="w-8 h-8 rounded-lg bg-primary-accent flex items-center justify-center text-primary-surface font-page-title font-semibold text-section-heading">
+          N
+        </div>
+<div>
+<div class="font-page-title text-section-heading font-semibold text-primary-text tracking-tight leading-none">NEXUS</div>
+<div class="font-metadata text-metadata text-secondary-text mt-1">Supply Chain OS</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-1">
+<!-- Overview -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<!-- Risk Intelligence -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="warning">warning</span>
+<span>Risk Intelligence</span>
+</a>
+<!-- Shipments -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="local_shipping">local_shipping</span>
+<span>Shipments</span>
+</a>
+<!-- Ports & Routes -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="anchor">anchor</span>
+<span>Ports &amp; Routes</span>
+</a>
+<!-- Alerts -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications_active">notifications_active</span>
+<span>Alerts</span>
+</div>
+<span class="px-1.5 py-0.5 text-[11px] font-medium rounded-full bg-high-risk-bg text-high-risk leading-none">8</span>
+</a>
+<!-- AI Analyst (ACTIVE TAB based on page intent) -->
+<a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl bg-soft-accent text-primary-accent font-button-input text-button-input transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span>AI Analyst</span>
+</a>
+<!-- Agent Center -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="support_agent">support_agent</span>
+<span>Agent Center</span>
+</a>
+<!-- Analytics -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="flex flex-col gap-1 border-t border-border pt-space-md">
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+<!-- Status Pill in Footer -->
+<div class="mt-2 px-space-md py-2 bg-subtle-surface rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span class="font-metadata text-metadata text-secondary-text">Enterprise Online</span>
+</div>
+<span class="font-metadata text-[10px] text-muted-text">v2.8.4</span>
+</div>
+</div>
+</aside>
+<!-- Main Canvas Wrapper -->
+<div class="pl-[224px] min-h-screen flex flex-col">
+<!-- TopNavBar (JSON Authority) -->
+<header class="bg-primary-surface border-b border-border sticky top-0 z-20">
+<div class="flex items-center justify-between w-full h-16 px-space-xl">
+<!-- Search & Breadcrumb cluster -->
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 font-body text-body text-secondary-text">
+<span>AI Analyst</span>
+<span class="text-muted-text">/</span>
+<span class="text-primary-text font-button-input text-button-input">Knowledge Base &amp; Data Sources</span>
+</div>
+<div class="h-4 w-px bg-border"></div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-medium-risk-bg text-medium-risk font-metadata text-metadata font-medium border border-medium-risk/20">
+              Demo Environment
+            </span>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-subtle-surface text-secondary-text font-metadata text-metadata">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-accent"></span>
+              Live Feed / Demo Data
+            </span>
+<span class="font-metadata text-metadata text-muted-text">Updated 4m ago</span>
+</div>
+</div>
+<!-- Trailing Actions & User Profile -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 border-r border-border pr-3">
+<button class="p-2 rounded-xl text-secondary-text hover:bg-subtle-surface transition-colors duration-150" title="Refresh">
+<span class="material-symbols-outlined text-[20px]" data-icon="refresh">refresh</span>
+</button>
+<button class="p-2 rounded-xl text-secondary-text hover:bg-subtle-surface transition-colors duration-150 relative" title="Notifications">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-high-risk"></span>
+</button>
+<button class="p-2 rounded-xl text-secondary-text hover:bg-subtle-surface transition-colors duration-150" title="Tune Settings">
+<span class="material-symbols-outlined text-[20px]" data-icon="tune">tune</span>
+</button>
+</div>
+<!-- User Avatar -->
+<div class="flex items-center gap-3 pl-1">
+<div class="text-right">
+<div class="font-button-input text-button-input text-primary-text leading-tight">Sarah Chen</div>
+<div class="font-metadata text-metadata text-secondary-text leading-none mt-0.5">Director of Global Logistics</div>
+</div>
+<img alt="User avatar profile for enterprise logistics operations manager" class="w-9 h-9 rounded-full object-cover border border-border" data-alt="A professional enterprise headshot portrait of Sarah Chen, an Asian female Director of Global Logistics in a modern minimalist architectural office. Bright, high-key natural illumination highlights crisp corporate attire. The aesthetic is clean, sophisticated, authoritative, and perfectly aligned with a light-mode enterprise color palette of soft whites, pale cool grays, and subtle slate blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj-DOWM5xCom3rGC2Th_lgRzl1ajtXW7q5xaMNR3OpZ5rPb3WxZP5EsrCxokGKHqz-B3lqyFz37_qqC4swl8P4aNkRlNURJHLY0rrWDIxkp7nZ0jNo5ilQSceW3Qe6A6haj1PahaL1RH2cZDiPzndkWmrJzgAYX1i8o0Myjco3c9goXjVj_2lUappaejbPzneXeiWtRd2K15x5BJL8ZkTHIS9uOrdignUJS8YgPC9XZhsCtXutd95f"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content Container -->
+<main class="flex-1 p-space-xl flex flex-col gap-6 max-w-[1600px] w-full mx-auto">
+<!-- Page Header & Action Row -->
+<section class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-2">
+<div>
+<div class="flex items-center gap-3">
+<h1 class="font-page-title text-page-title text-primary-text font-semibold tracking-tight">Knowledge Base &amp; Data Sources</h1>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-soft-accent text-primary-accent border border-primary-accent/20">
+              Workspace v2.8
+            </span>
+</div>
+<p class="font-body text-body text-secondary-text mt-1">
+            Understand the information available to your investigations and manage the resources that support supply chain analysis.
+          </p>
+<p class="font-metadata text-metadata text-muted-text mt-0.5">
+            Source availability, freshness, and permissions determine what can be used during an investigation.
+          </p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="px-space-md py-2 rounded-xl bg-primary-surface border border-strong-border hover:bg-subtle-surface font-button-input text-button-input text-primary-text flex items-center gap-2 transition-colors duration-150">
+<span class="material-symbols-outlined text-[18px]" data-icon="upload_file">upload_file</span>
+            Upload Reference
+          </button>
+<button class="px-space-md py-2 rounded-xl bg-primary-accent hover:bg-primary text-primary-surface font-button-input text-button-input flex items-center gap-2 transition-colors duration-150">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+            + Add Data Source
+          </button>
+<button class="p-2 rounded-xl bg-primary-surface border border-border hover:bg-subtle-surface text-secondary-text transition-colors duration-150">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</section>
+<!-- Summary KPI Metric Cards (4 Bento/Grid Cards) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1 -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-metadata text-metadata text-secondary-text">Configured Sources</span>
+<span class="p-1.5 rounded-lg bg-subtle-surface text-secondary-text">
+<span class="material-symbols-outlined text-[18px]" data-icon="folder_managed">folder_managed</span>
+</span>
+</div>
+<div class="mt-3">
+<div class="font-kpi-value text-kpi-value text-primary-text leading-none">4</div>
+<div class="font-metadata text-metadata text-muted-text mt-1.5">Listed in this workspace</div>
+</div>
+</div>
+<!-- Card 2: Connected Sources (Explicit Zero) -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-metadata text-metadata text-secondary-text">Connected Sources</span>
+<span class="p-1.5 rounded-lg bg-subtle-surface text-muted-text">
+<span class="material-symbols-outlined text-[18px]" data-icon="link_off">link_off</span>
+</span>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-kpi-value text-kpi-value text-primary-text leading-none">0</span>
+<span class="font-metadata text-metadata text-secondary-text">/ 4 configured</span>
+</div>
+<div class="font-metadata text-metadata text-secondary-text mt-1.5 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-text"></span>
+              No live connections configured
+            </div>
+</div>
+</div>
+<!-- Card 3: Reference Documents -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-metadata text-metadata text-secondary-text">Reference Documents</span>
+<span class="p-1.5 rounded-lg bg-soft-accent text-primary-accent">
+<span class="material-symbols-outlined text-[18px]" data-icon="menu_book">menu_book</span>
+</span>
+</div>
+<div class="mt-3">
+<div class="font-kpi-value text-kpi-value text-primary-text leading-none">12</div>
+<div class="font-metadata text-metadata text-muted-text mt-1.5">Illustrative library count</div>
+</div>
+</div>
+<!-- Card 4: Sources Requiring Setup (Amber Warning) -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-metadata text-metadata text-secondary-text">Sources Requiring Setup</span>
+<span class="p-1.5 rounded-lg bg-medium-risk-bg text-medium-risk">
+<span class="material-symbols-outlined text-[18px]" data-icon="build_circle">build_circle</span>
+</span>
+</div>
+<div class="mt-3">
+<div class="font-kpi-value text-kpi-value text-medium-risk leading-none">4</div>
+<div class="font-metadata text-metadata text-secondary-text mt-1.5 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-medium-risk"></span>
+              Connection or configuration needed
+            </div>
+</div>
+</div>
+</section>
+<!-- Tab Navigation -->
+<section class="border-b border-border flex items-center gap-8">
+<button class="flex items-center gap-2 pb-3 border-b-2 border-primary-accent text-primary-accent font-button-input text-button-input transition-colors">
+<span>Data Sources</span>
+<span class="px-2 py-0.5 rounded-full bg-soft-accent text-primary-accent font-metadata text-metadata font-medium">4</span>
+</button>
+<button class="flex items-center gap-2 pb-3 border-b-2 border-transparent text-secondary-text hover:text-primary-text font-body text-body transition-colors">
+<span>Reference Library</span>
+<span class="px-2 py-0.5 rounded-full bg-subtle-surface text-secondary-text font-metadata text-metadata">12</span>
+</button>
+<button class="flex items-center gap-2 pb-3 border-b-2 border-transparent text-secondary-text hover:text-primary-text font-body text-body transition-colors">
+<span>Data Usage &amp; Trust</span>
+</button>
+</section>
+<!-- Main Workspace: Split View with Table (65%) and Configuration Drawer (35%) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Left Table Container (65% width => lg:col-span-8 or 7.5; col-span-7 or 8) -->
+<div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-4">
+<div class="bg-primary-surface border border-border rounded-xl p-space-md">
+<!-- Table Header & Toolbar -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-border">
+<div>
+<h2 class="font-section-heading text-section-heading text-primary-text">Available Data Sources</h2>
+<p class="font-metadata text-metadata text-secondary-text mt-0.5">
+                  Review source types that can support supply chain investigations. Connection status reflects this demo workspace.
+                </p>
+</div>
+</div>
+<!-- Filter Controls -->
+<div class="flex flex-wrap items-center justify-between gap-3 py-3 border-b border-border">
+<div class="flex items-center gap-2 flex-1 min-w-[260px]">
+<div class="relative w-full max-w-sm">
+<span class="material-symbols-outlined text-[18px] text-muted-text absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" data-icon="search">search</span>
+<input class="w-full pl-9 pr-3 py-1.5 bg-subtle-surface border border-border rounded-xl font-body text-body text-primary-text placeholder-muted-text focus:outline-none focus:border-primary-accent text-xs" placeholder="Search sources or categories..." type="text"/>
+</div>
+<select class="px-3 py-1.5 bg-subtle-surface border border-border rounded-xl font-body text-body text-secondary-text text-xs focus:outline-none focus:border-primary-accent">
+<option>All Categories</option>
+<option>Shipment Data</option>
+<option>Carrier Data</option>
+<option>Port &amp; Weather</option>
+<option>Documents</option>
+</select>
+</div>
+<button class="font-metadata text-metadata text-secondary-text hover:text-primary-accent flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[14px]" data-icon="restart_alt">restart_alt</span>
+                Reset filters
+              </button>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-border">
+<th class="py-3 px-3 font-metadata text-metadata text-secondary-text font-medium">Source</th>
+<th class="py-3 px-3 font-metadata text-metadata text-secondary-text font-medium">Category</th>
+<th class="py-3 px-3 font-metadata text-metadata text-secondary-text font-medium">Status</th>
+<th class="py-3 px-3 font-metadata text-metadata text-secondary-text font-medium">Data Type</th>
+<th class="py-3 px-3 font-metadata text-metadata text-secondary-text font-medium">Last Updated</th>
+<th class="py-3 px-3 font-metadata text-metadata text-secondary-text font-medium text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<!-- Row 1: Selected / Open in Drawer -->
+<tr class="bg-soft-accent/40 border-l-4 border-l-primary-accent hover:bg-soft-accent/60 transition-colors">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<span class="p-1.5 rounded-lg bg-soft-accent text-primary-accent">
+<span class="material-symbols-outlined text-[18px]" data-icon="dns">dns</span>
+</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text font-semibold">Shipment Management System</div>
+<div class="font-metadata text-[11px] text-muted-text">Enterprise ERP / TMS</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3 font-table-text text-table-text text-secondary-text">Shipment Data</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-subtle-surface text-secondary-text font-metadata text-metadata border border-border">
+<span class="w-1.5 h-1.5 rounded-full bg-muted-text"></span>
+                        Not Connected
+                      </span>
+</td>
+<td class="py-3.5 px-3 font-table-text text-table-text text-secondary-text max-w-[180px] truncate" title="Shipment records, milestones, ETA">
+                      Shipment records, milestones, ETA
+                    </td>
+<td class="py-3.5 px-3 font-table-text text-table-text text-muted-text">Not available</td>
+<td class="py-3.5 px-3 text-right">
+<button class="px-2.5 py-1 rounded-xl bg-soft-accent text-primary-accent font-button-input text-xs hover:bg-primary-accent hover:text-primary-surface transition-colors">
+                        Configure
+                      </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-subtle-surface transition-colors">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<span class="p-1.5 rounded-lg bg-subtle-surface text-secondary-text">
+<span class="material-symbols-outlined text-[18px]" data-icon="directions_boat">directions_boat</span>
+</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Carrier Tracking</div>
+<div class="font-metadata text-[11px] text-muted-text">Ocean &amp; Air Telematics</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3 font-table-text text-table-text text-secondary-text">Carrier Data</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-subtle-surface text-secondary-text font-metadata text-metadata border border-border">
+<span class="w-1.5 h-1.5 rounded-full bg-muted-text"></span>
+                        Not Connected
+                      </span>
+</td>
+<td class="py-3.5 px-3 font-table-text text-table-text text-secondary-text max-w-[180px] truncate" title="Carrier milestones and schedule updates">
+                      Carrier milestones and schedule updates
+                    </td>
+<td class="py-3.5 px-3 font-table-text text-table-text text-muted-text">Not available</td>
+<td class="py-3.5 px-3 text-right">
+<button class="px-2.5 py-1 rounded-xl bg-primary-surface border border-border text-secondary-text font-button-input text-xs hover:border-primary-accent hover:text-primary-accent transition-colors">
+                        Configure
+                      </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-subtle-surface transition-colors">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<span class="p-1.5 rounded-lg bg-subtle-surface text-secondary-text">
+<span class="material-symbols-outlined text-[18px]" data-icon="cloud">cloud</span>
+</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Port and Weather Data</div>
+<div class="font-metadata text-[11px] text-muted-text">AIS &amp; Meteorological API</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3 font-table-text text-table-text text-secondary-text">Port &amp; Weather</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-subtle-surface text-secondary-text font-metadata text-metadata border border-border">
+<span class="w-1.5 h-1.5 rounded-full bg-muted-text"></span>
+                        Not Connected
+                      </span>
+</td>
+<td class="py-3.5 px-3 font-table-text text-table-text text-secondary-text max-w-[180px] truncate" title="Port conditions, congestion, weather exposure">
+                      Port conditions, congestion, weather exposure
+                    </td>
+<td class="py-3.5 px-3 font-table-text text-table-text text-muted-text">Not available</td>
+<td class="py-3.5 px-3 text-right">
+<button class="px-2.5 py-1 rounded-xl bg-primary-surface border border-border text-secondary-text font-button-input text-xs hover:border-primary-accent hover:text-primary-accent transition-colors">
+                        Configure
+                      </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-subtle-surface transition-colors">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<span class="p-1.5 rounded-lg bg-medium-risk-bg text-medium-risk">
+<span class="material-symbols-outlined text-[18px]" data-icon="description">description</span>
+</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">File Import</div>
+<div class="font-metadata text-[11px] text-muted-text">Manual / S3 Staging</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3 font-table-text text-table-text text-secondary-text">Documents</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-medium-risk-bg text-medium-risk font-metadata text-metadata border border-medium-risk/20">
+<span class="w-1.5 h-1.5 rounded-full bg-medium-risk"></span>
+                        Available for Setup
+                      </span>
+</td>
+<td class="py-3.5 px-3 font-table-text text-table-text text-secondary-text max-w-[180px] truncate" title="CSV and structured reference files">
+                      CSV and structured reference files
+                    </td>
+<td class="py-3.5 px-3 font-table-text text-table-text text-muted-text">Not available</td>
+<td class="py-3.5 px-3 text-right">
+<button class="px-2.5 py-1 rounded-xl bg-medium-risk-bg text-medium-risk font-button-input text-xs hover:bg-medium-risk hover:text-primary-surface transition-colors">
+                        Set Up
+                      </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footnote / Notice -->
+<div class="mt-4 pt-3 border-t border-border flex items-start gap-2 bg-subtle-surface/50 p-3 rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-muted-text mt-0.5" data-icon="info">info</span>
+<p class="font-metadata text-metadata text-secondary-text">
+                Source availability does not mean data is connected. Configure and validate a source before using it in operational investigations.
+              </p>
+</div>
+</div>
+</div>
+<!-- Right Side: Interactive "Configure Data Source" Drawer / Side Panel (35% width => lg:col-span-5 or 4) -->
+<div class="lg:col-span-5 xl:col-span-4 bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between shadow-sm">
+<div>
+<!-- Panel Header -->
+<div class="flex items-center justify-between pb-3 border-b border-border">
+<div class="flex items-center gap-2">
+<span class="p-1 rounded bg-soft-accent text-primary-accent">
+<span class="material-symbols-outlined text-[16px]" data-icon="settings_suggest">settings_suggest</span>
+</span>
+<span class="font-section-heading text-section-heading text-primary-text">Configure Data Source</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1 text-muted-text hover:text-primary-text rounded transition-colors" title="Dock Panel">
+<span class="material-symbols-outlined text-[18px]" data-icon="dock_to_right">dock_to_right</span>
+</button>
+<button class="p-1 text-muted-text hover:text-primary-text rounded transition-colors" title="Close Panel">
+<span class="material-symbols-outlined text-[18px]" data-icon="close">close</span>
+</button>
+</div>
+</div>
+<!-- Source Identity -->
+<div class="py-3 border-b border-border">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-section-heading text-section-heading text-primary-text">Shipment Management System</h3>
+<div class="font-metadata text-metadata text-secondary-text mt-0.5">Category: Shipment Data</div>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-subtle-surface text-secondary-text font-metadata text-metadata border border-border">
+<span class="w-1.5 h-1.5 rounded-full bg-muted-text"></span>
+                  Not Connected
+                </span>
+</div>
+<p class="font-table-text text-table-text text-secondary-text mt-2 leading-relaxed">
+                Connect enterprise TMS or ERP feeds to supply real-time shipment identifiers, origins, destinations, container milestones, and predicted arrivals.
+              </p>
+</div>
+<!-- Configuration Form -->
+<div class="py-4 space-y-4">
+<!-- Endpoint Field -->
+<div>
+<label class="block font-metadata text-metadata font-medium text-primary-text mb-1 flex items-center justify-between">
+<span>Workspace / Endpoint Identifier</span>
+<span class="text-muted-text font-normal">Demo placeholder</span>
+</label>
+<input class="w-full px-3 py-2 bg-subtle-surface border border-border rounded-xl font-body text-body text-primary-text focus:outline-none focus:border-primary-accent text-xs" readonly="" type="text" value="https://tms.internal.corp/api/v2"/>
+</div>
+<!-- Auth Method -->
+<div>
+<label class="block font-metadata text-metadata font-medium text-primary-text mb-1">
+                  Authentication Method
+                </label>
+<select class="w-full px-3 py-2 bg-primary-surface border border-border rounded-xl font-body text-body text-primary-text text-xs focus:outline-none focus:border-primary-accent">
+<option selected="">OAuth 2.0 Client Credentials</option>
+<option>mTLS Certificate Handshake</option>
+<option>AWS IAM Role Delegation</option>
+</select>
+</div>
+<!-- Permissions -->
+<div>
+<label class="block font-metadata text-metadata font-medium text-primary-text mb-1">
+                  Access Permissions
+                </label>
+<div class="p-2.5 rounded-xl bg-subtle-surface border border-border flex items-center justify-between">
+<span class="font-table-text text-table-text text-primary-text">Read-only (Shipment records, milestones)</span>
+<span class="material-symbols-outlined text-[16px] text-success" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+</div>
+<!-- Sync Preference -->
+<div>
+<label class="block font-metadata text-metadata font-medium text-primary-text mb-1">
+                  Sync / Refresh Preference
+                </label>
+<select class="w-full px-3 py-2 bg-primary-surface border border-border rounded-xl font-body text-body text-primary-text text-xs focus:outline-none focus:border-primary-accent">
+<option selected="">Every 15 minutes (illustrative)</option>
+<option>Hourly polling</option>
+<option>Event-driven Webhook only</option>
+</select>
+</div>
+<!-- Integration Caution Note -->
+<div class="p-3 rounded-xl bg-medium-risk-bg/40 border border-medium-risk/20 flex gap-2">
+<span class="material-symbols-outlined text-[18px] text-medium-risk shrink-0" data-icon="security">security</span>
+<p class="font-metadata text-[11px] text-primary-text leading-tight">
+                  Credentials and API keys must be provisioned via your organization's enterprise identity manager. Never submit raw secrets in demo interfaces.
+                </p>
+</div>
+<!-- Data Validation Checklist -->
+<div>
+<span class="block font-metadata text-metadata font-medium text-secondary-text mb-2 uppercase tracking-wider text-[11px]">
+                  Data Validation Checklist
+                </span>
+<div class="space-y-1.5 font-table-text text-table-text text-secondary-text">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded border-border text-primary-accent focus:ring-0 w-3.5 h-3.5" disabled="" type="checkbox"/>
+<span>Schema compatibility verified</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded border-border text-primary-accent focus:ring-0 w-3.5 h-3.5" disabled="" type="checkbox"/>
+<span>SSL / TLS 1.3 encryption handshake</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-border text-primary-accent focus:ring-0 w-3.5 h-3.5" disabled="" type="checkbox"/>
+<span>Rate limit policy compliance</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Drawer Action Footer -->
+<div class="pt-4 border-t border-border flex items-center justify-between gap-2">
+<button class="px-3 py-1.5 rounded-xl border border-border text-secondary-text hover:bg-subtle-surface font-button-input text-xs transition-colors">
+              Test Connection
+            </button>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-xl text-secondary-text hover:bg-subtle-surface font-button-input text-xs transition-colors">
+                Cancel
+              </button>
+<button class="px-3 py-1.5 rounded-xl bg-primary-accent text-primary-surface hover:bg-primary font-button-input text-xs transition-colors">
+                Save Configuration
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary Context: Preview of Reference Materials & Data Usage Insights (Bento Split) -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
+<!-- Reference Documents Preview Card -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md">
+<div class="flex items-center justify-between pb-3 border-b border-border">
+<div class="flex items-center gap-2">
+<span class="p-1 rounded bg-soft-accent text-primary-accent">
+<span class="material-symbols-outlined text-[16px]" data-icon="auto_stories">auto_stories</span>
+</span>
+<h3 class="font-section-heading text-section-heading text-primary-text">Key Reference Documents</h3>
+</div>
+<a class="font-metadata text-metadata text-primary-accent hover:underline flex items-center gap-0.5" href="#">
+              View all 12
+              <span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+<div class="divide-y divide-border mt-2">
+<div class="py-2.5 flex items-center justify-between hover:bg-subtle-surface/50 px-2 rounded-lg transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="picture_as_pdf">picture_as_pdf</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Supply Chain Risk Assessment Guidelines.pdf</div>
+<div class="font-metadata text-[11px] text-secondary-text">Standard SOP • Updated 12 days ago • 4.2 MB</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-success-bg text-success">Active Context</span>
+</div>
+<div class="py-2.5 flex items-center justify-between hover:bg-subtle-surface/50 px-2 rounded-lg transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="picture_as_pdf">picture_as_pdf</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Port Congestion Review Checklist - APAC.pdf</div>
+<div class="font-metadata text-[11px] text-secondary-text">Regional Ops • Updated 3 weeks ago • 1.8 MB</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-success-bg text-success">Active Context</span>
+</div>
+<div class="py-2.5 flex items-center justify-between hover:bg-subtle-surface/50 px-2 rounded-lg transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="description">description</span>
+<div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text">Carrier Contract Escalation Tiers - 2024.docx</div>
+<div class="font-metadata text-[11px] text-secondary-text">Procurement • Updated 1 month ago • 950 KB</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-subtle-surface text-secondary-text">Draft Reference</span>
+</div>
+</div>
+</div>
+<!-- Data Usage & Provenance Highlights -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md">
+<div class="flex items-center justify-between pb-3 border-b border-border">
+<div class="flex items-center gap-2">
+<span class="p-1 rounded bg-soft-accent text-primary-accent">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified_user">verified_user</span>
+</span>
+<h3 class="font-section-heading text-section-heading text-primary-text">Data Usage &amp; Provenance</h3>
+</div>
+<span class="font-metadata text-metadata text-muted-text">Governance Tier A</span>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-3">
+<div class="p-3 bg-subtle-surface rounded-xl">
+<div class="font-metadata text-metadata text-secondary-text">Source Provenance</div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text mt-1">Direct API or Signed PDF</div>
+<div class="font-metadata text-[11px] text-muted-text mt-0.5">Strict lineage tracking enabled</div>
+</div>
+<div class="p-3 bg-subtle-surface rounded-xl">
+<div class="font-metadata text-metadata text-secondary-text">Data Freshness Policy</div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text mt-1">Not configured</div>
+<div class="font-metadata text-[11px] text-medium-risk mt-0.5">Requires source binding</div>
+</div>
+<div class="p-3 bg-subtle-surface rounded-xl">
+<div class="font-metadata text-metadata text-secondary-text">AI Decision Support</div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text mt-1">Evidence validation required</div>
+<div class="font-metadata text-[11px] text-muted-text mt-0.5">No hallucinatory inference</div>
+</div>
+<div class="p-3 bg-subtle-surface rounded-xl">
+<div class="font-metadata text-metadata text-secondary-text">Human Oversight</div>
+<div class="font-table-text-medium text-table-text-medium text-primary-text mt-1">Review for all operations</div>
+<div class="font-metadata text-[11px] text-muted-text mt-0.5">SOP gatekeeper enforced</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

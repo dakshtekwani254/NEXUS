@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-app-background" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEXUS — Risk Intelligence</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "medium-risk-bg": "#FFF4D6",
+            "subtle-surface": "#F3F5F8",
+            "error": "#ba1a1a",
+            "primary-accent": "#4263EB",
+            "on-secondary": "#ffffff",
+            "outline": "#747686",
+            "border": "#E6EAF0",
+            "error-container": "#ffdad6",
+            "on-tertiary-container": "#fff2ed",
+            "primary-fixed": "#dde1ff",
+            "secondary-text": "#667085",
+            "high-risk": "#D94F4F",
+            "on-secondary-fixed": "#111c2d",
+            "primary-surface": "#FFFFFF",
+            "soft-accent": "#EEF2FF",
+            "app-background": "#F8F9FB",
+            "surface-dim": "#dad9e4",
+            "tertiary-fixed": "#ffdbcb",
+            "on-error": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-surface": "#1a1b23",
+            "primary-fixed-dim": "#b9c3ff",
+            "surface-container-low": "#f4f2fe",
+            "secondary": "#555f73",
+            "tertiary-container": "#b95000",
+            "outline-variant": "#c4c5d7",
+            "success": "#268568",
+            "on-secondary-container": "#596377",
+            "high-risk-bg": "#FCECEC",
+            "on-tertiary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed-variant": "#783100",
+            "success-bg": "#E8F6F0",
+            "secondary-fixed-dim": "#bdc7de",
+            "secondary-container": "#d6e0f8",
+            "surface-variant": "#e2e1ed",
+            "primary": "#2248d1",
+            "surface-container": "#eeedf8",
+            "on-tertiary-fixed": "#341100",
+            "on-secondary-fixed-variant": "#3d475a",
+            "inverse-primary": "#b9c3ff",
+            "surface-container-highest": "#e2e1ed",
+            "background": "#fbf8ff",
+            "surface-bright": "#fbf8ff",
+            "strong-border": "#D5DBE5",
+            "on-background": "#1a1b23",
+            "muted-text": "#8A93A3",
+            "surface": "#fbf8ff",
+            "on-primary-fixed-variant": "#0035be",
+            "tertiary-fixed-dim": "#ffb690",
+            "secondary-fixed": "#d9e3fb",
+            "on-surface-variant": "#444654",
+            "inverse-on-surface": "#f1effb",
+            "primary-container": "#4263eb",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#e8e7f3",
+            "medium-risk": "#B7791F",
+            "tertiary": "#923e00",
+            "primary-text": "#172033",
+            "inverse-surface": "#2f3039",
+            "surface-tint": "#2c50d9",
+            "on-primary-fixed": "#001356",
+            "on-primary-container": "#f5f3ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-md": "16px",
+            "space-xs": "4px",
+            "space-xl": "32px",
+            "gutter": "20px",
+            "space-sm": "8px",
+            "margin": "32px",
+            "space-lg": "24px"
+          },
+          "fontFamily": {
+            "kpi-value": ["Inter"],
+            "table-text-medium": ["Inter"],
+            "section-heading": ["Inter"],
+            "button-input": ["Inter"],
+            "page-title": ["Inter"],
+            "metadata": ["Inter"],
+            "table-text": ["Inter"],
+            "body": ["Inter"]
+          },
+          "fontSize": {
+            "kpi-value": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "table-text-medium": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "section-heading": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "button-input": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "page-title": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "metadata": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "table-text": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full font-body text-body text-primary-text bg-app-background antialiased flex">
+<!-- ================= PERSISTENT SIDEBAR (224px) ================= -->
+<aside class="fixed top-0 bottom-0 left-0 w-[224px] h-screen bg-primary-surface border-r border-border flex flex-col justify-between p-space-md z-30 select-none">
+<div class="flex flex-col gap-space-md">
+<!-- Brand Header -->
+<div class="flex items-center gap-space-sm px-space-sm pt-space-xs pb-space-sm">
+<div class="w-8 h-8 rounded-xl bg-soft-accent flex items-center justify-center text-primary-accent border border-border">
+<span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+</div>
+<div class="flex flex-col">
+<span class="font-page-title text-section-heading font-semibold text-primary-text tracking-tight leading-none">NEXUS</span>
+<span class="font-metadata text-metadata text-muted-text">Supply Chain OS</span>
+</div>
+</div>
+<!-- Main Navigation Menu -->
+<nav class="flex flex-col gap-1">
+<!-- 1. Overview (Inactive) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<!-- 2. Risk Intelligence (ACTIVE) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl bg-soft-accent text-primary-accent font-button-input text-button-input transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px] text-primary-accent" data-icon="warning" data-weight="fill">warning</span>
+<span>Risk Intelligence</span>
+</a>
+<!-- 3. Shipments -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="local_shipping">local_shipping</span>
+<span>Shipments</span>
+</a>
+<!-- 4. Ports & Routes -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="anchor">anchor</span>
+<span>Ports &amp; Routes</span>
+</a>
+<!-- 5. Alerts (With subtle badge '3') -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="notifications_active">notifications_active</span>
+<span>Alerts</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-high-risk-bg text-high-risk leading-none">3</span>
+</a>
+<!-- 6. AI Analyst -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="smart_toy">smart_toy</span>
+<span>AI Analyst</span>
+</a>
+<!-- 7. Agent Center -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="support_agent">support_agent</span>
+<span>Agent Center</span>
+</a>
+<!-- 8. Analytics -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+</nav>
+</div>
+<!-- Secondary Navigation / Footers -->
+<div class="flex flex-col gap-1 pt-space-md border-t border-border">
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="help">help</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-secondary-text hover:bg-subtle-surface font-body text-body transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px] text-muted-text" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- ================= MAIN WRAPPER (Fluid Canvas offset by 224px) ================= -->
+<div class="ml-[224px] flex-1 min-h-screen flex flex-col bg-app-background">
+<!-- Docked Top Navigation Bar -->
+<header class="h-16 bg-primary-surface border-b border-border px-space-xl flex items-center justify-between sticky top-0 z-20">
+<!-- Search on left -->
+<div class="flex items-center gap-space-md w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-muted-text" data-icon="search">search</span>
+<input class="w-full bg-subtle-surface border border-border rounded-xl pl-9 pr-3 py-1.5 font-body text-body text-primary-text placeholder:text-muted-text focus:outline-none focus:border-primary-accent text-[13px]" placeholder="Search shipments, ports, corridors..." type="text"/>
+</div>
+</div>
+<!-- Trailing Controls & User Identity -->
+<div class="flex items-center gap-space-md">
+<span class="px-2.5 py-1 rounded-full text-[12px] font-medium bg-soft-accent text-primary-accent border border-border">
+          Demo data
+        </span>
+<div class="flex items-center gap-1.5 text-secondary-text font-metadata text-metadata">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span>Updated 4m ago</span>
+</div>
+<div class="h-5 w-[1px] bg-border mx-1"></div>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded-xl flex items-center justify-center text-secondary-text hover:bg-subtle-surface transition-colors" title="Refresh">
+<span class="material-symbols-outlined text-[18px]" data-icon="refresh">refresh</span>
+</button>
+<button class="w-8 h-8 rounded-xl flex items-center justify-center text-secondary-text hover:bg-subtle-surface transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined text-[18px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-high-risk"></span>
+</button>
+<button class="w-8 h-8 rounded-xl flex items-center justify-center text-secondary-text hover:bg-subtle-surface transition-colors" title="Configuration">
+<span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+</button>
+</div>
+<div class="h-5 w-[1px] bg-border mx-1"></div>
+<!-- User Profile Avatar -->
+<div class="flex items-center gap-space-sm pl-1 cursor-pointer">
+<img class="w-8 h-8 rounded-full border border-border object-cover" data-alt="Professional enterprise logistics operations manager in modern clean corporate environment, photorealistic studio lighting, composed and authoritative look, crisp navy and slate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGY_dx9LQHMYcUbiaGfI0crRw_D7XggM-heCA-f2Jt9VL9LU3hwryza8RBzsBq3oqSaYjS3dN45mjYEvUwcPfumgGRT_7ZbWhbVA5vK1MybZRXYJOuZ8-HekHrN-vrGyW_BLIqRdnBCzJwckvCqD70TlQK5KhQxofaPLAnqSorB6NnGwVGchC9WYPx_b2Xyp0G67UVn8Qiwt27Tter01AeHi2D49Fo7GSOE9V7aqhYxLV2CNVgC1DO"/>
+<div class="flex flex-col text-left">
+<span class="font-button-input text-table-text-medium text-primary-text leading-tight">Sarah Chen</span>
+<span class="font-metadata text-metadata text-muted-text leading-none">Director of Global Logistics</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-muted-text" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</header>
+<!-- Canvas Body Content -->
+<main class="flex-1 p-space-xl flex flex-col gap-space-lg max-w-[1440px] mx-auto w-full">
+<!-- ================= MAIN HEADER & FILTER ROW ================= -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-baseline justify-between">
+<div>
+<h1 class="font-page-title text-page-title font-semibold text-primary-text tracking-tight">Risk Intelligence</h1>
+<p class="font-body text-body text-secondary-text mt-0.5">Identify emerging threats and understand their impact on your supply chain.</p>
+</div>
+</div>
+<!-- Compact Filter Bar -->
+<div class="flex items-center justify-between bg-primary-surface border border-border rounded-xl px-space-md py-space-sm">
+<div class="flex items-center gap-space-md">
+<!-- Filter 1: Time range -->
+<div class="relative flex items-center">
+<span class="font-metadata text-metadata text-muted-text mr-2">Time range:</span>
+<button class="flex items-center gap-1.5 font-button-input text-table-text-medium text-primary-text bg-subtle-surface hover:bg-border/60 px-2.5 py-1 rounded-lg border border-border transition-colors">
+<span>Last 7 days</span>
+<span class="material-symbols-outlined text-[16px] text-secondary-text" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<div class="h-4 w-[1px] bg-border"></div>
+<!-- Filter 2: Risk category -->
+<div class="relative flex items-center">
+<span class="font-metadata text-metadata text-muted-text mr-2">Risk category:</span>
+<button class="flex items-center gap-1.5 font-button-input text-table-text-medium text-primary-text bg-subtle-surface hover:bg-border/60 px-2.5 py-1 rounded-lg border border-border transition-colors">
+<span>All categories</span>
+<span class="material-symbols-outlined text-[16px] text-secondary-text" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<div class="h-4 w-[1px] bg-border"></div>
+<!-- Filter 3: Region -->
+<div class="relative flex items-center">
+<span class="font-metadata text-metadata text-muted-text mr-2">Region:</span>
+<button class="flex items-center gap-1.5 font-button-input text-table-text-medium text-primary-text bg-subtle-surface hover:bg-border/60 px-2.5 py-1 rounded-lg border border-border transition-colors">
+<span>Global</span>
+<span class="material-symbols-outlined text-[16px] text-secondary-text" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Reset Filter Action -->
+<button class="flex items-center gap-1 font-button-input text-table-text-medium text-secondary-text hover:text-primary-text transition-colors px-2 py-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="restart_alt">restart_alt</span>
+<span>Reset filters</span>
+</button>
+</div>
+</section>
+<!-- ================= 4 RISK SUMMARY KPI CARDS ================= -->
+<section class="grid grid-cols-4 gap-space-md">
+<!-- Card 1: Critical Risks -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-table-text-medium text-table-text-medium text-secondary-text">Critical Risks</span>
+<span class="w-2 h-2 rounded-full bg-high-risk"></span>
+</div>
+<div class="my-2 flex items-baseline gap-2">
+<span class="font-kpi-value text-kpi-value text-primary-text font-semibold">4</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-high-risk-bg text-high-risk leading-none">Immediate action</span>
+</div>
+<p class="font-metadata text-metadata text-muted-text">Require immediate review</p>
+</div>
+<!-- Card 2: High-Risk Shipments -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-table-text-medium text-table-text-medium text-secondary-text">High-Risk Shipments</span>
+<span class="material-symbols-outlined text-[18px] text-muted-text" data-icon="inventory_2">inventory_2</span>
+</div>
+<div class="my-2">
+<span class="font-kpi-value text-kpi-value text-primary-text font-semibold">86</span>
+</div>
+<p class="font-metadata text-metadata text-muted-text">Across monitored routes</p>
+</div>
+<!-- Card 3: Routes Affected -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-table-text-medium text-table-text-medium text-secondary-text">Routes Affected</span>
+<span class="material-symbols-outlined text-[18px] text-muted-text" data-icon="route">route</span>
+</div>
+<div class="my-2">
+<span class="font-kpi-value text-kpi-value text-primary-text font-semibold">12</span>
+</div>
+<p class="font-metadata text-metadata text-muted-text">Potential disruption exposure</p>
+</div>
+<!-- Card 4: Risk Trend -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-table-text-medium text-table-text-medium text-secondary-text">Risk Trend</span>
+<span class="material-symbols-outlined text-[18px] text-medium-risk" data-icon="trending_up">trending_up</span>
+</div>
+<div class="my-2 flex items-baseline gap-2">
+<span class="font-kpi-value text-kpi-value text-medium-risk font-semibold">Increasing</span>
+</div>
+<p class="font-metadata text-metadata text-muted-text">Compared with previous period</p>
+</div>
+</section>
+<!-- ================= MAIN CONTENT ROW (Two-column layout) ================= -->
+<section class="grid grid-cols-12 gap-space-md">
+<!-- Left Panel (~60% width): Global Risk Map -->
+<div class="col-span-7 bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-border">
+<div>
+<h2 class="font-section-heading text-section-heading font-semibold text-primary-text">Global Risk Map</h2>
+<p class="font-metadata text-metadata text-secondary-text">Geographic distribution of detected and predicted risks</p>
+</div>
+<a class="font-button-input text-table-text-medium text-primary-accent hover:underline flex items-center gap-1" href="#">
+<span>View routes</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Stylized Minimal Map Canvas Container -->
+<div class="relative w-full h-[320px] bg-subtle-surface rounded-xl my-space-md border border-border overflow-hidden flex items-center justify-center">
+<!-- Ambient Grid & Simplified World Outline -->
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#667085 1px, transparent 1px); background-size: 20px 20px;"></div>
+<!-- Abstract Continental Vector Shapes -->
+<svg class="absolute inset-0 w-full h-full text-border/80" fill="currentColor" preserveaspectratio="none" viewbox="0 0 800 450">
+<!-- North America -->
+<path d="M 80 80 Q 160 70 210 110 T 260 210 Q 200 240 160 230 T 90 140 Z" opacity="0.6"></path>
+<!-- South America -->
+<path d="M 210 240 Q 250 250 260 300 T 230 400 Q 200 370 190 320 Z" opacity="0.6"></path>
+<!-- Europe & Africa -->
+<path d="M 360 80 Q 440 70 450 140 T 430 200 Q 400 230 360 160 Z" opacity="0.6"></path>
+<path d="M 370 200 Q 440 210 460 290 T 420 380 Q 380 340 370 270 Z" opacity="0.6"></path>
+<!-- Asia & Oceania -->
+<path d="M 460 80 Q 640 60 720 150 T 670 240 Q 560 250 490 170 Z" opacity="0.6"></path>
+<path d="M 640 280 Q 720 290 730 360 T 660 390 Q 610 340 640 280 Z" opacity="0.6"></path>
+</svg>
+<!-- Subtle Route Connection Arcs (Vector lines) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" viewbox="0 0 800 450">
+<!-- Shanghai to Rotterdam -->
+<path d="M 610 180 Q 500 100 420 120" fill="none" stroke="#D5DBE5" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<!-- Rotterdam to North Atlantic -->
+<path d="M 420 120 Q 340 100 290 130" fill="none" stroke="#D5DBE5" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<!-- Shanghai to Singapore -->
+<path d="M 610 180 Q 590 230 570 260" fill="none" stroke="#D5DBE5" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<!-- Singapore to Suez / Rotterdam -->
+<path d="M 570 260 Q 480 230 420 120" fill="none" stroke="#D5DBE5" stroke-dasharray="4 4" stroke-width="1.5"></path>
+</svg>
+<!-- Callout 1: Shanghai (Port Congestion - High) -->
+<div class="absolute top-[38%] left-[75%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer">
+<div class="flex items-center gap-1.5 bg-primary-surface border border-high-risk/30 rounded-lg px-2 py-1 shadow-sm mb-1">
+<span class="w-2 h-2 rounded-full bg-high-risk animate-pulse"></span>
+<span class="font-button-input text-[11px] text-primary-text font-medium whitespace-nowrap">Shanghai: Congestion</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-high-risk-bg text-high-risk">High</span>
+</div>
+<div class="w-3.5 h-3.5 rounded-full bg-high-risk border-2 border-primary-surface shadow-sm"></div>
+</div>
+<!-- Callout 2: North Atlantic (Severe Weather - Medium) -->
+<div class="absolute top-[28%] left-[36%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer">
+<div class="flex items-center gap-1.5 bg-primary-surface border border-medium-risk/30 rounded-lg px-2 py-1 shadow-sm mb-1">
+<span class="w-2 h-2 rounded-full bg-medium-risk"></span>
+<span class="font-button-input text-[11px] text-primary-text font-medium whitespace-nowrap">N. Atlantic: Severe Weather</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-medium-risk-bg text-medium-risk">Med</span>
+</div>
+<div class="w-3.5 h-3.5 rounded-full bg-medium-risk border-2 border-primary-surface shadow-sm"></div>
+</div>
+<!-- Callout 3: Rotterdam (Carrier Schedule Change - Medium) -->
+<div class="absolute top-[26%] left-[52%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer">
+<div class="flex items-center gap-1.5 bg-primary-surface border border-medium-risk/30 rounded-lg px-2 py-1 shadow-sm mb-1">
+<span class="w-2 h-2 rounded-full bg-medium-risk"></span>
+<span class="font-button-input text-[11px] text-primary-text font-medium whitespace-nowrap">Rotterdam: Schedules</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-medium-risk-bg text-medium-risk">Med</span>
+</div>
+<div class="w-3.5 h-3.5 rounded-full bg-medium-risk border-2 border-primary-surface shadow-sm"></div>
+</div>
+<!-- Callout 4: Singapore (Route Disruption Exposure - Low) -->
+<div class="absolute top-[58%] left-[71%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer">
+<div class="flex items-center gap-1.5 bg-primary-surface border border-border rounded-lg px-2 py-1 shadow-sm mb-1">
+<span class="w-2 h-2 rounded-full bg-primary-accent"></span>
+<span class="font-button-input text-[11px] text-primary-text font-medium whitespace-nowrap">Singapore: Route Exposure</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-soft-accent text-primary-accent">Low</span>
+</div>
+<div class="w-3.5 h-3.5 rounded-full bg-primary-accent border-2 border-primary-surface shadow-sm"></div>
+</div>
+</div>
+</div>
+<!-- Map Legend -->
+<div class="flex items-center justify-between pt-2 border-t border-border font-metadata text-metadata">
+<span class="text-secondary-text">Severity Classifications:</span>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-high-risk"></span>
+<span class="text-primary-text">Critical</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-high-risk opacity-75"></span>
+<span class="text-primary-text">High</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-medium-risk"></span>
+<span class="text-primary-text">Medium</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-accent"></span>
+<span class="text-primary-text">Low</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Panel (~40% width): Risk Distribution -->
+<div class="col-span-5 bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-border">
+<div>
+<h2 class="font-section-heading text-section-heading font-semibold text-primary-text">Risk Distribution</h2>
+<p class="font-metadata text-metadata text-secondary-text">Current exposure by severity</p>
+</div>
+<span class="font-metadata text-[11px] text-muted-text bg-subtle-surface px-2 py-0.5 rounded border border-border">Sample exposure data</span>
+</div>
+<!-- Distribution Progress Bars Container -->
+<div class="flex flex-col gap-space-md my-space-md">
+<!-- Critical: 4 shipments -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-table-text-medium text-table-text-medium">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-high-risk"></span>
+<span class="text-primary-text">Critical</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-secondary-text font-normal text-[12px]">0.3%</span>
+<span class="text-primary-text font-semibold">4 shipments</span>
+</div>
+</div>
+<div class="w-full h-2.5 bg-subtle-surface rounded-full overflow-hidden border border-border/50">
+<div class="h-full bg-high-risk rounded-full" style="width: 2%;"></div>
+</div>
+</div>
+<!-- High: 82 shipments -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-table-text-medium text-table-text-medium">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-high-risk opacity-75"></span>
+<span class="text-primary-text">High</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-secondary-text font-normal text-[12px]">6.4%</span>
+<span class="text-primary-text font-semibold">82 shipments</span>
+</div>
+</div>
+<div class="w-full h-2.5 bg-subtle-surface rounded-full overflow-hidden border border-border/50">
+<div class="h-full bg-high-risk opacity-75 rounded-full" style="width: 14%;"></div>
+</div>
+</div>
+<!-- Medium: 216 shipments -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-table-text-medium text-table-text-medium">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-medium-risk"></span>
+<span class="text-primary-text">Medium</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-secondary-text font-normal text-[12px]">16.8%</span>
+<span class="text-primary-text font-semibold">216 shipments</span>
+</div>
+</div>
+<div class="w-full h-2.5 bg-subtle-surface rounded-full overflow-hidden border border-border/50">
+<div class="h-full bg-medium-risk rounded-full" style="width: 32%;"></div>
+</div>
+</div>
+<!-- Low: 982 shipments -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-table-text-medium text-table-text-medium">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-muted-text"></span>
+<span class="text-primary-text">Low</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-secondary-text font-normal text-[12px]">76.5%</span>
+<span class="text-primary-text font-semibold">982 shipments</span>
+</div>
+</div>
+<div class="w-full h-2.5 bg-subtle-surface rounded-full overflow-hidden border border-border/50">
+<div class="h-full bg-muted-text rounded-full" style="width: 76.5%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Subtext summary footer -->
+<div class="p-space-sm bg-subtle-surface rounded-xl border border-border flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary-accent" data-icon="insights">insights</span>
+<span class="font-table-text text-table-text text-secondary-text">Total Active Tracked Exposure:</span>
+</div>
+<span class="font-button-input text-table-text-medium text-primary-text">1,284 Shipments</span>
+</div>
+</div>
+</section>
+<!-- ================= TOP RISK FACTORS (Full-width section) ================= -->
+<section class="flex flex-col gap-space-sm">
+<div>
+<h2 class="font-section-heading text-section-heading font-semibold text-primary-text">Top Risk Factors</h2>
+<p class="font-metadata text-metadata text-secondary-text">Conditions contributing to potential supply chain disruption.</p>
+</div>
+<div class="grid grid-cols-3 gap-space-md">
+<!-- Factor 1: Port Congestion -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between hover:border-strong-border transition-colors">
+<div>
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-high-risk-bg text-high-risk flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="anchor">anchor</span>
+</div>
+<div>
+<h3 class="font-button-input text-button-input text-primary-text font-medium">Port Congestion</h3>
+<span class="font-metadata text-metadata text-secondary-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="location_on">location_on</span> Shanghai
+                    </span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-high-risk-bg text-high-risk border border-high-risk/20">High</span>
+</div>
+<p class="font-table-text text-table-text text-secondary-text mt-3">Increased vessel waiting times may affect departure schedules and downstream delivery estimates.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-muted-text font-metadata text-metadata">
+<span>Avg Delay: 3.2 days</span>
+<span class="text-primary-accent hover:underline cursor-pointer">Inspect factor →</span>
+</div>
+</div>
+<!-- Factor 2: Severe Weather -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between hover:border-strong-border transition-colors">
+<div>
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-medium-risk-bg text-medium-risk flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="air">air</span>
+</div>
+<div>
+<h3 class="font-button-input text-button-input text-primary-text font-medium">Severe Weather</h3>
+<span class="font-metadata text-metadata text-secondary-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="location_on">location_on</span> North Atlantic
+                    </span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-medium-risk-bg text-medium-risk border border-medium-risk/20">Medium</span>
+</div>
+<p class="font-table-text text-table-text text-secondary-text mt-3">Adverse weather may cause route changes, delays, or longer transit times across northern sea corridors.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-muted-text font-metadata text-metadata">
+<span>Wind: 48 kts</span>
+<span class="text-primary-accent hover:underline cursor-pointer">Inspect factor →</span>
+</div>
+</div>
+<!-- Factor 3: Carrier Schedule Changes -->
+<div class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col justify-between hover:border-strong-border transition-colors">
+<div>
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-medium-risk-bg text-medium-risk flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_month">calendar_month</span>
+</div>
+<div>
+<h3 class="font-button-input text-button-input text-primary-text font-medium">Carrier Schedule Changes</h3>
+<span class="font-metadata text-metadata text-secondary-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="location_on">location_on</span> Rotterdam
+                    </span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-medium-risk-bg text-medium-risk border border-medium-risk/20">Medium</span>
+</div>
+<p class="font-table-text text-table-text text-secondary-text mt-3">Schedule revisions may affect connecting shipments and planned arrival windows across central terminals.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-muted-text font-metadata text-metadata">
+<span>Carriers affected: 3</span>
+<span class="text-primary-accent hover:underline cursor-pointer">Inspect factor →</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= RISK ASSESSMENTS TABLE (Full-width section) ================= -->
+<section class="bg-primary-surface border border-border rounded-xl p-space-md flex flex-col gap-space-md mb-8">
+<!-- Section Header with Search & Filter Controls -->
+<div class="flex items-center justify-between flex-wrap gap-space-md">
+<div>
+<h2 class="font-section-heading text-section-heading font-semibold text-primary-text">Risk Assessments</h2>
+<p class="font-metadata text-metadata text-secondary-text">Review the most significant risks identified across your monitored network.</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<!-- Search Input -->
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-muted-text" data-icon="search">search</span>
+<input class="w-full bg-primary-surface border border-border rounded-lg pl-8 pr-2.5 py-1 font-body text-[13px] text-primary-text placeholder:text-muted-text focus:outline-none focus:border-primary-accent" placeholder="Search risks..." type="text"/>
+</div>
+<!-- Severity Dropdown -->
+<button class="flex items-center gap-1.5 font-button-input text-table-text-medium text-primary-text bg-primary-surface hover:bg-subtle-surface px-2.5 py-1 rounded-lg border border-border transition-colors">
+<span>Severity: All severities</span>
+<span class="material-symbols-outlined text-[16px] text-secondary-text" data-icon="expand_more">expand_more</span>
+</button>
+<!-- Export / Secondary action -->
+<button class="flex items-center gap-1 font-button-input text-table-text-medium text-secondary-text hover:text-primary-text bg-primary-surface hover:bg-subtle-surface px-2.5 py-1 rounded-lg border border-border transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="download">download</span>
+<span>Export</span>
+</button>
+</div>
+</div>
+<!-- Enterprise Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-border font-table-text-medium text-metadata text-secondary-text select-none">
+<th class="py-2.5 px-3 font-medium">Risk</th>
+<th class="py-2.5 px-3 font-medium">Category</th>
+<th class="py-2.5 px-3 font-medium">Location</th>
+<th class="py-2.5 px-3 font-medium">Affected Shipments</th>
+<th class="py-2.5 px-3 font-medium">Severity</th>
+<th class="py-2.5 px-3 font-medium">Confidence</th>
+<th class="py-2.5 px-3 font-medium text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border font-table-text text-table-text text-primary-text">
+<!-- Row 1 -->
+<tr class="hover:bg-subtle-surface transition-colors group">
+<td class="py-3 px-3 font-table-text-medium text-primary-text">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-high-risk" data-icon="error">error</span>
+<span>Port congestion</span>
+</div>
+</td>
+<td class="py-3 px-3 text-secondary-text">Port congestion</td>
+<td class="py-3 px-3 text-primary-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-muted-text" data-icon="anchor">anchor</span>
+                  Shanghai
+                </td>
+<td class="py-3 px-3 font-table-text-medium text-primary-text">32 shipments</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-high-risk-bg text-high-risk border border-high-risk/20">High</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 bg-subtle-surface rounded-full overflow-hidden border border-border">
+<div class="h-full bg-primary-accent rounded-full" style="width: 87%;"></div>
+</div>
+<span class="text-secondary-text text-[12px] font-medium">87%</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="text-secondary-text hover:text-primary-accent font-button-input text-table-text-medium">Details</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-subtle-surface transition-colors group">
+<td class="py-3 px-3 font-table-text-medium text-primary-text">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-medium-risk" data-icon="warning">warning</span>
+<span>Weather exposure</span>
+</div>
+</td>
+<td class="py-3 px-3 text-secondary-text">Severe weather</td>
+<td class="py-3 px-3 text-primary-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-muted-text" data-icon="public">public</span>
+                  North Atlantic
+                </td>
+<td class="py-3 px-3 font-table-text-medium text-primary-text">18 shipments</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-medium-risk-bg text-medium-risk border border-medium-risk/20">Medium</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 bg-subtle-surface rounded-full overflow-hidden border border-border">
+<div class="h-full bg-primary-accent rounded-full" style="width: 78%;"></div>
+</div>
+<span class="text-secondary-text text-[12px] font-medium">78%</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="text-secondary-text hover:text-primary-accent font-button-input text-table-text-medium">Details</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-subtle-surface transition-colors group">
+<td class="py-3 px-3 font-table-text-medium text-primary-text">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-medium-risk" data-icon="warning">warning</span>
+<span>Schedule disruption</span>
+</div>
+</td>
+<td class="py-3 px-3 text-secondary-text">Carrier operations</td>
+<td class="py-3 px-3 text-primary-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-muted-text" data-icon="anchor">anchor</span>
+                  Rotterdam
+                </td>
+<td class="py-3 px-3 font-table-text-medium text-primary-text">14 shipments</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-medium-risk-bg text-medium-risk border border-medium-risk/20">Medium</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 bg-subtle-surface rounded-full overflow-hidden border border-border">
+<div class="h-full bg-primary-accent rounded-full" style="width: 82%;"></div>
+</div>
+<span class="text-secondary-text text-[12px] font-medium">82%</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="text-secondary-text hover:text-primary-accent font-button-input text-table-text-medium">Details</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-subtle-surface transition-colors group">
+<td class="py-3 px-3 font-table-text-medium text-primary-text">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary-accent" data-icon="info">info</span>
+<span>Route exposure</span>
+</div>
+</td>
+<td class="py-3 px-3 text-secondary-text">Route disruption</td>
+<td class="py-3 px-3 text-primary-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-muted-text" data-icon="anchor">anchor</span>
+                  Singapore
+                </td>
+<td class="py-3 px-3 font-table-text-medium text-primary-text">9 shipments</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-soft-accent text-primary-accent border border-primary-accent/20">Low</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 bg-subtle-surface rounded-full overflow-hidden border border-border">
+<div class="h-full bg-primary-accent rounded-full" style="width: 71%;"></div>
+</div>
+<span class="text-secondary-text text-[12px] font-medium">71%</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="text-secondary-text hover:text-primary-accent font-button-input text-table-text-medium">Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Footer -->
+<div class="flex items-center justify-between pt-space-xs font-metadata text-metadata text-secondary-text">
+<span>Showing 4 of 24 detected risks</span>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded border border-border bg-primary-surface hover:bg-subtle-surface text-primary-text disabled:opacity-50" disabled="">Previous</button>
+<span class="px-2 text-primary-text font-medium">1</span>
+<button class="px-2.5 py-1 rounded border border-border bg-primary-surface hover:bg-subtle-surface text-primary-text">2</button>
+<button class="px-2.5 py-1 rounded border border-border bg-primary-surface hover:bg-subtle-surface text-primary-text">3</button>
+<button class="px-2.5 py-1 rounded border border-border bg-primary-surface hover:bg-subtle-surface text-primary-text">Next</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

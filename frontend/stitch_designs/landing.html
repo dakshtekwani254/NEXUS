@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEXUS — Supply Chain Intelligence | Clarity in a Connected World</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed": "#341100",
+            "tertiary-fixed-dim": "#ffb690",
+            "background": "#fbf8ff",
+            "surface-container-highest": "#e2e1ed",
+            "surface-dim": "#dad9e4",
+            "surface": "#fbf8ff",
+            "border": "#E6EAF0",
+            "app-background": "#F8F9FB",
+            "error": "#ba1a1a",
+            "high-risk-bg": "#FCECEC",
+            "inverse-primary": "#b9c3ff",
+            "secondary-text": "#667085",
+            "subtle-surface": "#F3F5F8",
+            "tertiary-container": "#b95000",
+            "primary-accent": "#4263EB",
+            "on-primary-container": "#f5f3ff",
+            "secondary": "#555f73",
+            "on-tertiary-container": "#fff2ed",
+            "on-surface-variant": "#444654",
+            "primary-text": "#172033",
+            "outline": "#747686",
+            "on-secondary-container": "#596377",
+            "primary-fixed-dim": "#b9c3ff",
+            "on-tertiary": "#ffffff",
+            "on-surface": "#1a1b23",
+            "surface-variant": "#e2e1ed",
+            "surface-container-high": "#e8e7f3",
+            "inverse-on-surface": "#f1effb",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed-variant": "#3d475a",
+            "on-primary": "#ffffff",
+            "success": "#268568",
+            "medium-risk": "#B7791F",
+            "on-background": "#1a1b23",
+            "on-tertiary-fixed-variant": "#783100",
+            "primary-fixed": "#dde1ff",
+            "inverse-surface": "#2f3039",
+            "surface-container-low": "#f4f2fe",
+            "surface-bright": "#fbf8ff",
+            "secondary-fixed": "#d9e3fb",
+            "medium-risk-bg": "#FFF4D6",
+            "on-error": "#ffffff",
+            "on-primary-fixed-variant": "#0035be",
+            "primary": "#2248d1",
+            "secondary-fixed-dim": "#bdc7de",
+            "surface-tint": "#2c50d9",
+            "surface-container": "#eeedf8",
+            "primary-container": "#4263eb",
+            "soft-accent": "#EEF2FF",
+            "secondary-container": "#d6e0f8",
+            "on-secondary-fixed": "#111c2d",
+            "strong-border": "#D5DBE5",
+            "success-bg": "#E8F6F0",
+            "on-error-container": "#93000a",
+            "on-primary-fixed": "#001356",
+            "high-risk": "#D94F4F",
+            "muted-text": "#8A93A3",
+            "tertiary-fixed": "#ffdbcb",
+            "outline-variant": "#c4c5d7",
+            "on-secondary": "#ffffff",
+            "error-container": "#ffdad6",
+            "tertiary": "#923e00",
+            "primary-surface": "#FFFFFF"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-md": "16px",
+            "gutter": "20px",
+            "space-lg": "24px",
+            "space-sm": "8px",
+            "space-xs": "4px",
+            "margin": "32px",
+            "space-xl": "32px"
+          },
+          "fontFamily": {
+            "kpi-value": ["Inter"],
+            "section-heading": ["Inter"],
+            "metadata": ["Inter"],
+            "table-text-medium": ["Inter"],
+            "body": ["Inter"],
+            "table-text": ["Inter"],
+            "button-input": ["Inter"],
+            "page-title": ["Inter"]
+          },
+          "fontSize": {
+            "kpi-value": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+            "section-heading": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "metadata": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "table-text-medium": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "table-text": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "button-input": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "page-title": ["28px", { "lineHeight": "36px", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    @keyframes pulse-subtle {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.4); opacity: 0.15; }
+    }
+    .ping-ring {
+      animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+</head>
+<body class="bg-app-background text-primary-text font-body antialiased selection:bg-soft-accent selection:text-primary-accent">
+<!-- 1. SLIM GLOBAL NAVIGATION -->
+<header class="sticky top-0 z-50 bg-primary-surface/95 backdrop-blur-md border-b border-border transition-colors duration-150">
+<div class="max-w-7xl mx-auto px-space-md sm:px-space-xl h-16 flex items-center justify-between">
+<!-- Left: Brand Identity -->
+<a class="flex items-center gap-space-sm group" href="#">
+<div class="w-8 h-8 rounded-xl bg-soft-accent border border-primary-accent/20 flex items-center justify-center text-primary-accent">
+<span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1.5">
+<span class="font-page-title text-[18px] font-bold tracking-tight text-primary-text">NEXUS</span>
+<span class="inline-block w-1 h-1 rounded-full bg-primary-accent"></span>
+</div>
+<span class="text-[9px] uppercase tracking-wider font-semibold text-muted-text -mt-1">SUPPLY CHAIN INTELLIGENCE</span>
+</div>
+</a>
+<!-- Center: Nav links -->
+<nav class="hidden md:flex items-center space-x-8">
+<a class="font-body text-body text-secondary-text hover:text-primary-text transition-colors duration-150" href="#platform">Platform</a>
+<a class="font-body text-body text-secondary-text hover:text-primary-text transition-colors duration-150" href="#capabilities">Capabilities</a>
+<a class="font-body text-body text-secondary-text hover:text-primary-text transition-colors duration-150" href="#how-it-works">How It Works</a>
+<a class="font-body text-body text-secondary-text hover:text-primary-text transition-colors duration-150" href="#principles">Principles</a>
+</nav>
+<!-- Right: Action CTAs -->
+<div class="flex items-center gap- space-sm sm:gap-space-md">
+<a class="font-button-input text-button-input text-secondary-text hover:text-primary-text px-3 py-2 transition-colors duration-150" href="#">Log in</a>
+<a class="inline-flex items-center justify-center font-button-input text-button-input text-on-primary bg-primary-accent hover:bg-primary transition-colors duration-150 px-4 py-2 rounded-xl shadow-sm" href="#cta">
+          Get Started
+        </a>
+</div>
+</div>
+</header>
+<!-- 2. UNIQUE SIGNATURE HERO -->
+<section class="relative pt-12 pb-20 md:py-24 overflow-hidden border-b border-border bg-app-background">
+<div class="max-w-7xl mx-auto px-space-md sm:px-space-xl relative">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Left 55% Content -->
+<div class="lg:col-span-7 z-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-soft-accent border border-primary-accent/20 mb-6">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-accent"></span>
+<span class="text-[11px] font-semibold uppercase tracking-widest text-primary-accent">SUPPLY CHAIN INTELLIGENCE, REIMAGINED</span>
+</div>
+<h1 class="text-4xl sm:text-5xl lg:text-[56px] font-bold text-primary-text tracking-tight leading-[1.12]">
+            The world is connected.<br/>
+<span class="text-primary-text">So is its </span>
+<span class="text-primary-accent relative inline-block">
+              risk.
+              <svg class="absolute -bottom-1 left-0 w-full h-2 text-primary-accent/20" preserveaspectratio="none" viewbox="0 0 100 10">
+<path d="M0 5 Q 50 10, 100 5" fill="none" stroke="currentColor" stroke-width="3"></path>
+</svg>
+</span>
+</h1>
+<p class="font-body text-[16px] text-secondary-text leading-relaxed max-w-xl mt-6 mb-8">
+            See disruptions take shape across ports, routes, and shipments. Understand what they could affect—and decide what to do next.
+          </p>
+<div class="flex flex-col sm:flex-row sm:items-center gap-4">
+<a class="inline-flex items-center justify-center font-button-input text-button-input text-on-primary bg-primary-accent hover:bg-primary px-6 py-3 rounded-xl shadow-sm transition-all duration-150" href="#capabilities">
+              Explore NEXUS
+            </a>
+<a class="inline-flex items-center gap-2 font-button-input text-button-input text-primary-text hover:text-primary-accent px-4 py-3 transition-colors duration-150" href="#how-it-works">
+<span>See how it works</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="mt-8 pt-6 border-t border-border/80 flex items-center gap-3">
+<span class="material-symbols-outlined text-[16px] text-muted-text" data-icon="linear_scale">linear_scale</span>
+<span class="font-metadata text-metadata text-muted-text font-medium">Visibility → Context → Informed action</span>
+</div>
+</div>
+<!-- Right Visual: Network Topology Layer -->
+<div class="lg:col-span-5 relative w-full h-[460px] md:h-[520px] flex items-center justify-center">
+<!-- Vector Network Map Canvas -->
+<div class="relative w-full h-full bg-primary-surface rounded-xl border border-border p-4 shadow-sm overflow-hidden flex flex-col justify-between">
+<!-- Map Top Bar Indicators -->
+<div class="flex items-center justify-between pb-3 border-b border-border">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-metadata text-[11px] font-semibold tracking-wider text-primary-text uppercase">NETWORK STATUS</span>
+</div>
+<span class="font-metadata text-[11px] text-muted-text bg-subtle-surface px-2 py-0.5 rounded-lg border border-border">Illustrative Demo Feed</span>
+</div>
+<!-- SVG Graph Visualization -->
+<div class="relative flex-1 w-full flex items-center justify-center my-2">
+<svg class="w-full h-full" fill="none" viewbox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+<!-- Abstract pale land masses -->
+<path d="M40 70 C70 60, 110 80, 130 110 C150 140, 120 180, 80 190 C50 200, 30 150, 40 70 Z" fill="#F3F5F8" stroke="#E6EAF0" stroke-width="1"></path>
+<path d="M190 50 C240 40, 310 60, 330 90 C340 110, 300 140, 260 130 C220 120, 200 160, 170 140 C150 120, 160 70, 190 50 Z" fill="#F3F5F8" stroke="#E6EAF0" stroke-width="1"></path>
+<path d="M330 130 C370 120, 420 140, 430 180 C440 210, 400 240, 360 230 C330 220, 310 160, 330 130 Z" fill="#F3F5F8" stroke="#E6EAF0" stroke-width="1"></path>
+<!-- Curved Shipping Arcs -->
+<!-- Shanghai (340, 150) to Rotterdam (220, 80) -->
+<path d="M340 150 C290 100, 260 85, 220 80" stroke="#94A3B8" stroke-dasharray="4 3" stroke-width="1.75"></path>
+<!-- Shanghai (340, 150) to Singapore (315, 215) -->
+<path d="M340 150 C330 180, 325 195, 315 215" stroke="#4263EB" stroke-width="2"></path>
+<!-- Rotterdam (220, 80) to Los Angeles (80, 110) -->
+<path d="M220 80 C160 50, 120 70, 80 110" stroke="#94A3B8" stroke-dasharray="4 3" stroke-width="1.75"></path>
+<!-- Weather Warning Region Arc on North Atlantic -->
+<path d="M150 67 C170 63, 190 70, 195 73" stroke="#B7791F" stroke-linecap="round" stroke-width="3"></path>
+<!-- Network Nodes -->
+<!-- Los Angeles -->
+<circle cx="80" cy="110" fill="#FFFFFF" r="5" stroke="#172033" stroke-width="2"></circle>
+<text fill="#667085" font-size="10" font-weight="500" text-anchor="middle" x="80" y="128">Los Angeles</text>
+<!-- Rotterdam -->
+<circle cx="220" cy="80" fill="#FFFFFF" r="5" stroke="#172033" stroke-width="2"></circle>
+<text fill="#667085" font-size="10" font-weight="500" text-anchor="middle" x="220" y="98">Rotterdam</text>
+<!-- Singapore -->
+<circle cx="315" cy="215" fill="#FFFFFF" r="5" stroke="#172033" stroke-width="2"></circle>
+<text fill="#667085" font-size="10" font-weight="500" text-anchor="middle" x="315" y="233">Singapore</text>
+<!-- Shanghai Node (Focal Point with Ping) -->
+<circle class="ping-ring" cx="340" cy="150" fill="#EEF2FF" r="16"></circle>
+<circle cx="340" cy="150" fill="#4263EB" opacity="0.2" r="8"></circle>
+<circle cx="340" cy="150" fill="#D94F4F" r="5" stroke="#FFFFFF" stroke-width="1.5"></circle>
+<text fill="#172033" font-size="10" font-weight="600" text-anchor="middle" x="340" y="140">Shanghai Port</text>
+</svg>
+<!-- Floating Micro Badge 1: Weather Exposure -->
+<div class="absolute top-8 left-16 bg-primary-surface/95 border border-medium-risk/30 rounded-lg px-2.5 py-1 text-left shadow-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-medium-risk"></span>
+<span class="text-[10px] font-semibold text-medium-risk uppercase">Weather Alert</span>
+</div>
+<span class="text-[11px] font-medium text-primary-text block mt-0.5">North Atlantic Route</span>
+</div>
+<!-- Floating Micro Badge 2: Shanghai Congestion -->
+<div class="absolute bottom-10 right-4 bg-primary-surface border border-high-risk/30 rounded-lg p-2 text-left shadow-sm max-w-[190px]">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="text-[10px] font-bold text-high-risk uppercase tracking-wide">Elevated Risk</span>
+<span class="px-1.5 py-0.2 bg-high-risk-bg text-high-risk rounded text-[9px] font-semibold">Berth Delay</span>
+</div>
+<p class="text-[11px] font-medium text-primary-text leading-tight">32 active shipments bound for Rotterdam &amp; Antwerp</p>
+</div>
+</div>
+<!-- Lower Map Summary Bar -->
+<div class="pt-3 border-t border-border flex items-center justify-between text-[11px] text-secondary-text">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-primary-accent" data-icon="route">route</span>
+                Asia–Europe Corridor
+              </span>
+<span class="font-medium text-primary-text">4 Disruption Signals Active</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. TRANSITION / 3-STEP PROCESS -->
+<section class="py-16 md:py-20 bg-primary-surface border-b border-border" id="how-it-works">
+<div class="max-w-7xl mx-auto px-space-md sm:px-space-xl">
+<div class="text-center max-w-2xl mx-auto mb-14">
+<h2 class="font-section-heading text-[22px] md:text-[24px] font-semibold text-primary-text tracking-tight">
+          One connected view. Better-informed decisions.
+        </h2>
+<p class="font-body text-body text-secondary-text mt-2">
+          From first detection to orchestrated response, eliminate the blind spots between enterprise supply network tiers.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Step 1 -->
+<div class="p-6 rounded-xl border border-border bg-subtle-surface/50 hover:bg-subtle-surface transition-colors duration-150">
+<div class="w-9 h-9 rounded-xl bg-soft-accent text-primary-accent flex items-center justify-center font-button-input font-bold text-sm mb-5">
+            01
+          </div>
+<h3 class="font-section-heading text-section-heading font-semibold text-primary-text mb-2">Detect</h3>
+<p class="font-body text-body text-secondary-text leading-relaxed">
+            Identify emerging disruptions across global ports, maritime trade routes, and in-transit multi-modal shipments.
+          </p>
+</div>
+<!-- Step 2 -->
+<div class="p-6 rounded-xl border border-border bg-subtle-surface/50 hover:bg-subtle-surface transition-colors duration-150">
+<div class="w-9 h-9 rounded-xl bg-soft-accent text-primary-accent flex items-center justify-center font-button-input font-bold text-sm mb-5">
+            02
+          </div>
+<h3 class="font-section-heading text-section-heading font-semibold text-primary-text mb-2">Connect</h3>
+<p class="font-body text-body text-secondary-text leading-relaxed">
+            Understand how a local event cascaded across dependencies, affecting inventory allocations and delivery timelines.
+          </p>
+</div>
+<!-- Step 3 -->
+<div class="p-6 rounded-xl border border-border bg-subtle-surface/50 hover:bg-subtle-surface transition-colors duration-150">
+<div class="w-9 h-9 rounded-xl bg-soft-accent text-primary-accent flex items-center justify-center font-button-input font-bold text-sm mb-5">
+            03
+          </div>
+<h3 class="font-section-heading text-section-heading font-semibold text-primary-text mb-2">Respond</h3>
+<p class="font-body text-body text-secondary-text leading-relaxed">
+            Investigate exposure scenarios, model alternative shipping lanes, and evaluate verified next steps in real time.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. CAPABILITIES SECTION (Asymmetrical authentic UI previews) -->
+<section class="py-20 bg-app-background border-b border-border" id="capabilities">
+<div class="max-w-7xl mx-auto px-space-md sm:px-space-xl">
+<div class="max-w-2xl mb-12">
+<span class="font-metadata text-metadata uppercase tracking-wider font-semibold text-primary-accent">CORE ARCHITECTURE</span>
+<h2 class="font-page-title text-[32px] font-bold text-primary-text tracking-tight mt-1 mb-3">
+          From scattered signals to a clearer picture.
+        </h2>
+<p class="font-body text-[15px] text-secondary-text">
+          Bring supply-chain visibility, operational risk assessment, and contextual investigation into one synchronized workspace.
+        </p>
+</div>
+<!-- Asymmetrical 4-Card Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Capability 1: Risk Intelligence (7 cols) -->
+<div class="lg:col-span-7 bg-primary-surface rounded-xl border border-border p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary-accent text-[20px]" data-icon="warning">warning</span>
+<h3 class="font-section-heading text-section-heading font-semibold text-primary-text">Risk Intelligence</h3>
+</div>
+<p class="font-body text-body text-secondary-text mb-6">
+              Surface emerging threats across your geographic footprint and examine their potential cascading impact on manufacturing cycles.
+            </p>
+</div>
+<!-- UI Matrix Preview -->
+<div class="bg-subtle-surface rounded-lg border border-border p-4">
+<div class="flex items-center justify-between pb-3 border-b border-border text-[11px] font-semibold text-secondary-text">
+<span>ACTIVE RISK SURFACES</span>
+<span>CONFIDENCE: HIGH (94%)</span>
+</div>
+<div class="grid grid-cols-3 gap-3 pt-3">
+<div class="bg-primary-surface p-3 rounded-lg border border-border">
+<span class="font-metadata text-metadata text-muted-text block">Port Berth Delays</span>
+<span class="font-section-heading text-high-risk text-[18px] font-bold">14 Ports</span>
+<span class="text-[11px] text-high-risk flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="arrow_upward">arrow_upward</span> +3 this week
+                </span>
+</div>
+<div class="bg-primary-surface p-3 rounded-lg border border-border">
+<span class="font-metadata text-metadata text-muted-text block">Geopolitical / Straits</span>
+<span class="font-section-heading text-medium-risk text-[18px] font-bold">2 Corridors</span>
+<span class="text-[11px] text-medium-risk flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="remove">remove</span> Stable monitoring
+                </span>
+</div>
+<div class="bg-primary-surface p-3 rounded-lg border border-border">
+<span class="font-metadata text-metadata text-muted-text block">Labor Action Watch</span>
+<span class="font-section-heading text-success text-[18px] font-bold">0 Critical</span>
+<span class="text-[11px] text-success flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="check_circle">check_circle</span> Normal operations
+                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Capability 2: Ports & Routes (5 cols) -->
+<div class="lg:col-span-5 bg-primary-surface rounded-xl border border-border p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary-accent text-[20px]" data-icon="anchor">anchor</span>
+<h3 class="font-section-heading text-section-heading font-semibold text-primary-text">Ports &amp; Routes</h3>
+</div>
+<p class="font-body text-body text-secondary-text mb-6">
+              Explore vessel queues, choke point exposure, and maritime disruption velocity before departures lock in.
+            </p>
+</div>
+<!-- Corridor Mini Status -->
+<div class="bg-subtle-surface rounded-lg border border-border p-3 space-y-2">
+<div class="flex items-center justify-between text-xs p-2 bg-primary-surface rounded border border-border">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-high-risk"></span>
+<span class="font-medium text-primary-text">East China Sea Choke</span>
+</div>
+<span class="text-[11px] text-high-risk font-medium bg-high-risk-bg px-1.5 py-0.5 rounded">Congested</span>
+</div>
+<div class="flex items-center justify-between text-xs p-2 bg-primary-surface rounded border border-border">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-medium-risk"></span>
+<span class="font-medium text-primary-text">Suez Transit Channel</span>
+</div>
+<span class="text-[11px] text-medium-risk font-medium bg-medium-risk-bg px-1.5 py-0.5 rounded">Moderate Queues</span>
+</div>
+<div class="flex items-center justify-between text-xs p-2 bg-primary-surface rounded border border-border">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span class="font-medium text-primary-text">Trans-Pacific Northern</span>
+</div>
+<span class="text-[11px] text-success font-medium bg-success-bg px-1.5 py-0.5 rounded">Nominal Flow</span>
+</div>
+</div>
+</div>
+<!-- Capability 3: Shipment Visibility (6 cols) -->
+<div class="lg:col-span-6 bg-primary-surface rounded-xl border border-border p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary-accent text-[20px]" data-icon="local_shipping">local_shipping</span>
+<h3 class="font-section-heading text-section-heading font-semibold text-primary-text">Shipment Visibility</h3>
+</div>
+<p class="font-body text-body text-secondary-text mb-6">
+              Follow cargo container status, dynamic estimated arrivals, and customs milestones with pinpoint precision.
+            </p>
+</div>
+<!-- Mini Shipments Table -->
+<div class="border border-border rounded-lg overflow-hidden bg-primary-surface">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-subtle-surface border-b border-border text-[11px] font-semibold text-secondary-text">
+<th class="py-2.5 px-3">TRACKING ID</th>
+<th class="py-2.5 px-3">DESTINATION</th>
+<th class="py-2.5 px-3">STATUS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border text-[12px]">
+<tr class="hover:bg-subtle-surface/50 transition-colors">
+<td class="py-2.5 px-3 font-mono font-medium text-primary-text">SHP-10482</td>
+<td class="py-2.5 px-3 text-secondary-text">Rotterdam Hub</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-high-risk-bg text-high-risk">
+                      +4.2d Delay
+                    </span>
+</td>
+</tr>
+<tr class="hover:bg-subtle-surface/50 transition-colors">
+<td class="py-2.5 px-3 font-mono font-medium text-primary-text">SHP-10517</td>
+<td class="py-2.5 px-3 text-secondary-text">Antwerp Terminal</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-success-bg text-success">
+                      On Schedule
+                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Capability 4: AI Analyst (6 cols) -->
+<div class="lg:col-span-6 bg-primary-surface rounded-xl border border-border p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary-accent text-[20px]" data-icon="smart_toy">smart_toy</span>
+<h3 class="font-section-heading text-section-heading font-semibold text-primary-text">AI Analyst</h3>
+</div>
+<p class="font-body text-body text-secondary-text mb-6">
+              Investigate incidents, evaluate mitigation trade-offs, and synthesize operational briefings in seconds.
+            </p>
+</div>
+<!-- Prompt Response Interactivity Sample -->
+<div class="bg-subtle-surface rounded-lg border border-border p-3 text-xs space-y-2.5">
+<div class="flex items-start gap-2 bg-primary-surface p-2.5 rounded-lg border border-border">
+<span class="material-symbols-outlined text-secondary-text text-[16px] shrink-0 mt-0.5" data-icon="person">person</span>
+<p class="text-primary-text font-medium">"What is our critical path risk if Shanghai port delays extend past 72 hours?"</p>
+</div>
+<div class="flex items-start gap-2 bg-soft-accent/60 p-2.5 rounded-lg border border-primary-accent/20">
+<span class="material-symbols-outlined text-primary-accent text-[16px] shrink-0 mt-0.5" data-icon="neurology">neurology</span>
+<p class="text-secondary-text text-[11px] leading-relaxed">
+<span class="font-semibold text-primary-text">Impact Analysis:</span> 3 Tier-1 auto assembly plants run below safety stock by Thursday. Recommended rerouting: 8 containers via Ningbo feeder lane.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. PRODUCT SHOWCASE SECTION -->
+<section class="py-20 bg-subtle-surface border-b border-border" id="platform">
+<div class="max-w-7xl mx-auto px-space-md sm:px-space-xl">
+<div class="text-center max-w-3xl mx-auto mb-14">
+<span class="font-metadata text-metadata uppercase tracking-wider font-semibold text-primary-accent">SYSTEM ARCHITECTURE IN PRACTICE</span>
+<h2 class="font-page-title text-[32px] md:text-[36px] font-bold text-primary-text tracking-tight mt-1 mb-4">
+          Understand the impact—not just the incident.
+        </h2>
+<p class="font-body text-[16px] text-secondary-text leading-relaxed">
+          A delay at one port can ripple across an entire corridor. NEXUS connects raw disruption signals directly to downstream manufacturing lines and client commitments.
+        </p>
+</div>
+<!-- Main Showcase Container -->
+<div class="bg-primary-surface rounded-xl border border-border shadow-sm p-6 lg:p-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left: Corridor & Route Visualization Canvas -->
+<div class="lg:col-span-7 bg-subtle-surface rounded-xl border border-border p-5 relative overflow-hidden">
+<div class="flex items-center justify-between pb-3 border-b border-border mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-accent text-[18px]" data-icon="travel_explore">travel_explore</span>
+<span class="font-table-text-medium text-table-text-medium text-primary-text font-semibold">East Asia to Western Europe Lane</span>
+</div>
+<span class="font-metadata text-[11px] bg-primary-surface text-secondary-text px-2 py-0.5 rounded border border-border">Active Telemetry</span>
+</div>
+<!-- Route Graph SVG -->
+<div class="relative w-full h-[280px] bg-primary-surface rounded-lg border border-border flex items-center justify-center p-2">
+<svg class="w-full h-full" fill="none" viewbox="0 0 500 240">
+<!-- Grid dots -->
+<pattern height="20" id="grid" patternunits="userSpaceOnUse" width="20">
+<circle cx="2" cy="2" fill="#E6EAF0" r="1"></circle>
+</pattern>
+<rect fill="url(#grid)" height="240" width="500"></rect>
+<!-- Primary Route Lane (Shanghai -> Singapore -> Suez -> Rotterdam) -->
+<path d="M420 180 Q300 190 230 140 T80 60" stroke="#CBD5E1" stroke-dasharray="6 4" stroke-width="3"></path>
+<!-- Diverging Mitigation Lane -->
+<path d="M420 180 Q280 230 160 180 T80 60" stroke="#4263EB" stroke-width="2"></path>
+<!-- Nodes -->
+<!-- Shanghai Node -->
+<circle cx="420" cy="180" fill="#D94F4F" r="8"></circle>
+<circle cx="420" cy="180" fill="#FCECEC" opacity="0.6" r="16"></circle>
+<text fill="#172033" font-size="11" font-weight="600" text-anchor="middle" x="420" y="210">Shanghai (Origin)</text>
+<!-- Singapore Waypoint -->
+<circle cx="290" cy="170" fill="#172033" r="5"></circle>
+<text fill="#667085" font-size="10" font-weight="500" text-anchor="middle" x="290" y="155">Singapore Hub</text>
+<!-- Suez Choke Point -->
+<circle cx="190" cy="115" fill="#B7791F" r="5"></circle>
+<text fill="#B7791F" font-size="10" font-weight="500" text-anchor="middle" x="190" y="100">Suez Checkpoint</text>
+<!-- Rotterdam Port -->
+<circle cx="80" cy="60" fill="#4263EB" r="7"></circle>
+<text fill="#172033" font-size="11" font-weight="600" text-anchor="middle" x="80" y="45">Rotterdam (Target)</text>
+</svg>
+<div class="absolute bottom-3 left-3 bg-primary-surface/90 backdrop-blur px-2.5 py-1.5 rounded-lg border border-border text-[11px] text-secondary-text shadow-sm">
+<span class="inline-block w-2.5 h-0.5 bg-[#4263EB] mr-1.5 align-middle"></span> Proposed alternate reroute via Cape lane (+1.8d, avoids Suez)
+              </div>
+</div>
+<!-- Operational Telemetry Indicators -->
+<div class="grid grid-cols-2 gap-3 mt-4">
+<div class="bg-primary-surface p-3 rounded-lg border border-border">
+<span class="text-[11px] text-muted-text font-medium block">Average Vessel Dwell Time</span>
+<span class="text-base font-semibold text-primary-text">4.8 Days <span class="text-xs text-high-risk font-normal">(+38% vs norm)</span></span>
+</div>
+<div class="bg-primary-surface p-3 rounded-lg border border-border">
+<span class="text-[11px] text-muted-text font-medium block">Berth Availability</span>
+<span class="text-base font-semibold text-primary-text">32% Operating Cap</span>
+</div>
+</div>
+</div>
+<!-- Right: Concrete Impact Summary Card -->
+<div class="lg:col-span-5 flex flex-col justify-between space-y-5">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-border">
+<span class="font-metadata text-[11px] font-bold uppercase tracking-wider text-high-risk bg-high-risk-bg px-2 py-0.5 rounded">
+                  Incident Analysis
+                </span>
+<span class="text-xs text-muted-text">Updated 12 mins ago</span>
+</div>
+<h4 class="font-section-heading text-[18px] font-bold text-primary-text mt-4 mb-2">
+                Shanghai Berth Congestion &amp; Weather Hold
+              </h4>
+<p class="font-body text-body text-secondary-text mb-5 leading-relaxed">
+                Dense fog and seasonal maintenance backlog have created an 84-hour berthing delay impacting the Asia-Europe Maritime Corridor.
+              </p>
+<!-- Structural Breakdown Items -->
+<div class="space-y-3">
+<div class="p-3 rounded-lg border border-border bg-subtle-surface/60 flex items-start justify-between">
+<div>
+<span class="text-[11px] font-semibold text-muted-text uppercase block">Exposed Shipments</span>
+<span class="text-sm font-semibold text-primary-text">32 In-Transit Shipments</span>
+</div>
+<span class="material-symbols-outlined text-high-risk text-[20px]" data-icon="inventory_2">inventory_2</span>
+</div>
+<div class="p-3 rounded-lg border border-border bg-subtle-surface/60 flex items-start justify-between">
+<div>
+<span class="text-[11px] font-semibold text-muted-text uppercase block">Estimated Delay Impact</span>
+<span class="text-sm font-semibold text-primary-text">+4.2 Days Projected SLA Slippage</span>
+</div>
+<span class="material-symbols-outlined text-medium-risk text-[20px]" data-icon="schedule">schedule</span>
+</div>
+<div class="p-3 rounded-lg border border-border bg-soft-accent/50 flex items-start justify-between">
+<div>
+<span class="text-[11px] font-semibold text-primary-accent uppercase block">Recommended Mitigation</span>
+<span class="text-sm font-semibold text-primary-text">Divert 14 High-Priority Lots via Ningbo</span>
+</div>
+<span class="material-symbols-outlined text-primary-accent text-[20px]" data-icon="call_split">call_split</span>
+</div>
+</div>
+</div>
+<!-- Card Interactive Action -->
+<div class="pt-4 border-t border-border flex items-center justify-between">
+<span class="text-xs text-secondary-text">Action status: Awaiting Authorization</span>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-primary-accent text-white font-button-input text-xs hover:bg-primary transition-colors">
+<span>View Scenario</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. TRUST & TRANSPARENCY PRINCIPLES -->
+<section class="py-20 bg-primary-surface border-b border-border" id="principles">
+<div class="max-w-7xl mx-auto px-space-md sm:px-space-xl">
+<div class="max-w-xl mb-14">
+<span class="font-metadata text-metadata uppercase tracking-wider font-semibold text-primary-accent">FOUNDATIONAL INTEGRITY</span>
+<h2 class="font-page-title text-[30px] font-bold text-primary-text tracking-tight mt-1 mb-3">
+          Clarity you can act on.
+        </h2>
+<p class="font-body text-body text-secondary-text">
+          Enterprise operations demand transparency. NEXUS never obscures calculation factors or replaces human judgment.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Principle 1 -->
+<div class="p-6 rounded-xl border border-border bg-subtle-surface/40 hover:bg-subtle-surface transition-colors duration-150">
+<div class="w-10 h-10 rounded-xl bg-soft-accent text-primary-accent flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[22px]" data-icon="schema">schema</span>
+</div>
+<h3 class="font-section-heading text-section-heading font-semibold text-primary-text mb-2">Understand the context</h3>
+<p class="font-body text-body text-secondary-text leading-relaxed">
+            See precisely which upstream factors contribute to a risk assessment. Inspect source signals, dwell benchmarks, and historical variance scores.
+          </p>
+</div>
+<!-- Principle 2 -->
+<div class="p-6 rounded-xl border border-border bg-subtle-surface/40 hover:bg-subtle-surface transition-colors duration-150">
+<div class="w-10 h-10 rounded-xl bg-soft-accent text-primary-accent flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[22px]" data-icon="verified_user">verified_user</span>
+</div>
+<h3 class="font-section-heading text-section-heading font-semibold text-primary-text mb-2">Keep people in control</h3>
+<p class="font-body text-body text-secondary-text leading-relaxed">
+            Review recommendations with full lineage before taking operational action. NEXUS delivers decision-ready synthesis, leaving governance with your team.
+          </p>
+</div>
+<!-- Principle 3 -->
+<div class="p-6 rounded-xl border border-border bg-subtle-surface/40 hover:bg-subtle-surface transition-colors duration-150">
+<div class="w-10 h-10 rounded-xl bg-soft-accent text-primary-accent flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[22px]" data-icon="database">database</span>
+</div>
+<h3 class="font-section-heading text-section-heading font-semibold text-primary-text mb-2">Know your data</h3>
+<p class="font-body text-body text-secondary-text leading-relaxed">
+            Always distinguish live authenticated EDI/API feeds from probabilistic estimates and mock test sets with unambiguous surface badges.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. FINAL CALL TO ACTION -->
+<section class="py-20 md:py-28 bg-app-background border-b border-border relative overflow-hidden" id="cta">
+<div class="max-w-4xl mx-auto px-space-md sm:px-space-xl text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-soft-accent border border-primary-accent/20 mb-6">
+<span class="w-2 h-2 rounded-full bg-primary-accent"></span>
+<span class="text-[11px] font-semibold uppercase tracking-wider text-primary-accent">DEPLOY INTELLIGENCE TODAY</span>
+</div>
+<h2 class="font-page-title text-3xl sm:text-4xl md:text-[44px] font-bold text-primary-text tracking-tight leading-tight mb-4">
+        See the connections. Understand the risk.
+      </h2>
+<p class="font-body text-[16px] text-secondary-text max-w-xl mx-auto mb-10 leading-relaxed">
+        Explore a more connected way to understand and neutralize supply-chain disruptions across global multi-tier ecosystems.
+      </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a class="w-full sm:w-auto inline-flex items-center justify-center font-button-input text-button-input text-on-primary bg-primary-accent hover:bg-primary px-8 py-3.5 rounded-xl shadow-sm transition-all duration-150" href="#">
+          Get Started
+        </a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 font-button-input text-button-input text-primary-text hover:text-primary-accent px-6 py-3.5 rounded-xl border border-border bg-primary-surface hover:border-strong-border transition-colors duration-150" href="#platform">
+<span>Explore the Platform</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="mt-8 text-xs text-muted-text">
+        Enterprise SOC2 Type II Certified • Native TMS &amp; ERP Connectors • SOC Ready
+      </div>
+</div>
+</section>
+<!-- 8. MINIMAL ENTERPRISE FOOTER -->
+<footer class="bg-primary-surface py-12 md:py-16">
+<div class="max-w-7xl mx-auto px-space-md sm:px-space-xl">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-border">
+<!-- Left Brand & Mission -->
+<div class="md:col-span-5">
+<div class="flex items-center gap-2 mb-3">
+<div class="w-7 h-7 rounded-lg bg-soft-accent border border-primary-accent/20 flex items-center justify-center text-primary-accent">
+<span class="material-symbols-outlined text-[16px]" data-icon="hub">hub</span>
+</div>
+<span class="font-page-title text-[18px] font-bold tracking-tight text-primary-text">NEXUS</span>
+</div>
+<p class="font-body text-body text-secondary-text max-w-sm mb-4">
+            Supply Chain Intelligence operating system providing end-to-end multi-tier network visibility, automated disruption indexing, and actionable risk synthesis.
+          </p>
+<div class="text-[11px] text-muted-text bg-subtle-surface px-2.5 py-1.5 rounded-lg border border-border inline-block">
+            Production Release v2.8.4
+          </div>
+</div>
+<!-- Links Column 1: Workspace Modules -->
+<div class="md:col-span-3">
+<h4 class="font-section-heading text-[12px] font-bold uppercase tracking-wider text-primary-text mb-4">Intelligence Platform</h4>
+<ul class="space-y-2.5 text-xs text-secondary-text">
+<li><a class="hover:text-primary-text transition-colors" href="#">Risk Intelligence Engine</a></li>
+<li><a class="hover:text-primary-text transition-colors" href="#">Shipment Visibility &amp; Telemetry</a></li>
+<li><a class="hover:text-primary-text transition-colors" href="#">Ports &amp; Maritime Routes</a></li>
+<li><a class="hover:text-primary-text transition-colors" href="#">AI Analyst Workspace</a></li>
+<li><a class="hover:text-primary-text transition-colors" href="#">Agent Center Orchestration</a></li>
+</ul>
+</div>
+<!-- Links Column 2: Governance & Support -->
+<div class="md:col-span-4">
+<h4 class="font-section-heading text-[12px] font-bold uppercase tracking-wider text-primary-text mb-4">Company &amp; Governance</h4>
+<ul class="space-y-2.5 text-xs text-secondary-text">
+<li><a class="hover:text-primary-text transition-colors" href="#">Methodology &amp; Data Lineage</a></li>
+<li><a class="hover:text-primary-text transition-colors" href="#">Security Architecture &amp; Trust</a></li>
+<li><a class="hover:text-primary-text transition-colors" href="#">Documentation &amp; API Reference</a></li>
+<li><a class="hover:text-primary-text transition-colors" href="#">Contact Enterprise Engineering</a></li>
+<li><a class="hover:text-primary-text transition-colors" href="#">Log In to Console</a></li>
+</ul>
+</div>
+</div>
+<!-- Footer Bottom Row -->
+<div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-muted-text gap-4">
+<div>
+<span>© 2026 NEXUS Supply Chain OS Inc. All rights reserved.</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="hover:text-secondary-text transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-secondary-text transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-secondary-text transition-colors" href="#">Responsible AI Disclosure</a>
+<span class="text-muted-text/60">Illustrative demo mode</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
