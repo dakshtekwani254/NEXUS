@@ -36,12 +36,12 @@ flowchart TD
 | Layer | Technologies |
 |---|---|
 | **Frontend** | Next.js 16 (App Router), React 19, TypeScript |
-| **Styling** | Tailwind CSS v4, Lucide Icons, Glassmorphism Surfaces |
-| **Interactive Map** | Leaflet with CartoDB Dark Matter Tiles & Custom SVG Markers |
+| **Styling** | Tailwind CSS v4, Lucide Icons, Material Symbols, Glassmorphism Surfaces |
+| **Interactive Map** | Google Maps Platform (`@vis.gl/react-google-maps`) + Leaflet / CartoDB Fallback Radar |
 | **Visualizations** | Recharts (Multi-line Trends, Bar Charts, Donut Risk Profiles) |
-| **Backend** | Python 3.14, FastAPI, Uvicorn |
+| **Backend** | Python 3.10+, FastAPI, Uvicorn |
 | **Data Validation** | Pydantic v2 |
-| **Browser Agents** | TinyFish API Client + Headless Automation Sandbox |
+| **Browser Agents & Web Research** | Official TinyFish Python SDK v0.9.0 (`tinyfish`) |
 | **Persistence** | Lightweight File-Persisted & In-Memory Store (`nexus_data_store.json`) |
 | **Testing** | Pytest Test Suite |
 
@@ -107,24 +107,48 @@ flowchart TD
 
 ### Installation & Execution
 
-#### Option A: One-Click Startup (PowerShell)
-```powershell
-.\run_dev.ps1
+#### Option A: Universal One-Command Launcher (Recommended)
+Launches both the FastAPI backend and Next.js frontend concurrently in a single terminal. Works seamlessly across Windows, macOS, and Linux without OS script permission blocks:
+
+```bash
+python run.py
 ```
 
-#### Option B: One-Click Startup (Command Prompt)
-```cmd
-run_dev.bat
-```
+- **Frontend Dashboard:** [http://localhost:3000](http://localhost:3000)
+- **FastAPI Interactive Docs:** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+- **Stop Both Servers:** Press `Ctrl + C` in the terminal.
 
-#### Option C: Manual Startup
+---
+
+#### Option B: PowerShell & Batch Scripts
+- **PowerShell**:
+  ```powershell
+  .\run_dev.ps1
+  # If PowerShell blocks script execution:
+  powershell -ExecutionPolicy Bypass -File .\run_dev.ps1
+  ```
+- **Windows Batch / Double-Click**:
+  ```cmd
+  run_dev.bat
+  ```
+  *(Note: If Windows SmartScreen displays an access denied warning on cloned `.bat` files, run `Unblock-File .\run_dev.bat` in PowerShell or right-click `run_dev.bat` → Properties → check **Unblock**).*
+
+---
+
+#### Option C: Manual Startup (Separate Terminals)
 
 **1. Backend (FastAPI)**
 ```bash
-# From workspace root
+# Windows
 python -m venv backend/venv
 backend\venv\Scripts\pip install -r backend/requirements.txt
 backend\venv\Scripts\python -m uvicorn main:app --app-dir backend --host 127.0.0.1 --port 8000 --reload
+
+# macOS / Linux
+python3 -m venv backend/venv
+source backend/venv/bin/activate
+pip install -r backend/requirements.txt
+python -m uvicorn main:app --app-dir backend --host 127.0.0.1 --port 8000 --reload
 ```
 
 **2. Frontend (Next.js)**
@@ -134,7 +158,15 @@ npm install
 npm run dev -- -p 3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+---
+
+### Zero-Config Evaluation Mode (No API Keys Required)
+NEXUS is designed to run cleanly for evaluators and reviewers without requiring external API keys:
+- **Google Maps Platform**: If `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` is not present, the application automatically activates the built-in Leaflet / CartoDB maritime radar map with interactive port markers, routes, and vessel tracking.
+- **TinyFish Web Research**: If `TINYFISH_API_KEY` is not configured, the research workspace operates in **Simulation Mode**, generating realistic, schema-validated maritime advisories with source citations.
+- **Optional Live Keys**: To connect live cloud services, copy the template files and insert your keys:
+  - `backend/.env` → `TINYFISH_API_KEY=your_key`
+  - `frontend/.env.local` → `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_key`
 
 ---
 
